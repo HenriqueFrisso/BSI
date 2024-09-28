@@ -1,0 +1,4 @@
+1 NitTe 30 70
+1 Fak 24 75
+2 Full 23 77
+1 Merc 55 80
