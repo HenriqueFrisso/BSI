@@ -114,6 +114,9 @@ public class Questoes {
     }
     
     public static void questD(){
+        /*
+        d) (15 pontos) O lado vencedor (“Gregos e Nórdicos” ou “Atlantes e Egípcios”?).
+        */
         if (Guerreiro.getLista11().isEmpty() && Guerreiro.getLista12().isEmpty() && Guerreiro.getLista13().isEmpty() && Guerreiro.getLista14().isEmpty()){
             System.out.println("");
             System.out.println("Atlantes e Egípcios venceram.");
@@ -136,6 +139,9 @@ public class Questoes {
     }
     
     public static void questE(){
+        /*
+        e) (5 pontos) Os dados do último membro do lado perdedor
+        */
         System.out.print("O " + Questoes.defensor.getClass().getSimpleName() + " " + Questoes.defensor.getNome() + " de " + Questoes.defensor.getIdade() + " anos e " + Questoes.defensor.getPeso() + " kilos foi o ultimo a ser derrotado no lado dos ");
         if (Guerreiro.getLista11().isEmpty() && Guerreiro.getLista12().isEmpty() && Guerreiro.getLista13().isEmpty() && Guerreiro.getLista14().isEmpty()){
             System.out.println("Gregos e Nórdicos");
@@ -145,6 +151,9 @@ public class Questoes {
     }
     
     public static void questF(){
+        /*
+        f) (5 pontos) Os dados do guerreiro, do lado vencedor, que transferiu o último
+        */
         System.out.println("A " + Questoes.atacante.getClass().getSimpleName() + " " + Questoes.atacante.getNome() + " de " + Questoes.atacante.getIdade() + " anos e " + Questoes.atacante.getPeso() + " kilos transferiu o último ataque no " + Questoes.defensor.getClass().getSimpleName() + " " + Questoes.defensor.getNome() + " de " + Questoes.defensor.getIdade() + " anos e " + Questoes.defensor.getPeso() + " kilos.");
     }
     
