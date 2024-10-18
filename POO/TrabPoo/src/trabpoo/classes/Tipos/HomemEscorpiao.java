@@ -8,6 +8,7 @@ novo envenenamento não gera qualquer efeito sobre uma unidade inimiga, ou seja,
 de retirar 5 pontos de energia continua até a morte do adversário, mas sem acréscimo de taxa
 de morte.
 */
+import trabpoo.Jogo;
 import trabpoo.Questoes;
 import trabpoo.classes.*;
 
@@ -16,10 +17,10 @@ public class HomemEscorpiao extends Egipcio{
     @Override
     public void agirAE(int pos){
         switch (pos){
-            case(1) -> atacar(Guerreiro.getLista11().getFirst());
-            case(2) -> atacar(Guerreiro.getLista12().getFirst());
-            case(3) -> atacar(Guerreiro.getLista13().getFirst());
-            case(4) -> atacar(Guerreiro.getLista14().getFirst());
+            case(1) -> atacar(Jogo.getLista11().getFirst());
+            case(2) -> atacar(Jogo.getLista12().getFirst());
+            case(3) -> atacar(Jogo.getLista13().getFirst());
+            case(4) -> atacar(Jogo.getLista14().getFirst());
         }
     }
     private void atacar(Guerreiro guerreiro){

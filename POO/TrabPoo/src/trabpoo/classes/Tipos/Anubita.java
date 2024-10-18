@@ -3,6 +3,7 @@ package trabpoo.classes.Tipos;
 Anubita: possui ataque de 15 pontos de energia, mas ataca 2 vezes. Ataca o primeiro
 guerreiro e depois salta para o final da fila e ataca o último guerreiro da fila adversária.
 */
+import trabpoo.Jogo;
 import trabpoo.Questoes;
 import trabpoo.classes.*;
 
@@ -16,10 +17,10 @@ public class Anubita extends Egipcio{
     @Override
     public void agirAE(int pos){
         switch (pos){
-            case(1) -> atacar(Guerreiro.getLista11().getFirst(),Guerreiro.getLista11().getLast());
-            case(2) -> atacar(Guerreiro.getLista12().getFirst(),Guerreiro.getLista12().getLast());
-            case(3) -> atacar(Guerreiro.getLista13().getFirst(),Guerreiro.getLista13().getLast());
-            case(4) -> atacar(Guerreiro.getLista14().getFirst(),Guerreiro.getLista14().getLast());
+            case(1) -> atacar(Jogo.getLista11().getFirst(),Jogo.getLista11().getLast());
+            case(2) -> atacar(Jogo.getLista12().getFirst(),Jogo.getLista12().getLast());
+            case(3) -> atacar(Jogo.getLista13().getFirst(),Jogo.getLista13().getLast());
+            case(4) -> atacar(Jogo.getLista14().getFirst(),Jogo.getLista14().getLast());
         }
     }
     private void atacar(Guerreiro guerreiro1, Guerreiro guerreiro2){

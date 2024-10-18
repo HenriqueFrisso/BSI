@@ -10,15 +10,15 @@ import trabpoo.classes.Tipos.*;
 public class LeitorArquivo {
     
     public static void lerFilas() throws FileNotFoundException {
-        lerArquivo(Guerreiro.getLista11(), "arquivos/lado11.txt", 1);
-        lerArquivo(Guerreiro.getLista12(), "arquivos/lado12.txt", 1);
-        lerArquivo(Guerreiro.getLista13(), "arquivos/lado13.txt", 1);
-        lerArquivo(Guerreiro.getLista14(), "arquivos/lado14.txt", 1);
+        lerArquivo(Jogo.getLista11(), "arquivos/lado11.txt", 1);
+        lerArquivo(Jogo.getLista12(), "arquivos/lado12.txt", 1);
+        lerArquivo(Jogo.getLista13(), "arquivos/lado13.txt", 1);
+        lerArquivo(Jogo.getLista14(), "arquivos/lado14.txt", 1);
 
-        lerArquivo(Guerreiro.getLista21(), "arquivos/lado21.txt", 2);
-        lerArquivo(Guerreiro.getLista22(), "arquivos/lado22.txt", 2);
-        lerArquivo(Guerreiro.getLista23(), "arquivos/lado23.txt", 2);
-        lerArquivo(Guerreiro.getLista24(), "arquivos/lado24.txt", 2);
+        lerArquivo(Jogo.getLista21(), "arquivos/lado21.txt", 2);
+        lerArquivo(Jogo.getLista22(), "arquivos/lado22.txt", 2);
+        lerArquivo(Jogo.getLista23(), "arquivos/lado23.txt", 2);
+        lerArquivo(Jogo.getLista24(), "arquivos/lado24.txt", 2);
     }
     
     private static void lerArquivo(ArrayList<Guerreiro> lista, String arquivo, int lado) throws FileNotFoundException {

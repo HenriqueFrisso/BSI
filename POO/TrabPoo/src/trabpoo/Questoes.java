@@ -1,8 +1,8 @@
 package trabpoo;
 
+
 import java.util.ArrayList;
 import trabpoo.classes.Guerreiro;
-
 /*
 a) (5 pontos) Exiba os dados de ambos lados.
 b) (5 pontos) A soma dos pesos de ambos lados.
@@ -23,15 +23,15 @@ public class Questoes {
         /*
         a) (5 pontos) Exiba os dados de ambos os lados.
         */
-        ArrayList<Guerreiro> ls11 = Guerreiro.getLista11();
-        ArrayList<Guerreiro> ls12 = Guerreiro.getLista12();
-        ArrayList<Guerreiro> ls13 = Guerreiro.getLista13();
-        ArrayList<Guerreiro> ls14 = Guerreiro.getLista14();
+        ArrayList<Guerreiro> ls11 = Jogo.getLista11();
+        ArrayList<Guerreiro> ls12 = Jogo.getLista12();
+        ArrayList<Guerreiro> ls13 = Jogo.getLista13();
+        ArrayList<Guerreiro> ls14 = Jogo.getLista14();
         
-        ArrayList<Guerreiro> ls21 = Guerreiro.getLista21();
-        ArrayList<Guerreiro> ls22 = Guerreiro.getLista22();
-        ArrayList<Guerreiro> ls23 = Guerreiro.getLista23();
-        ArrayList<Guerreiro> ls24 = Guerreiro.getLista24();
+        ArrayList<Guerreiro> ls21 = Jogo.getLista21();
+        ArrayList<Guerreiro> ls22 = Jogo.getLista22();
+        ArrayList<Guerreiro> ls23 = Jogo.getLista23();
+        ArrayList<Guerreiro> ls24 = Jogo.getLista24();
         System.out.println("");
         System.out.println("LADO 1:");
         System.out.println("Fila 1:");
@@ -69,15 +69,15 @@ public class Questoes {
         int pesoGN = 0;
         int pesoAE = 0;
         
-        pesoGN += auxB(Guerreiro.getLista11());
-        pesoGN += auxB(Guerreiro.getLista12());
-        pesoGN += auxB(Guerreiro.getLista13());
-        pesoGN += auxB(Guerreiro.getLista14());
+        pesoGN += auxB(Jogo.getLista11());
+        pesoGN += auxB(Jogo.getLista12());
+        pesoGN += auxB(Jogo.getLista13());
+        pesoGN += auxB(Jogo.getLista14());
         
-        pesoAE += auxB(Guerreiro.getLista21());
-        pesoAE += auxB(Guerreiro.getLista22());
-        pesoAE += auxB(Guerreiro.getLista23());
-        pesoAE += auxB(Guerreiro.getLista24());
+        pesoAE += auxB(Jogo.getLista21());
+        pesoAE += auxB(Jogo.getLista22());
+        pesoAE += auxB(Jogo.getLista23());
+        pesoAE += auxB(Jogo.getLista24());
         
         System.out.println("");
         System.out.println("Gregos e Nórdicos pesam " + pesoGN + " kilos.");
@@ -99,15 +99,15 @@ public class Questoes {
         c) (5 pontos) O guerreiro mais velho e sua idade (se houver empate, pode mostrar apenas o primeiro)
         */
         Guerreiro aux = new Guerreiro();
-        aux = auxC(Guerreiro.getLista11(), aux);
-        aux = auxC(Guerreiro.getLista12(), aux);
-        aux = auxC(Guerreiro.getLista13(), aux);
-        aux = auxC(Guerreiro.getLista14(), aux);
+        aux = auxC(Jogo.getLista11(), aux);
+        aux = auxC(Jogo.getLista12(), aux);
+        aux = auxC(Jogo.getLista13(), aux);
+        aux = auxC(Jogo.getLista14(), aux);
         
-        aux = auxC(Guerreiro.getLista21(), aux);
-        aux = auxC(Guerreiro.getLista22(), aux);
-        aux = auxC(Guerreiro.getLista23(), aux);
-        aux = auxC(Guerreiro.getLista24(), aux);
+        aux = auxC(Jogo.getLista21(), aux);
+        aux = auxC(Jogo.getLista22(), aux);
+        aux = auxC(Jogo.getLista23(), aux);
+        aux = auxC(Jogo.getLista24(), aux);
         System.out.println("");
         System.out.println("O " + aux.getClass().getSimpleName() + " " + aux.getNome() + " é o mais velho e tem " + aux.getIdade() + " anos");
         System.out.println("");
@@ -117,11 +117,11 @@ public class Questoes {
         /*
         d) (15 pontos) O lado vencedor (“Gregos e Nórdicos” ou “Atlantes e Egípcios”?).
         */
-        if (Guerreiro.getLista11().isEmpty() && Guerreiro.getLista12().isEmpty() && Guerreiro.getLista13().isEmpty() && Guerreiro.getLista14().isEmpty()){
+        if (Jogo.getLista11().isEmpty() && Jogo.getLista12().isEmpty() && Jogo.getLista13().isEmpty() && Jogo.getLista14().isEmpty()){
             System.out.println("");
             System.out.println("Atlantes e Egípcios venceram.");
             System.out.println("");
-        } else if (Guerreiro.getLista21().isEmpty() && Guerreiro.getLista22().isEmpty() && Guerreiro.getLista23().isEmpty() && Guerreiro.getLista24().isEmpty()){
+        } else if (Jogo.getLista21().isEmpty() && Jogo.getLista22().isEmpty() && Jogo.getLista23().isEmpty() && Jogo.getLista24().isEmpty()){
             System.out.println("");
             System.out.println("Gregos e Nórdicos venceram.");
             System.out.println("");
@@ -143,9 +143,9 @@ public class Questoes {
         e) (5 pontos) Os dados do último membro do lado perdedor
         */
         System.out.print("O " + Questoes.defensor.getClass().getSimpleName() + " " + Questoes.defensor.getNome() + " de " + Questoes.defensor.getIdade() + " anos e " + Questoes.defensor.getPeso() + " kilos foi o ultimo a ser derrotado no lado dos ");
-        if (Guerreiro.getLista11().isEmpty() && Guerreiro.getLista12().isEmpty() && Guerreiro.getLista13().isEmpty() && Guerreiro.getLista14().isEmpty()){
+        if (Jogo.getLista11().isEmpty() && Jogo.getLista12().isEmpty() && Jogo.getLista13().isEmpty() && Jogo.getLista14().isEmpty()){
             System.out.println("Gregos e Nórdicos");
-        } else if (Guerreiro.getLista21().isEmpty() && Guerreiro.getLista22().isEmpty() && Guerreiro.getLista23().isEmpty() && Guerreiro.getLista24().isEmpty()){
+        } else if (Jogo.getLista21().isEmpty() && Jogo.getLista22().isEmpty() && Jogo.getLista23().isEmpty() && Jogo.getLista24().isEmpty()){
             System.out.println("Atlantes e Egípcios");
         }
     }
@@ -159,14 +159,14 @@ public class Questoes {
     
     public static void imprimir(){
         ArrayList<Guerreiro> ls11,ls12,ls13,ls14,ls21,ls22,ls23,ls24;
-        ls11 = Guerreiro.getLista11();
-        ls12 = Guerreiro.getLista12();
-        ls13 = Guerreiro.getLista13();
-        ls14 = Guerreiro.getLista14();
-        ls21 = Guerreiro.getLista21();
-        ls22 = Guerreiro.getLista22();
-        ls23 = Guerreiro.getLista23();
-        ls24 = Guerreiro.getLista24();
+        ls11 = Jogo.getLista11();
+        ls12 = Jogo.getLista12();
+        ls13 = Jogo.getLista13();
+        ls14 = Jogo.getLista14();
+        ls21 = Jogo.getLista21();
+        ls22 = Jogo.getLista22();
+        ls23 = Jogo.getLista23();
+        ls24 = Jogo.getLista24();
         System.out.println("----------------------");
         for (int i = 0; i< ls11.size();i++){
             System.out.print(ls11.get(i).getClass().getSimpleName()+"("+ls11.get(i).getEnergia()+"), ");

@@ -8,6 +8,7 @@ colocadas no final da fila de seus aliados). O morto-vivo “nasce” com o nome
 do guerreiro adversário morto. Já os Anubitas vingadores “nascem” com o nome da múmia
 morta, idade = 0 e peso = 60.
 */
+import trabpoo.Jogo;
 import trabpoo.Questoes;
 import trabpoo.classes.*;
 
@@ -31,25 +32,25 @@ public class Mumia extends Egipcio{
             aux3.setNovo(this.getNome(), 0, 60);
             aux4.setNovo(this.getNome(), 0, 60);
             
-            Guerreiro.getLista21().add(aux1);
-            Guerreiro.getLista22().add(aux2);
-            Guerreiro.getLista23().add(aux3);
-            Guerreiro.getLista24().add(aux4);
+            Jogo.getLista21().add(aux1);
+            Jogo.getLista22().add(aux2);
+            Jogo.getLista23().add(aux3);
+            Jogo.getLista24().add(aux4);
             
             int pos = encontrarPosicao();
             switch (pos) {
-            case 1 -> Guerreiro.getLista21().remove(this);
-            case 2 -> Guerreiro.getLista22().remove(this);
-            case 3 -> Guerreiro.getLista23().remove(this);
-            case 4 -> Guerreiro.getLista24().remove(this);
+            case 1 -> Jogo.getLista21().remove(this);
+            case 2 -> Jogo.getLista22().remove(this);
+            case 3 -> Jogo.getLista23().remove(this);
+            case 4 -> Jogo.getLista24().remove(this);
             }
         }
     }
     private int encontrarPosicao() {
-        if (Guerreiro.getLista21().indexOf(this) != -1) {return 1;}
-        else if (Guerreiro.getLista22().indexOf(this) != -1) {return 2;}
-        else if (Guerreiro.getLista23().indexOf(this) != -1) {return 3;} 
-        else if (Guerreiro.getLista24().indexOf(this) != -1) {return 4;}
+        if (Jogo.getLista21().indexOf(this) != -1) {return 1;}
+        else if (Jogo.getLista22().indexOf(this) != -1) {return 2;}
+        else if (Jogo.getLista23().indexOf(this) != -1) {return 3;} 
+        else if (Jogo.getLista24().indexOf(this) != -1) {return 4;}
         return 0;
     }
     
@@ -58,19 +59,19 @@ public class Mumia extends Egipcio{
         int pos = encontrarPosicao();
         morto.setNovo(guerreiro.getNome(),guerreiro.getIdade(),guerreiro.getPeso());
         switch (pos) {
-            case 1 -> Guerreiro.getLista21().add(morto);
-            case 2 -> Guerreiro.getLista22().add(morto);
-            case 3 -> Guerreiro.getLista23().add(morto);
-            case 4 -> Guerreiro.getLista24().add(morto);
+            case 1 -> Jogo.getLista21().add(morto);
+            case 2 -> Jogo.getLista22().add(morto);
+            case 3 -> Jogo.getLista23().add(morto);
+            case 4 -> Jogo.getLista24().add(morto);
         }
     }
     @Override
     protected void agirAE(int pos) {
         switch (pos) {
-            case (1) -> atacar(Guerreiro.getLista11().getFirst());
-            case (2) -> atacar(Guerreiro.getLista12().getFirst());
-            case (3) -> atacar(Guerreiro.getLista13().getFirst());
-            case (4) -> atacar(Guerreiro.getLista14().getFirst());
+            case (1) -> atacar(Jogo.getLista11().getFirst());
+            case (2) -> atacar(Jogo.getLista12().getFirst());
+            case (3) -> atacar(Jogo.getLista13().getFirst());
+            case (4) -> atacar(Jogo.getLista14().getFirst());
         }
     }
 

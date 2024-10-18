@@ -6,6 +6,7 @@ energia. Quando é o primeiro a atacar força o lado adversário a atacá-lo, in
 filas dos adversários. Se 2 Gigantes de Pedra ativarem a habilidade (em filas diferentes) o
 último a ativar é o que será atacado.
 */
+import trabpoo.Jogo;
 import trabpoo.Questoes;
 import trabpoo.classes.*;
 
@@ -18,10 +19,10 @@ public class GiganteDePedra extends Nordico{
     @Override
     public void agirGN(int pos){
         switch (pos) {
-            case 1 -> {atacar(Guerreiro.getLista21().getFirst());}
-            case 2 -> {atacar(Guerreiro.getLista22().getFirst());}
-            case 3 -> {atacar(Guerreiro.getLista23().getFirst());}
-            case 4 -> {atacar(Guerreiro.getLista24().getFirst());}
+            case 1 -> {atacar(Jogo.getLista21().getFirst());}
+            case 2 -> {atacar(Jogo.getLista22().getFirst());}
+            case 3 -> {atacar(Jogo.getLista23().getFirst());}
+            case 4 -> {atacar(Jogo.getLista24().getFirst());}
         }
     }
     private void atacar(Guerreiro guerreiro){

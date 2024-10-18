@@ -4,6 +4,7 @@ Sátiro: são guerreiros que utilizam lanças para atacar a distância. Quando a
 apenas 10 pontos de energia, entretanto acertam todos os guerreiros da fila adversária.
 */
 import java.util.ArrayList;
+import trabpoo.Jogo;
 import trabpoo.Questoes;
 import trabpoo.classes.*;
 
@@ -11,10 +12,10 @@ public class Satiro extends Atlante{
     @Override
     public void agirAE(int pos){
         switch (pos){
-            case(1) -> atacar(Guerreiro.getLista11());
-            case(2) -> atacar(Guerreiro.getLista12());
-            case(3) -> atacar(Guerreiro.getLista13());
-            case(4) -> atacar(Guerreiro.getLista14());
+            case(1) -> atacar(Jogo.getLista11());
+            case(2) -> atacar(Jogo.getLista12());
+            case(3) -> atacar(Jogo.getLista13());
+            case(4) -> atacar(Jogo.getLista14());
         }
     }
     private void atacar(ArrayList<Guerreiro> ls){

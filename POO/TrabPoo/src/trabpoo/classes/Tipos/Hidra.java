@@ -5,6 +5,7 @@ ataque inicial é de 50 pontos de energia, mas ganha mais 5 pontos de ataque par
 cabeça nova gerada, além de mais 20 pontos de recuperação de energia para si mesmo (se a
 hidra não tiver sido atacada ainda, ou seja, tiver os 100 pontos de energia, nada acontece).
 */
+import trabpoo.Jogo;
 import trabpoo.Questoes;
 import trabpoo.classes.*;
 
@@ -14,10 +15,10 @@ public class Hidra extends Grego{
     @Override
     protected void agirGN(int pos){
         switch (pos){
-            case(1) -> atacar(Guerreiro.getLista21().getFirst());
-            case(2) -> atacar(Guerreiro.getLista22().getFirst());
-            case(3) -> atacar(Guerreiro.getLista23().getFirst());
-            case(4) -> atacar(Guerreiro.getLista24().getFirst());
+            case(1) -> atacar(Jogo.getLista21().getFirst());
+            case(2) -> atacar(Jogo.getLista22().getFirst());
+            case(3) -> atacar(Jogo.getLista23().getFirst());
+            case(4) -> atacar(Jogo.getLista24().getFirst());
         }
     }
     private void atacar(Guerreiro guerreiro){

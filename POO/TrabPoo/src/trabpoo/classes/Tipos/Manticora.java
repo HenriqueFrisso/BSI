@@ -7,6 +7,7 @@ da fila 2 e das filas 1 e 3. Se estiver na fila 3, acerta o inimigo da fila 3 e 
 filas 2 e 4. Se estiver na fila 4, acerta o inimigo da fila 4 e da fila 3. O inimigo atacado na
 mesma linha recebe dano de 30, os inimigos das linhas próximas recebem dano de 15.
 */
+import trabpoo.Jogo;
 import trabpoo.Questoes;
 import trabpoo.classes.*;
 
@@ -16,21 +17,21 @@ public class Manticora extends Grego{
     protected void agirGN(int pos) {
         switch (pos) {
             case 1 -> {
-                if (Guerreiro.getLista22().isEmpty()) {atacar(Guerreiro.getLista21().getFirst());} 
-                else{atacar(Guerreiro.getLista21().getFirst(), Guerreiro.getLista22().getFirst());}
+                if (Jogo.getLista22().isEmpty()) {atacar(Jogo.getLista21().getFirst());} 
+                else{atacar(Jogo.getLista21().getFirst(), Jogo.getLista22().getFirst());}
             }case 2 -> {
-                if (Guerreiro.getLista21().isEmpty() && Guerreiro.getLista23().isEmpty()) {atacar(Guerreiro.getLista22().getFirst());}
-                else if(Guerreiro.getLista21().isEmpty()){atacar(Guerreiro.getLista22().getFirst(), Guerreiro.getLista23().getFirst());}
-                else if(Guerreiro.getLista23().isEmpty()){atacar(Guerreiro.getLista22().getFirst(), Guerreiro.getLista21().getFirst());}
-                else{atacar(Guerreiro.getLista22().getFirst(), Guerreiro.getLista21().getFirst(), Guerreiro.getLista23().getFirst());}
+                if (Jogo.getLista21().isEmpty() && Jogo.getLista23().isEmpty()) {atacar(Jogo.getLista22().getFirst());}
+                else if(Jogo.getLista21().isEmpty()){atacar(Jogo.getLista22().getFirst(), Jogo.getLista23().getFirst());}
+                else if(Jogo.getLista23().isEmpty()){atacar(Jogo.getLista22().getFirst(), Jogo.getLista21().getFirst());}
+                else{atacar(Jogo.getLista22().getFirst(), Jogo.getLista21().getFirst(), Jogo.getLista23().getFirst());}
             }case 3 -> {
-                if (Guerreiro.getLista22().isEmpty() && Guerreiro.getLista24().isEmpty()) {atacar(Guerreiro.getLista23().getFirst());} 
-                else if(Guerreiro.getLista22().isEmpty()){atacar(Guerreiro.getLista23().getFirst(), Guerreiro.getLista24().getFirst());} 
-                else if(Guerreiro.getLista24().isEmpty()){atacar(Guerreiro.getLista23().getFirst(), Guerreiro.getLista22().getFirst());} 
-                else{atacar(Guerreiro.getLista23().getFirst(), Guerreiro.getLista22().getFirst(), Guerreiro.getLista24().getFirst());}
+                if (Jogo.getLista22().isEmpty() && Jogo.getLista24().isEmpty()) {atacar(Jogo.getLista23().getFirst());} 
+                else if(Jogo.getLista22().isEmpty()){atacar(Jogo.getLista23().getFirst(), Jogo.getLista24().getFirst());} 
+                else if(Jogo.getLista24().isEmpty()){atacar(Jogo.getLista23().getFirst(), Jogo.getLista22().getFirst());} 
+                else{atacar(Jogo.getLista23().getFirst(), Jogo.getLista22().getFirst(), Jogo.getLista24().getFirst());}
             }case 4 -> {
-                if (Guerreiro.getLista23().isEmpty()) {atacar(Guerreiro.getLista24().getFirst());}
-                else{atacar(Guerreiro.getLista24().getFirst(), Guerreiro.getLista23().getFirst());}
+                if (Jogo.getLista23().isEmpty()) {atacar(Jogo.getLista24().getFirst());}
+                else{atacar(Jogo.getLista24().getFirst(), Jogo.getLista23().getFirst());}
             }
         }
     }

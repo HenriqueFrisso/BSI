@@ -9,6 +9,7 @@ idade passam do prometado morto para seus descendentes. Por sua vez, o nome dos
 descentes do prometeano é a concatenação no nome do prometeano que o gerou com o
 número 1 ou 2 (dependendo se ele é o primeiro ou segundo descendente).
  */
+import trabpoo.Jogo;
 import trabpoo.Questoes;
 import trabpoo.classes.*;
 
@@ -23,10 +24,10 @@ public class Prometeano extends Atlante {
     }
 
     private int encontrarPosicao() {
-        if (Guerreiro.getLista21().indexOf(this) != -1) {return 1;}
-        else if (Guerreiro.getLista22().indexOf(this) != -1) {return 2;}
-        else if (Guerreiro.getLista23().indexOf(this) != -1) {return 3;} 
-        else if (Guerreiro.getLista24().indexOf(this) != -1) {return 4;}
+        if (Jogo.getLista21().indexOf(this) != -1) {return 1;}
+        else if (Jogo.getLista22().indexOf(this) != -1) {return 2;}
+        else if (Jogo.getLista23().indexOf(this) != -1) {return 3;} 
+        else if (Jogo.getLista24().indexOf(this) != -1) {return 4;}
         return 0;
     }
 
@@ -53,41 +54,41 @@ public class Prometeano extends Atlante {
             pos = encontrarPosicao();
             switch (pos) {
                 case 1 -> {
-                    Guerreiro.getLista21().add(aux1);
-                    Guerreiro.getLista21().add(aux2);
-                    Guerreiro.getLista21().remove(this);
+                    Jogo.getLista21().add(aux1);
+                    Jogo.getLista21().add(aux2);
+                    Jogo.getLista21().remove(this);
                 }
                 case 2 -> {
-                    Guerreiro.getLista22().add(aux1);
-                    Guerreiro.getLista22().add(aux2);
-                    Guerreiro.getLista22().remove(this);
+                    Jogo.getLista22().add(aux1);
+                    Jogo.getLista22().add(aux2);
+                    Jogo.getLista22().remove(this);
                 }
                 case 3 -> {
-                    Guerreiro.getLista23().add(aux1);
-                    Guerreiro.getLista23().add(aux2);
-                    Guerreiro.getLista23().remove(this);
+                    Jogo.getLista23().add(aux1);
+                    Jogo.getLista23().add(aux2);
+                    Jogo.getLista23().remove(this);
                 }
                 case 4 -> {
-                    Guerreiro.getLista24().add(aux1);
-                    Guerreiro.getLista24().add(aux2);
-                    Guerreiro.getLista24().remove(this);
+                    Jogo.getLista24().add(aux1);
+                    Jogo.getLista24().add(aux2);
+                    Jogo.getLista24().remove(this);
                 }
             }
         } else if (this.getEnergia() <= 0) {
-            Guerreiro.getLista21().remove(this);
-            Guerreiro.getLista22().remove(this);
-            Guerreiro.getLista23().remove(this);
-            Guerreiro.getLista24().remove(this);
+            Jogo.getLista21().remove(this);
+            Jogo.getLista22().remove(this);
+            Jogo.getLista23().remove(this);
+            Jogo.getLista24().remove(this);
         }
     }
 
     @Override
     protected void agirAE(int pos) {
         switch (pos) {
-            case (1) -> atacar(Guerreiro.getLista11().getFirst());
-            case (2) -> atacar(Guerreiro.getLista12().getFirst());
-            case (3) -> atacar(Guerreiro.getLista13().getFirst());
-            case (4) -> atacar(Guerreiro.getLista14().getFirst());
+            case (1) -> atacar(Jogo.getLista11().getFirst());
+            case (2) -> atacar(Jogo.getLista12().getFirst());
+            case (3) -> atacar(Jogo.getLista13().getFirst());
+            case (4) -> atacar(Jogo.getLista14().getFirst());
         }
     }
 

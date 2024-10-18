@@ -4,6 +4,7 @@ Valquíria: é uma espécie de amazona montada num cavalo branco. Possuem poder 
 seu ataque retira 20 pontos de energia. Após atacar, o aliado que estiver após ela, na fila,
 recupera 20 pontos de energia.
 */
+import trabpoo.Jogo;
 import trabpoo.Questoes;
 import trabpoo.classes.*;
 
@@ -12,20 +13,20 @@ public class Valquiria extends Nordico{
     public void agirGN(int pos){
         switch (pos) {
             case 1 -> {
-                if (Guerreiro.getLista11().size() > 1) {atacar(Guerreiro.getLista21().getFirst(), Guerreiro.getLista11().get(1));}
-                else{atacar(Guerreiro.getLista21().getFirst());}
+                if (Jogo.getLista11().size() > 1) {atacar(Jogo.getLista21().getFirst(), Jogo.getLista11().get(1));}
+                else{atacar(Jogo.getLista21().getFirst());}
             }
             case 2 -> {
-                if (Guerreiro.getLista12().size() > 1) {atacar(Guerreiro.getLista22().getFirst(), Guerreiro.getLista12().get(1));}
-                else{atacar(Guerreiro.getLista22().getFirst());}
+                if (Jogo.getLista12().size() > 1) {atacar(Jogo.getLista22().getFirst(), Jogo.getLista12().get(1));}
+                else{atacar(Jogo.getLista22().getFirst());}
             }
             case 3 -> {
-                if (Guerreiro.getLista13().size() > 1) {atacar(Guerreiro.getLista23().getFirst(), Guerreiro.getLista13().get(1));}
-                else{atacar(Guerreiro.getLista23().getFirst());}
+                if (Jogo.getLista13().size() > 1) {atacar(Jogo.getLista23().getFirst(), Jogo.getLista13().get(1));}
+                else{atacar(Jogo.getLista23().getFirst());}
             }
             case 4 -> {
-                if (Guerreiro.getLista14().size() > 1) {atacar(Guerreiro.getLista24().getFirst(), Guerreiro.getLista14().get(1));}
-                else{atacar(Guerreiro.getLista24().getFirst());}
+                if (Jogo.getLista14().size() > 1) {atacar(Jogo.getLista24().getFirst(), Jogo.getLista14().get(1));}
+                else{atacar(Jogo.getLista24().getFirst());}
             }
         }
     }

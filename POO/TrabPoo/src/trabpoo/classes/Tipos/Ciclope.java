@@ -15,10 +15,10 @@ public class Ciclope extends Grego{
     @Override
     public void agirGN(int pos){
         switch (pos) {
-            case 1 -> {atacar(Guerreiro.getLista21().getFirst(), Guerreiro.getLista21(), Jogo.getTurno());}
-            case 2 -> {atacar(Guerreiro.getLista22().getFirst(), Guerreiro.getLista22(), Jogo.getTurno());}
-            case 3 -> {atacar(Guerreiro.getLista23().getFirst(), Guerreiro.getLista23(), Jogo.getTurno());}
-            case 4 -> {atacar(Guerreiro.getLista24().getFirst(), Guerreiro.getLista24(), Jogo.getTurno());}
+            case 1 -> {atacar(Jogo.getLista24().getFirst(), Jogo.getLista24(), Jogo.getTurno());}
+            case 2 -> {atacar(Jogo.getLista24().getFirst(), Jogo.getLista24(), Jogo.getTurno());}
+            case 3 -> {atacar(Jogo.getLista24().getFirst(), Jogo.getLista24(), Jogo.getTurno());}
+            case 4 -> {atacar(Jogo.getLista24().getFirst(), Jogo.getLista24(), Jogo.getTurno());}
         }
     }
     private void atacar(Guerreiro guerreiro, ArrayList<Guerreiro> ls, int turno){
