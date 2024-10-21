@@ -87,7 +87,7 @@ public class Questoes {
     
     private static Guerreiro auxC(ArrayList<Guerreiro> lista, Guerreiro guerreiro){
         for(int i = 0; i < lista.size(); i++){
-            if (lista.get(i).getIdade() > guerreiro.getIdade()){
+            if (guerreiro == null || lista.get(i).getIdade() > guerreiro.getIdade()){
                 guerreiro = lista.get(i);
             }
         }
@@ -98,7 +98,7 @@ public class Questoes {
         /*
         c) (5 pontos) O guerreiro mais velho e sua idade (se houver empate, pode mostrar apenas o primeiro)
         */
-        Guerreiro aux = new Guerreiro();
+        Guerreiro aux = null;
         aux = auxC(Jogo.getLista24(), aux);
         aux = auxC(Jogo.getLista24(), aux);
         aux = auxC(Jogo.getLista24(), aux);
@@ -119,11 +119,11 @@ public class Questoes {
         */
         if (Jogo.getLista24().isEmpty() && Jogo.getLista24().isEmpty() && Jogo.getLista24().isEmpty() && Jogo.getLista24().isEmpty()){
             System.out.println("");
-            System.out.println("Atlantes e Egípcios venceram.");
+            System.out.println("Gregos e Nórdicos venceram.");
             System.out.println("");
         } else if (Jogo.getLista24().isEmpty() && Jogo.getLista24().isEmpty() && Jogo.getLista24().isEmpty() && Jogo.getLista24().isEmpty()){
             System.out.println("");
-            System.out.println("Gregos e Nórdicos venceram.");
+            System.out.println("Atlantes e Egípcios venceram.");
             System.out.println("");
         } else{
             System.out.println("");

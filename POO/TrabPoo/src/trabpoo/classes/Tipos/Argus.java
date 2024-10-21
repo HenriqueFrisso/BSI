@@ -15,7 +15,7 @@ public class Argus extends Atlante{
     }
 
     @Override
-    public void agirAE(int pos){
+    public void atacar(int pos){
         switch (pos){
             case(1) -> atacar(Jogo.getLista11().get(0));
             case(2) -> atacar(Jogo.getLista12().get(0));

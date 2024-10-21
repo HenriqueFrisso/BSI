@@ -10,7 +10,7 @@ import trabpoo.classes.*;
 
 public class Valquiria extends Nordico{
     @Override
-    public void agirGN(int pos){
+    public void atacar(int pos){
         switch (pos) {
             case 1 -> {
                 if (Jogo.getLista11().size() > 1) {atacar(Jogo.getLista21().get(0), Jogo.getLista11().get(1));}

@@ -13,7 +13,7 @@ public class Hidra extends Grego{
     private int abates = 0;
     
     @Override
-    protected void agirGN(int pos){
+    protected void atacar(int pos){
         switch (pos){
             case(1) -> atacar(Jogo.getLista21().get(0));
             case(2) -> atacar(Jogo.getLista22().get(0));

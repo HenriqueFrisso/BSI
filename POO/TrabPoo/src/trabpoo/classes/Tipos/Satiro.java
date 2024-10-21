@@ -10,7 +10,7 @@ import trabpoo.classes.*;
 
 public class Satiro extends Atlante{
     @Override
-    public void agirAE(int pos){
+    public void atacar(int pos){
         switch (pos){
             case(1) -> atacar(Jogo.getLista11());
             case(2) -> atacar(Jogo.getLista12());

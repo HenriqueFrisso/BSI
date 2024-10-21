@@ -13,7 +13,7 @@ import trabpoo.classes.*;
 public class Ciclope extends Grego{
     
     @Override
-    public void agirGN(int pos){
+    public void atacar(int pos){
         switch (pos) {
             case 1 -> {atacar(Jogo.getLista21().get(0), Jogo.getLista21(), Jogo.getTurno());}
             case 2 -> {atacar(Jogo.getLista22().get(0), Jogo.getLista22(), Jogo.getTurno());}

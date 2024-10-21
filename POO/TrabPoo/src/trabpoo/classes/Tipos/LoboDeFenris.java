@@ -13,7 +13,7 @@ import trabpoo.classes.*;
 
 public class LoboDeFenris extends Nordico{
     @Override
-    public void agirGN(int pos){
+    public void atacar(int pos){
         switch (pos){
             case(1) -> atacar(Jogo.getLista21().get(0),Jogo.getLista11());
             case(2) -> atacar(Jogo.getLista22().get(0),Jogo.getLista12());

@@ -83,7 +83,7 @@ public class Prometeano extends Atlante {
     }
 
     @Override
-    protected void agirAE(int pos) {
+    protected void atacar(int pos) {
         switch (pos) {
             case (1) -> atacar(Jogo.getLista11().get(0));
             case (2) -> atacar(Jogo.getLista12().get(0));

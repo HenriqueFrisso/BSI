@@ -1,15 +1,14 @@
 package trabpoo.classes;
 
-import java.util.ArrayList;
 import trabpoo.Jogo;
 
-public class Guerreiro {
+public abstract class Guerreiro {
 
-    protected String nome;
-    protected int idade;
-    protected int peso;
+    private String nome;
+    private int idade;
+    private int peso;
     protected int energia = 100;
-    
+    private boolean envenenado = false;
     
     
     public String getNome(){return this.nome;}
@@ -39,8 +38,12 @@ public class Guerreiro {
         }
     }
 
-    public void agir(int pos){}
-
-    public void setEnvenenado(boolean envenenado){}
+    public abstract void agir(int pos);
+    
+    public boolean getEnvenenado(){return this.envenenado;}
+    
+    public void setEnvenenado(boolean envenenado){this.envenenado = true;}
+    
+    protected abstract void atacar(int pos);
     
 }

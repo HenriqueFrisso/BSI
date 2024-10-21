@@ -14,7 +14,7 @@ import trabpoo.classes.*;
 public class Manticora extends Grego{
 
     @Override
-    protected void agirGN(int pos) {
+    protected void atacar(int pos) {
         switch (pos) {
             case 1 -> {
                 if (Jogo.getLista22().isEmpty()) {atacar(Jogo.getLista21().get(0));} 
