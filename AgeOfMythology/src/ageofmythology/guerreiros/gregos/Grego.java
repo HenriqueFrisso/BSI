@@ -8,7 +8,9 @@ public abstract class Grego extends Guerreiro{
     public void setEnergia(int energia){
         this.energia = energia;
         if (this.energia > 100){this.energia = 100;}
-        morrer();
+        if (morto()){
+            morrer();
+        }
     }
 
 }

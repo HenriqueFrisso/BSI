@@ -1,4 +1,8 @@
 package ageofmythology.guerreiros.atlantes;
+
+import ageofmythology.Arena;
+import ageofmythology.guerreiros.Guerreiro;
+
 /*
 Argus: guerreiro atlante monstruoso, ele ataca com uma bolha de ácido que mata o inimigo
 imediatamente independente da energia do inimigo. Argus também é frágil e sua energia
@@ -12,6 +16,12 @@ public class Argus extends Atlante{
     
     @Override
     public void atacar(int pos) {
+        Guerreiro alvo = Arena.getGuerreiro(getLado(),pos);
+        dano(alvo);
+    }
+    
+    private void dano(Guerreiro alvo){
+        alvo.setEnergia(0);
     }
     
 }
