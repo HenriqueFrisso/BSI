@@ -1,11 +1,14 @@
 package ageofmythology.guerreiros;
 
+import ageofmythology.Arena;
+
 public abstract class Guerreiro {
     
     private String nome;
     private int idade;
     private int peso;
     protected int energia = 100;
+    private int fila;
     
     private boolean envenenado = false;
     
@@ -21,12 +24,35 @@ public abstract class Guerreiro {
         morrer();
     }
     
-    protected void morrer(){
-        if (this.energia<=0){
-        }
+    public void setFila(int fila){
+        this.fila = fila;
+    }
+    public int getFila(){
+        return this.fila;
     }
     
+    protected  void morrer(){
+        if (morto()){
+            
+        }
+    }
+    protected boolean morto(){
+        return(this.energia<=0);
+    }
+    
+    private void envenenado(){
+        if (this.envenenado){
+            this.setEnergia(energia - 5);
+        }
+    }
     public void setEnvenenado(){this.envenenado = true;}
     
-    public abstract void agir(int pos);
+    private void agir(){
+        envenenado();
+        if (morto()){
+            return;
+        }
+        int pos = Arena.verificarFila(this.fila);
+    }
+    public abstract void atacar(int pos);
 }
