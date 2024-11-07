@@ -14,11 +14,8 @@ public class Ciclope extends Grego{
 
     @Override
     public void atacar(int pos) {
-        Guerreiro alvo = Arena.getGuerreiro(getLado(),pos);
-        dano(alvo);
-        if (!alvo.morto()){
-            arremessar(Arena.getFila(getLado(), pos));
-        }
+        
+        Guerreiro alvo = null;
     }
     
     private void arremessar(LinkedList<Guerreiro> fila){

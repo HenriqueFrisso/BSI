@@ -8,8 +8,6 @@ public abstract class Guerreiro {
     private int idade;
     private int peso;
     protected int energia = 100;
-    private int fila;
-    private int lado;
     
     private boolean envenenado = false;
     
@@ -25,22 +23,9 @@ public abstract class Guerreiro {
         morrer();
     }
     
-    public void setFila(int fila){
-        this.fila = fila;
-    }
-    public int getFila(){
-        return this.fila;
-    }
-    public void setLado(int lado){
-        this.lado = lado;
-    }
-    public int getLado(){
-        return this.lado;
-    }
     
     protected  void morrer(){
         if (morto()){
-            Arena.getFila(this.lado, this.fila).remove(this);
         }
     }
     public boolean morto(){
@@ -59,7 +44,7 @@ public abstract class Guerreiro {
         if (morto()){
             return;
         }
-        int pos = Arena.verificarFila(this.fila);
+        int pos = Arena.getIndexFila(this);
         atacar(pos);
     }
     public abstract void atacar(int pos);

@@ -37,7 +37,6 @@ public class LeitorArquivo {
                 Guerreiro guerreiro = criarGuerreiro(aux, lado);
                 if (guerreiro != null) {
                     configurarGuerreiro(guerreiro, scan);
-                    guerreiro.setFila(fila);
                     lista.add(guerreiro);
                 }
             }

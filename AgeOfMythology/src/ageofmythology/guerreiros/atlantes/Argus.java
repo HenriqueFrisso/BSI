@@ -16,7 +16,7 @@ public class Argus extends Atlante{
     
     @Override
     public void atacar(int pos) {
-        Guerreiro alvo = Arena.getGuerreiro(getLado(),pos);
+        Guerreiro alvo = null;
         dano(alvo);
     }
     

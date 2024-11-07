@@ -47,4 +47,9 @@ public class Arena {
         }
         return fila;
     }
+    
+    
+    public static int getIndexFila(Guerreiro aThis) {
+    
+    }
 }
