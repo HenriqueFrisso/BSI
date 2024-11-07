@@ -19,7 +19,7 @@ public class Prometeano extends Atlante {
 
     @Override
     public void setEnergia(int energia) {
-        this.energia = energia;
+        super.setEnergia(energia);
         morrer();
     }
 
