@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    table{
+        border: 2px;
+        border-color: black;
+        border-style: double;
+        width: 25%;
+    }
+    tr{
+        border: 2px;
+        border-color: black;
+        border-style: double;
+    }
+    td{
+        border: 2px;
+        border-color: black;
+        border-style: double;
+    }
+</style>
+<body>
+    <div>
+        
+    </div>
+    <div>
+        <table>
+            <tr>
+                <td>a</td>
+                <td colspan="3">a</td>
+            </tr>
+            <tr>
+                <td rowspan="2">b</td>
+                <td>b</td>
+                <td colspan="2">b</td>
+            </tr>
+            <tr>
+                <td rowspan="3">c</td>
+                <td>c</td>
+                <td>c</td>
+            </tr>
+            <tr>
+                <td>d</td>
+                <td>d</td>
+                <td rowspan="2">d</td>
+            </tr>
+            <tr>
+                <td>e</td>
+                <td>e</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
