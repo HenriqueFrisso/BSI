@@ -91,8 +91,9 @@ public class Tela extends javax.swing.JFrame {
         sistemas = new javax.swing.ButtonGroup();
         processador = new javax.swing.ButtonGroup();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        deletar = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jRadioButtonWin = new javax.swing.JRadioButton();
         jRadioButtonLin = new javax.swing.JRadioButton();
@@ -121,11 +122,19 @@ public class Tela extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
 
-        jMenuItem2.setText("jMenuItem2");
-        jPopupMenu1.add(jMenuItem2);
+        deletar.setText("jMenuItem1");
+        deletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletarActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(deletar);
 
-        jMenuItem1.setText("jMenuItem1");
-        jPopupMenu1.add(jMenuItem1);
+        jMenuItem3.setText("jMenuItem3");
+        jPopupMenu1.add(jMenuItem3);
+
+        jMenuItem4.setText("jMenuItem4");
+        jPopupMenu1.add(jMenuItem4);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -401,6 +410,7 @@ public class Tela extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.setComponentPopupMenu(jPopupMenu1);
         jScrollPane2.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setResizable(false);
@@ -449,7 +459,12 @@ public class Tela extends javax.swing.JFrame {
         iniciar();        // TODO add your handling code here:
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
+    private void deletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deletarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem deletar;
     private javax.swing.JButton jButtonCadastrar;
     private javax.swing.JCheckBox jCheckBox1TB;
     private javax.swing.JCheckBox jCheckBox320GB;
@@ -462,8 +477,8 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JList<String> jListMemoriaRAM;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
