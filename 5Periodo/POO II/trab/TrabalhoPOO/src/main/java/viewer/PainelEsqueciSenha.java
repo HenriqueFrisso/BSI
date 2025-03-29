@@ -1,4 +1,4 @@
-package com.mycompany.trabalhopoo.telas;
+package viewer;
 
 public class PainelEsqueciSenha extends javax.swing.JPanel {
     boolean flagText = false;

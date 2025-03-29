@@ -1,17 +1,21 @@
-package com.mycompany.trabalhopoo.telas;
+package viewer;
 
-import static java.awt.Color.*;
-import java.awt.event.MouseEvent;
+import com.mycompany.trabalhopoo.Produto;
+import javax.swing.JPanel;
 
 public class PainelProcurar extends javax.swing.JPanel {
     Tela tela;
-    ItensParaComprar teste = new ItensParaComprar("Prod1", lightGray);
-    ItensParaComprar teste2 = new ItensParaComprar("Prod2", gray);
-    ItensParaComprar teste3 = new ItensParaComprar("Prod3", lightGray);
-    ItensParaComprar teste4 = new ItensParaComprar("Prod4", gray);
-
+    Produto prod1 = new Produto("Abacaxi", 5.10);
+    Produto prod2 = new Produto("Ameixa", 6.45);
+    Produto prod3 = new Produto("Banana", 3.70);
+    Produto prod4 = new Produto("Maça", 8.00);
     public PainelProcurar(Tela tela) {
         this.tela = tela;
+        JPanel teste = criarPainelProduto(prod1);
+        JPanel teste2 = criarPainelProduto(prod2);
+        JPanel teste3 = criarPainelProduto(prod3);
+        JPanel teste4 = criarPainelProduto(prod4);
+
         initComponents();
         
         this.jPanel2.add(teste);
@@ -40,6 +44,10 @@ public class PainelProcurar extends javax.swing.JPanel {
         }
     }
     
+    private JPanel criarPainelProduto(Produto produto){
+        ItensParaComprar item = new ItensParaComprar(tela, produto);
+        return item;
+    }
     private void iniciar(){
     }
     @SuppressWarnings("unchecked")

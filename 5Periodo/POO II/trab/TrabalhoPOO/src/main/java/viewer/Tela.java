@@ -1,4 +1,4 @@
-package com.mycompany.trabalhopoo.telas;
+package viewer;
 
 import javax.swing.JPanel;
 /**
@@ -13,6 +13,7 @@ public class Tela extends javax.swing.JFrame {
     PainelProcurar procurar = new PainelProcurar(this);
     PainelEsqueciSenha esqueciSenha = new PainelEsqueciSenha(this);
     PainelLoja loja = new PainelLoja(this);
+    PainelComprar comprar = new PainelComprar(this);
 
     public Tela() {
         initComponents();
@@ -25,6 +26,7 @@ public class Tela extends javax.swing.JFrame {
         criarPainel(procurar);
         criarPainel(esqueciSenha);
         criarPainel(loja);
+        criarPainel(comprar);
         this.setSize(400,300);
         inicio.setVisible(true);
     }

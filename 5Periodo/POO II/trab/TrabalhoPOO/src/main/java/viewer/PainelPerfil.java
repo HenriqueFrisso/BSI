@@ -1,4 +1,4 @@
-package com.mycompany.trabalhopoo.telas;
+package viewer;
 
 public class PainelPerfil extends javax.swing.JPanel {
     Tela tela;

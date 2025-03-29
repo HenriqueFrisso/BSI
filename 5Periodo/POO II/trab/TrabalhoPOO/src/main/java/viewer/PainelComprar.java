@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package com.mycompany.trabalhopoo.telas;
+package viewer;
 
 /**
  *
  * @author Henrique
  */
-public class PainelLoja extends javax.swing.JPanel {
+public class PainelComprar extends javax.swing.JPanel {
     Tela tela;
     /**
-     * Creates new form PainelLoja
+     * Creates new form PainelComprar
      */
-    public PainelLoja(Tela tela) {
+    public PainelComprar(Tela tela) {
         this.tela = tela;
         this.setBounds(0, 0, 400, 300);
         initComponents();
@@ -25,11 +25,10 @@ public class PainelLoja extends javax.swing.JPanel {
         if (aFlag == true){
             iniciar();
             tela.setSize(400,300);
-        } // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        }
     }
     
     private void iniciar(){
-        
     }
 
     /**
@@ -41,19 +40,30 @@ public class PainelLoja extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+
+        jLabel1.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(150, 150, 150)
+                .addComponent(jLabel1)
+                .addContainerGap(212, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(127, 127, 127)
+                .addComponent(jLabel1)
+                .addContainerGap(157, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

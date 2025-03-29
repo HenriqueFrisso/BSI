@@ -1,13 +1,15 @@
-package com.mycompany.trabalhopoo.telas;
+package viewer;
 
+import com.mycompany.trabalhopoo.Produto;
 import java.awt.Color;
 
 public class ItensParaComprar extends javax.swing.JPanel {
-
-    public ItensParaComprar(String nome, Color cor) {
+    Tela tela;
+    public ItensParaComprar(Tela tela, Produto produto) {
+        this.tela = tela;
         initComponents();
-        this.setBackground(cor);
-        this.jLabel4.setText(nome);
+        this.jLabel4.setText(produto.getNome());
+        this.jLabel3.setText("R$ " + String.format("%.2f", produto.getPreco()));
         this.setSize(400,100);
     }
 
@@ -20,11 +22,18 @@ public class ItensParaComprar extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
+        setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
         jLabel2.setText("PRODUTO");
 
         jLabel3.setText("PRECO");
 
         jButton1.setText("COMPRAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("NOME");
 
@@ -43,7 +52,7 @@ public class ItensParaComprar extends javax.swing.JPanel {
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel4)))
-                .addContainerGap(242, Short.MAX_VALUE))
+                .addContainerGap(240, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -56,9 +65,13 @@ public class ItensParaComprar extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jButton1))
-                .addContainerGap(226, Short.MAX_VALUE))
+                .addContainerGap(224, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        tela.alterarPainel(tela.procurar, tela.comprar);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,4 +1,4 @@
-package com.mycompany.trabalhopoo.telas;
+package viewer;
 
 import java.awt.CardLayout;
 import java.awt.Cursor;

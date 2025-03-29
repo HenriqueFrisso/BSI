@@ -1,8 +1,8 @@
 package com.mycompany.trabalhopoo;
 
-import com.mycompany.trabalhopoo.telas.*;
+import viewer.Tela;
 
-public class TrabalhoPOO {
+public class Main {
 
     public static void main(String[] args) {
         Tela tela = new Tela();
