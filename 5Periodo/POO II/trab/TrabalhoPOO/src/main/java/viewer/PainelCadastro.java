@@ -1,6 +1,6 @@
 package viewer;
 
-import java.awt.CardLayout;
+import com.mycompany.trabalhopoo.Util;
 import java.awt.Cursor;
 import java.awt.Image;
 import java.io.File;
@@ -53,16 +53,6 @@ public class PainelCadastro extends javax.swing.JPanel {
         jLabel13.setText("Gerar Código");
     }
     
-    private String gerarCodigo(int tamanho) {
-        Random random = new Random();
-        StringBuilder sequencia = new StringBuilder();
-
-        for (int i = 0; i < tamanho; i++) {
-            int digito = random.nextInt(10); // Gera um número entre 0 e 9
-            sequencia.append(digito);
-        }
-        return sequencia.toString();
-    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -542,7 +532,7 @@ public class PainelCadastro extends javax.swing.JPanel {
 
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
         if (jLabel13.getText().equals("Gerar Código")){
-            jLabel13.setText(gerarCodigo(12));
+            jLabel13.setText(Util.gerarCodigo(12));
             jLabel13.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_jLabel13MouseClicked

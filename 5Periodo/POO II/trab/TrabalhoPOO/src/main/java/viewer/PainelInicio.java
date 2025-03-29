@@ -294,11 +294,13 @@ public class PainelInicio extends javax.swing.JPanel {
             jPanel3.setVisible(true);
             jPanel2.setVisible(false);
             jLabel5.setText("Entrar como usuário");
+            jLabel6.setText("Gerar novo código");
             login = 0;
         } else{
             jPanel2.setVisible(true);
             jPanel3.setVisible(false);
             jLabel5.setText("Entrar como loja");
+            jLabel6.setText("Esqueci minha senha");
             login = 1;
         }
         carregarTexto();
@@ -362,7 +364,7 @@ public class PainelInicio extends javax.swing.JPanel {
     }//GEN-LAST:event_jTextField3KeyReleased
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        tela.alterarPainel(this, tela.esqueciSenha);
+        tela.alterarPainel(this, tela.recuperarCredenciais);
     }//GEN-LAST:event_jLabel6MouseClicked
 
 

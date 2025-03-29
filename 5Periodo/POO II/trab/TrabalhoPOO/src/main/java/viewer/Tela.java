@@ -11,7 +11,7 @@ public class Tela extends javax.swing.JFrame {
     PainelEndereco endereco = new PainelEndereco(this);
     PainelPerfil perfil = new PainelPerfil(this);
     PainelProcurar procurar = new PainelProcurar(this);
-    PainelEsqueciSenha esqueciSenha = new PainelEsqueciSenha(this);
+    PainelRecuperarCredenciais recuperarCredenciais = new PainelRecuperarCredenciais(this);
     PainelLoja loja = new PainelLoja(this);
     PainelComprar comprar = new PainelComprar(this);
 
@@ -24,7 +24,7 @@ public class Tela extends javax.swing.JFrame {
         criarPainel(endereco);
         criarPainel(perfil);
         criarPainel(procurar);
-        criarPainel(esqueciSenha);
+        criarPainel(recuperarCredenciais);
         criarPainel(loja);
         criarPainel(comprar);
         this.setSize(400,300);
