@@ -25,14 +25,14 @@ public class Controller {
 
     private static Usuario usuarioAtual = new Usuario("","","");
     private static Produto produtoAtual = new Produto("", 0);
-    private static ArrayList<Produto> Produtos = MainDAO.carregarListaInicial();
+    private static ArrayList<Produto> produtos = MainDAO.carregarListaInicial();
 
     public static ArrayList<Produto> getProdutos() {
-        return Produtos;
+        return produtos;
     }
 
     public static void setProdutos(ArrayList<Produto> Produtos) {
-        Controller.Produtos = Produtos;
+        Controller.produtos = Produtos;
     }
     private static ArrayList<Produto> procurarProdutos = MainDAO.carregarListaInicial();
     private static ArrayList<Produto> carrinho = new ArrayList<>();
@@ -72,6 +72,10 @@ public class Controller {
     
     public static void limparCarrinho(){
         carrinho.clear();
+    }
+    
+    public static void adicionarProduto(Produto p){
+        Controller.produtos.add(p);
     }
     public static void adicionarCarrinho(Produto p){
         Controller.carrinho.add(p);

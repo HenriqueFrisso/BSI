@@ -6,6 +6,7 @@ package viewer;
 
 import Controller.Controller;
 import com.mycompany.trabalhopoo.Produto;
+import com.mycompany.trabalhopoo.Util;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 
@@ -15,6 +16,7 @@ import javax.swing.JFrame;
  */
 public class PainelLoja extends javax.swing.JPanel {
     Tela tela;
+    boolean editar = false;
     /**
      * Creates new form PainelLoja
      */
@@ -35,7 +37,7 @@ public class PainelLoja extends javax.swing.JPanel {
     
     private void iniciar(){
         jTextField1.setEditable(false);
-        jTextField1.setEditable(false);
+        jTextField2.setEditable(false);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -68,6 +70,11 @@ public class PainelLoja extends javax.swing.JPanel {
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 140, 0));
         jButton2.setText("Editar Credenciais");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(230, 240, 255));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -106,6 +113,7 @@ public class PainelLoja extends javax.swing.JPanel {
         jTextField2.setBackground(new java.awt.Color(230, 240, 255));
 
         jLabel4.setText("IMAGEM");
+        jLabel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -179,6 +187,27 @@ public class PainelLoja extends javax.swing.JPanel {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         tela.alterarPainel(this, tela.gerenciarEnderecos);// TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+        if (editar == false){
+            Util.desativarComponentes(tela.loja, editar);
+            editar = true;
+            jTextField1.setEditable(true);
+            jTextField1.setEnabled(true);
+            jTextField2.setEditable(true);
+            jTextField2.setEnabled(true);
+            jButton2.setEnabled(true);
+            jButton2.setText("Confirmar");
+        }else{
+            Util.desativarComponentes(this, true);
+            editar = false;
+            jTextField1.setEditable(editar);
+            jTextField2.setEditable(editar);
+            jButton2.setEnabled(true);
+            jButton2.setText("Editar credenciais");
+        }        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
