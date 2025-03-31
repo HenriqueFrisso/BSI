@@ -1,5 +1,7 @@
 package viewer;
 
+import Controller.Controller;
+import Controller.Controller.Tipo;
 import com.mycompany.trabalhopoo.Util;
 import java.awt.Cursor;
 import javax.swing.JOptionPane;
@@ -29,7 +31,7 @@ public class PainelRecuperarCredenciais extends javax.swing.JPanel {
             jTextField1.setText("");
             jPasswordField1.setText("");
             jPasswordField2.setText("");
-        if (tela.inicio.login == 0){
+        if (Controller.getTipoAtual() == Tipo.LOJA){
             jLabel1.setText("CNPJ");
             jButton1.setText("Gerar novo código");
         }else{
@@ -264,14 +266,14 @@ public class PainelRecuperarCredenciais extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        EMail email = new EMail();
+        FrameEMail email = new FrameEMail();
         email.setVisible(true);
         
         DialogRecuperarCredenciais dialog = new DialogRecuperarCredenciais(tela, true);
         dialog.setVisible(true);
         
         if (dialog.validar){ 
-            if (tela.inicio.login == 0){           
+            if (Controller.getTipoAtual() == Tipo.LOJA){           
                 jPanel3.setVisible(true);
             }else{
                 jPanel2.setVisible(true);
@@ -297,7 +299,7 @@ public class PainelRecuperarCredenciais extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
-        if (tela.inicio.login == 0){
+        if (Controller.getTipoAtual() == Tipo.LOJA){
             String texto = jTextField1.getText().replaceAll("\\D", "");
             int tam = texto.length();
             if (tam > 14) {

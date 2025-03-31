@@ -51,5 +51,7 @@ public class Arena {
     
     public static int getIndexFila(Guerreiro aThis) {
     
+        return 0;
+    
     }
 }

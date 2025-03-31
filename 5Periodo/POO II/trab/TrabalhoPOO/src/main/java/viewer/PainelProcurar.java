@@ -1,39 +1,20 @@
 package viewer;
 
+import Controller.Controller;
 import com.mycompany.trabalhopoo.Produto;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 
 public class PainelProcurar extends javax.swing.JPanel {
     Tela tela;
-    Produto prod1 = new Produto("Abacaxi", 5.10);
-    Produto prod2 = new Produto("Ameixa", 6.45);
-    Produto prod3 = new Produto("Banana", 3.70);
-    Produto prod4 = new Produto("Maça", 8.00);
+    int qtd = 0;
+    ArrayList<Produto> lista;
+    
     public PainelProcurar(Tela tela) {
         this.tela = tela;
-        JPanel teste = criarPainelProduto(prod1);
-        JPanel teste2 = criarPainelProduto(prod2);
-        JPanel teste3 = criarPainelProduto(prod3);
-        JPanel teste4 = criarPainelProduto(prod4);
-
         initComponents();
-        
-        this.jPanel2.add(teste);
-        teste.setBounds(0, 0, 400, 100);
-        teste.setVisible(true);
-        this.jPanel2.add(teste2);
-        teste2.setBounds(0, 100, 400, 100);
-        teste2.setVisible(true);
-        this.jPanel2.add(teste3);
-        teste3.setBounds(0, 200, 400, 100);
-        teste3.setVisible(true);
-        this.jPanel2.add(teste4);
-        teste4.setBounds(0, 300, 400, 100);
-        teste4.setVisible(true);
-        jPanel2.setPreferredSize(new java.awt.Dimension(0, 400));
-        
+        iniciar();
         this.setSize(400,300);
-        this.setVisible(true);
     }
     @Override
     public void setVisible(boolean aFlag) {
@@ -43,13 +24,35 @@ public class PainelProcurar extends javax.swing.JPanel {
             tela.setSize(400,350);
         }
     }
+    private void iniciar(){
+        carregarProdutos();
+        jTextField1.setText("");
+    }
+    private void carregarProdutos(){
+        adicionarPaineisProdutos(Controller.getProcurarProdutos());
+        jPanel2.setPreferredSize(new java.awt.Dimension(0, (qtd*100)));
+    }
     
+    private void iniciarPainel(JPanel painel){
+        this.jPanel2.add(painel);
+        painel.setBounds(0, (qtd*100), 400, 100);
+        painel.setVisible(true);
+    }
+    private void adicionarPaineisProdutos(ArrayList<Produto> lista){
+        JPanel painel;
+        qtd = 0;
+        jPanel2.removeAll();
+        for (Produto p : lista){
+            painel = criarPainelProduto(p);
+            iniciarPainel(painel);
+            qtd++;
+        }
+    }
     private JPanel criarPainelProduto(Produto produto){
         ItensParaComprar item = new ItensParaComprar(tela, produto);
         return item;
     }
-    private void iniciar(){
-    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -57,6 +60,7 @@ public class PainelProcurar extends javax.swing.JPanel {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -80,9 +84,17 @@ public class PainelProcurar extends javax.swing.JPanel {
         });
         jPopupMenu1.add(jMenuItem2);
 
+        jMenuItem3.setText("Meu carrinho");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(jMenuItem3);
+
         setPreferredSize(new java.awt.Dimension(400, 300));
 
-        jPanel1.setBackground(new java.awt.Color(202, 202, 202));
+        jPanel1.setBackground(new java.awt.Color(170, 210, 235));
 
         jLabel2.setText("IMAGEM");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -92,6 +104,11 @@ public class PainelProcurar extends javax.swing.JPanel {
             }
         });
 
+        jTextField1.setBackground(new java.awt.Color(230, 240, 255));
+
+        jButton1.setBackground(new java.awt.Color(230, 240, 255));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 140, 0));
         jButton1.setText("Pesquisar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -117,6 +134,8 @@ public class PainelProcurar extends javax.swing.JPanel {
                     .addComponent(jButton1))
                 .addContainerGap())
         );
+
+        jPanel2.setBackground(new java.awt.Color(200, 230, 255));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -162,12 +181,17 @@ public class PainelProcurar extends javax.swing.JPanel {
         jPopupMenu1.show(evt.getComponent(), evt.getX(), evt.getY());
     }//GEN-LAST:event_jLabel2MouseClicked
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        tela.alterarPainel(this, tela.carrinho);        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu jPopupMenu1;

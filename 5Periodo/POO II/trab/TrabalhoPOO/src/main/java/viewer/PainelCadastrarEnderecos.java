@@ -1,10 +1,10 @@
 package viewer;
 
-public class PainelEndereco extends javax.swing.JPanel {
+public class PainelCadastrarEnderecos extends javax.swing.JPanel {
     Tela tela;
     int estadoEnd1, estadoEnd2 = 0;
 
-    public PainelEndereco(Tela tela) {
+    public PainelCadastrarEnderecos(Tela tela) {
         this.tela = tela;
         this.setBounds(0, 0, 463, 362);
         initComponents();
@@ -101,14 +101,21 @@ public class PainelEndereco extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(255, 140, 0));
         jLabel6.setText("Num");
 
+        jTextField1.setBackground(new java.awt.Color(230, 240, 255));
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField1KeyReleased(evt);
             }
         });
 
+        jTextField3.setBackground(new java.awt.Color(230, 240, 255));
+
+        jTextField4.setBackground(new java.awt.Color(230, 240, 255));
+
+        jComboBox1.setBackground(new java.awt.Color(230, 240, 255));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jTextField2.setBackground(new java.awt.Color(230, 240, 255));
         jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jTextField2KeyReleased(evt);
@@ -165,6 +172,7 @@ public class PainelEndereco extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jTable1.setBackground(new java.awt.Color(230, 240, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -187,6 +195,7 @@ public class PainelEndereco extends javax.swing.JPanel {
         jTable1.setComponentPopupMenu(jPopupMenu1);
         jScrollPane1.setViewportView(jTable1);
 
+        jButton1.setBackground(new java.awt.Color(230, 240, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 140, 0));
         jButton1.setText("Finalizar");
@@ -196,6 +205,7 @@ public class PainelEndereco extends javax.swing.JPanel {
             }
         });
 
+        jButton2.setBackground(new java.awt.Color(230, 240, 255));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 140, 0));
         jButton2.setText("Voltar");
@@ -205,6 +215,7 @@ public class PainelEndereco extends javax.swing.JPanel {
             }
         });
 
+        jButton3.setBackground(new java.awt.Color(230, 240, 255));
         jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 140, 0));
         jButton3.setText("Cadastrar");

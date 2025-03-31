@@ -1,36 +1,48 @@
 package viewer;
 
+import java.awt.Dimension;
 import javax.swing.JPanel;
 /**
  *
  * @author Henrique
  */
 public class Tela extends javax.swing.JFrame {
+    
+    Dimension d = new Dimension(400, 300);
+    
     PainelInicio inicio = new PainelInicio(this);
     PainelCadastro cadastro =  new PainelCadastro(this);
-    PainelEndereco endereco = new PainelEndereco(this);
+    PainelCadastrarEnderecos cadastrarEnderecos = new PainelCadastrarEnderecos(this);
     PainelPerfil perfil = new PainelPerfil(this);
     PainelProcurar procurar = new PainelProcurar(this);
     PainelRecuperarCredenciais recuperarCredenciais = new PainelRecuperarCredenciais(this);
     PainelLoja loja = new PainelLoja(this);
     PainelComprar comprar = new PainelComprar(this);
+    PainelCarrinho carrinho = new PainelCarrinho(this);
+    PainelGerenciarEnderecos gerenciarEnderecos = new PainelGerenciarEnderecos(this);
+    PainelGerenciarProdutos gerenciarProdutos = new PainelGerenciarProdutos(this);
 
     public Tela() {
         initComponents();
+        this.setSize(400,300);
         this.setResizable(false);
         setVisible(true);
+        iniciar();
+        inicio.setVisible(true);
+    }
+    private void iniciar(){
         criarPainel(inicio);
         criarPainel(cadastro);
-        criarPainel(endereco);
+        criarPainel(cadastrarEnderecos);
         criarPainel(perfil);
         criarPainel(procurar);
         criarPainel(recuperarCredenciais);
         criarPainel(loja);
         criarPainel(comprar);
-        this.setSize(400,300);
-        inicio.setVisible(true);
+        criarPainel(carrinho);
+        criarPainel(gerenciarEnderecos);
+        criarPainel(gerenciarProdutos);
     }
-    
     private void criarPainel(JPanel painel){
         add(painel);
         painel.setVisible(false);
