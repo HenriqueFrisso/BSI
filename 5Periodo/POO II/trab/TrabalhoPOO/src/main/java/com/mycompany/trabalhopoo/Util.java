@@ -31,4 +31,12 @@ public class Util {
             }
         }  
     }
+    public static boolean isDouble(String str) {
+        try {
+            Double.valueOf(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
 }

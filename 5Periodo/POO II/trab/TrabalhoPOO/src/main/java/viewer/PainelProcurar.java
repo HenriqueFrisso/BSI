@@ -32,7 +32,6 @@ public class PainelProcurar extends javax.swing.JPanel {
         adicionarPaineisProdutos(Controller.getProcurarProdutos());
         jPanel2.setPreferredSize(new java.awt.Dimension(0, (qtd*100)));
     }
-    
     private void iniciarPainel(JPanel painel){
         this.jPanel2.add(painel);
         painel.setBounds(0, (qtd*100), 400, 100);
@@ -52,7 +51,6 @@ public class PainelProcurar extends javax.swing.JPanel {
         ItensParaComprar item = new ItensParaComprar(tela, produto);
         return item;
     }
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -168,24 +166,18 @@ public class PainelProcurar extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         tela.alterarPainel(this, tela.inicio);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
-
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         tela.alterarPainel(this, tela.perfil);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         jPopupMenu1.show(evt.getComponent(), evt.getX(), evt.getY());
     }//GEN-LAST:event_jLabel2MouseClicked
-
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         tela.alterarPainel(this, tela.carrinho);        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;

@@ -2,7 +2,6 @@ package viewer;
 
 public class PainelCadastrarEnderecos extends javax.swing.JPanel {
     Tela tela;
-    int estadoEnd1, estadoEnd2 = 0;
 
     public PainelCadastrarEnderecos(Tela tela) {
         this.tela = tela;
@@ -28,7 +27,6 @@ public class PainelCadastrarEnderecos extends javax.swing.JPanel {
         jTextField3.setText("");
         jTextField4.setText("");
     }
-    
     private void carregarCombo() {
         String[] estados = {
             "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", 
@@ -273,19 +271,15 @@ public class PainelCadastrarEnderecos extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         tela.alterarPainel(this, tela.inicio);
     }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         tela.alterarPainel(this, tela.cadastro);
     }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         iniciar();
     }//GEN-LAST:event_jButton3ActionPerformed
-
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
         String texto = jTextField1.getText().replaceAll("\\D", "");
         int tam = texto.length();
@@ -299,13 +293,10 @@ public class PainelCadastrarEnderecos extends javax.swing.JPanel {
         }
         jTextField1.setText(texto);
     }//GEN-LAST:event_jTextField1KeyReleased
-
     private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
         String texto = jTextField2.getText().replaceAll("\\D", "");
         jTextField2.setText(texto);
     }//GEN-LAST:event_jTextField2KeyReleased
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

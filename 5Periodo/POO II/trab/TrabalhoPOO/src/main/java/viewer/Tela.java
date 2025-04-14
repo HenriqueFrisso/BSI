@@ -2,14 +2,15 @@ package viewer;
 
 import java.awt.Dimension;
 import javax.swing.JPanel;
+
 /**
  *
  * @author Henrique
  */
+
 public class Tela extends javax.swing.JFrame {
     
     Dimension d = new Dimension(400, 300);
-    
     PainelInicio inicio = new PainelInicio(this);
     PainelCadastro cadastro =  new PainelCadastro(this);
     PainelCadastrarEnderecos cadastrarEnderecos = new PainelCadastrarEnderecos(this);
@@ -21,6 +22,7 @@ public class Tela extends javax.swing.JFrame {
     PainelCarrinho carrinho = new PainelCarrinho(this);
     PainelGerenciarEnderecos gerenciarEnderecos = new PainelGerenciarEnderecos(this);
     PainelGerenciarProdutos gerenciarProdutos = new PainelGerenciarProdutos(this);
+    PainelConfirmarCodigo confirmarCodigo = new PainelConfirmarCodigo(this);
 
     public Tela() {
         initComponents();
@@ -42,12 +44,12 @@ public class Tela extends javax.swing.JFrame {
         criarPainel(carrinho);
         criarPainel(gerenciarEnderecos);
         criarPainel(gerenciarProdutos);
+        criarPainel(confirmarCodigo);
     }
     private void criarPainel(JPanel painel){
         add(painel);
         painel.setVisible(false);
     }
-    
     public void alterarPainel(JPanel esconder, JPanel mostrar){
         esconder.setVisible(false);
         mostrar.setVisible(true);
@@ -71,7 +73,6 @@ public class Tela extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 }

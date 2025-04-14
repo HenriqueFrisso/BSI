@@ -22,7 +22,6 @@ public class PainelInicio extends javax.swing.JPanel {
             tela.setSize(410,320);
         }
     }
-    
     private void iniciar(){
         jPanel2.setVisible(true); 
         carregarTexto();
@@ -200,7 +199,6 @@ public class PainelInicio extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
         String texto = jTextField1.getText();
         if (Controller.getTipoAtual() == Tipo.USUARIO){
@@ -253,11 +251,9 @@ public class PainelInicio extends javax.swing.JPanel {
             jTextField1.setText(texto);
         }
     }//GEN-LAST:event_jTextField1KeyReleased
-
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         tela.alterarPainel(this, tela.cadastro);
     }//GEN-LAST:event_jLabel4MouseClicked
-
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         if (Controller.getTipoAtual() == Tipo.USUARIO){
             jLabel2.setText("CNPJ");
@@ -274,7 +270,6 @@ public class PainelInicio extends javax.swing.JPanel {
         }
         carregarTexto();
     }//GEN-LAST:event_jLabel5MouseClicked
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String usuario;
         String senha;
@@ -307,8 +302,6 @@ public class PainelInicio extends javax.swing.JPanel {
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
         tela.alterarPainel(this, tela.recuperarCredenciais);
     }//GEN-LAST:event_jLabel6MouseClicked
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

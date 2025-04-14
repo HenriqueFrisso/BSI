@@ -122,12 +122,10 @@ public class ItensNoCarrinho extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Controller.removerProduto(Controller.getCarrinho(), produto);
         tela.carrinho.atualizarCarrinho();
     }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Util.desativarComponentes(tela.carrinho, editar);
         tela.carrinho.desativarProdutos(editar);
@@ -144,8 +142,6 @@ public class ItensNoCarrinho extends javax.swing.JPanel {
             jButton1.setVisible(true);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

@@ -16,13 +16,11 @@ public class PainelPerfil extends javax.swing.JPanel {
             tela.setSize(410, 170);
         }
     }
-    
     private void iniciar(){
         jPanel1.setVisible(true);
         jPanel2.setVisible(false);
         jPanel3.setVisible(false);
     }
-    
     private void carregarTextField(){
         jTextField1.setText(jLabel3.getText());
         jTextField2.setText(jLabel5.getText());
@@ -31,7 +29,6 @@ public class PainelPerfil extends javax.swing.JPanel {
         jPasswordField2.setText("");
         jPasswordField3.setText("");
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -389,33 +386,27 @@ public class PainelPerfil extends javax.swing.JPanel {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         carregarTextField();
         jPanel1.setVisible(false);
         jPanel2.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         jPanel2.setVisible(false);
         jPanel3.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         jPanel3.setVisible(false);
         jPanel2.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         jPanel2.setVisible(false);
         jPanel1.setVisible(true);
         iniciar();
     }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         tela.alterarPainel(this, tela.procurar);
     }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
         String texto = jTextField2.getText().replaceAll("\\D", "");
         int tam = texto.length();
@@ -442,17 +433,14 @@ public class PainelPerfil extends javax.swing.JPanel {
         }
         jTextField2.setText(texto);
     }//GEN-LAST:event_jTextField2KeyReleased
-
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         jPanel1.setVisible(false);
         jPanel2.setVisible(true);
         jPanel3.setVisible(false);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
-
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         tela.alterarPainel(this, tela.gerenciarEnderecos);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

@@ -18,7 +18,6 @@ public class PainelCadastro extends javax.swing.JPanel {
         initComponents();
         iniciar();
     }
-    
     @Override
     public void setVisible(boolean aFlag) {
         super.setVisible(aFlag);
@@ -31,7 +30,6 @@ public class PainelCadastro extends javax.swing.JPanel {
         jPanel3.setVisible(false);
         carregarRadio();
     }
-    
     private void carregarRadio(){
         jRadioButton1.setSelected(true);
         jRadioButton2.setSelected(false);
@@ -51,7 +49,6 @@ public class PainelCadastro extends javax.swing.JPanel {
         lblImagem.setIcon(null);
         jLabel13.setText("Gerar Código");
     }
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -413,7 +410,6 @@ public class PainelCadastro extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         jPanel2.setVisible(true);
         jPanel3.setVisible(false);
@@ -422,7 +418,6 @@ public class PainelCadastro extends javax.swing.JPanel {
             cadastroAtivo = 0;
         }
     }//GEN-LAST:event_jRadioButton1ActionPerformed
-
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         jPanel3.setVisible(true);
         jPanel2.setVisible(false);
@@ -431,7 +426,6 @@ public class PainelCadastro extends javax.swing.JPanel {
             cadastroAtivo = 1;
         }
     }//GEN-LAST:event_jRadioButton2ActionPerformed
-
     private void jTextField3KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyReleased
         String texto = jTextField3.getText().replaceAll("\\D", "");
         int tam = texto.length();
@@ -458,7 +452,6 @@ public class PainelCadastro extends javax.swing.JPanel {
         }
         jTextField3.setText(texto);
     }//GEN-LAST:event_jTextField3KeyReleased
-
     private void jTextField4KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyReleased
         String texto = jTextField4.getText().replaceAll("\\D", "");
         int tam = texto.length();
@@ -478,7 +471,6 @@ public class PainelCadastro extends javax.swing.JPanel {
         }
         jTextField4.setText(texto);
     }//GEN-LAST:event_jTextField4KeyReleased
-
     private void jTextField6KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyReleased
         String texto = jTextField6.getText().replaceAll("\\D", "");
         int tam = texto.length();
@@ -505,7 +497,6 @@ public class PainelCadastro extends javax.swing.JPanel {
         }
         jTextField6.setText(texto);
     }//GEN-LAST:event_jTextField6KeyReleased
-
     private void jTextField7KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyReleased
         String texto = jTextField7.getText().replaceAll("\\D", "");
         int tam = texto.length();
@@ -540,20 +531,17 @@ public class PainelCadastro extends javax.swing.JPanel {
         }
         jTextField7.setText(texto);
     }//GEN-LAST:event_jTextField7KeyReleased
-
     private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
         if (jLabel13.getText().equals("Gerar Código")){
             jLabel13.setText(Util.gerarCodigo(12));
             jLabel13.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_jLabel13MouseClicked
-
     private void jLabel13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseEntered
         if (jLabel13.getText().equals("Gerar Código")){
             jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         }
     }//GEN-LAST:event_jLabel13MouseEntered
-
     private void btnUploadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUploadActionPerformed
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileFilter(new FileNameExtensionFilter("Imagens", "jpg", "jpeg", "png", "gif"));
@@ -566,16 +554,12 @@ public class PainelCadastro extends javax.swing.JPanel {
             lblImagem.setIcon(new ImageIcon(img));
         }
     }//GEN-LAST:event_btnUploadActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         tela.alterarPainel(this, tela.cadastrarEnderecos);
     }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Util.copiarParaClipboard(jLabel13.getText());
     }//GEN-LAST:event_jButton2ActionPerformed
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnUpload;
     private javax.swing.ButtonGroup buttonGroup1;

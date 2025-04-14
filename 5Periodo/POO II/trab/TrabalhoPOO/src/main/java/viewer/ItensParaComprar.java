@@ -15,7 +15,6 @@ public class ItensParaComprar extends javax.swing.JPanel {
         this.jLabel3.setText("R$ " + String.format("%.2f", produto.getPreco()));
         this.setSize(400,100);
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -94,8 +93,6 @@ public class ItensParaComprar extends javax.swing.JPanel {
         Controller.setProduto(produto);
         tela.alterarPainel(tela.procurar, tela.comprar);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;

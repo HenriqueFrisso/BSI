@@ -15,7 +15,6 @@ public class PainelRecuperarCredenciais extends javax.swing.JPanel {
         this.setBounds(0, 0, 400, 200);
         iniciar();
     }
-    
     @Override
     public void setVisible(boolean aFlag) {
         super.setVisible(aFlag);
@@ -38,6 +37,17 @@ public class PainelRecuperarCredenciais extends javax.swing.JPanel {
             jLabel1.setText("E-Mail ou Telefone");
             jButton1.setText("Recuperar senha");
         }
+        
+        if (tela.confirmarCodigo.validar){ 
+            if (Controller.getTipoAtual() == Controller.Tipo.LOJA){           
+                jPanel3.setVisible(true);
+            }else{
+                jPanel2.setVisible(true);
+            }
+            jPanel1.setVisible(false);
+        }else{
+            tela.alterarPainel(this, tela.inicio);
+        }        // TODO add your handling code here:
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -264,40 +274,23 @@ public class PainelRecuperarCredenciais extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         FrameEMail email = new FrameEMail();
         email.setVisible(true);
         
-        DialogRecuperarCredenciais dialog = new DialogRecuperarCredenciais(tela, true);
-        dialog.setVisible(true);
+        tela.alterarPainel(this, tela.confirmarCodigo);
         
-        if (dialog.validar){ 
-            if (Controller.getTipoAtual() == Tipo.LOJA){           
-                jPanel3.setVisible(true);
-            }else{
-                jPanel2.setVisible(true);
-            }
-            jPanel1.setVisible(false);
-        }else{
-            tela.alterarPainel(this, tela.inicio);
-        }
         
-       
     }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         tela.alterarPainel(this, tela.inicio);
     }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         tela.alterarPainel(this, tela.inicio);
     }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         tela.alterarPainel(this, tela.inicio);
     }//GEN-LAST:event_jButton3ActionPerformed
-
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
         if (Controller.getTipoAtual() == Tipo.LOJA){
             String texto = jTextField1.getText().replaceAll("\\D", "");
@@ -349,26 +342,22 @@ public class PainelRecuperarCredenciais extends javax.swing.JPanel {
             jTextField1.setText(texto);
         }
     }//GEN-LAST:event_jTextField1KeyReleased
-
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         if (jLabel5.getText().equals("Gerar Código")){
             jLabel5.setText(Util.gerarCodigo(12));
             jLabel5.setCursor(Cursor.getDefaultCursor());
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jLabel5MouseClicked
-
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        if (jLabel5.getText() == "Gerar Código"){
+        if (jLabel5.getText().equals("Gerar Código")){
             JOptionPane.showMessageDialog(null, 
                                           "É necessário gerar um novo código de acesso.", 
                                           "Warning", 
                                           JOptionPane.ERROR_MESSAGE);
         }else{
             tela.alterarPainel(this, tela.inicio); 
-        }// TODO add your handling code here:
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

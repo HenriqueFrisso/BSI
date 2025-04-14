@@ -1,25 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package viewer;
 
-import Controller.Controller;
-import com.mycompany.trabalhopoo.Produto;
 import com.mycompany.trabalhopoo.Util;
-import java.util.ArrayList;
-import javax.swing.JFrame;
+import java.awt.Image;
+import java.io.File;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
-/**
- *
- * @author Henrique
- */
 public class PainelLoja extends javax.swing.JPanel {
     Tela tela;
     boolean editar = false;
-    /**
-     * Creates new form PainelLoja
-     */
     public PainelLoja(Tela tela) {
         this.tela = tela;
         this.setBounds(0, 0, 400, 300);
@@ -32,9 +22,8 @@ public class PainelLoja extends javax.swing.JPanel {
         if (aFlag == true){
             iniciar();
             tela.setSize(400,300);
-        } // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        }
     }
-    
     private void iniciar(){
         jTextField1.setEditable(false);
         jTextField2.setEditable(false);
@@ -114,6 +103,11 @@ public class PainelLoja extends javax.swing.JPanel {
 
         jLabel4.setText("IMAGEM");
         jLabel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -175,19 +169,15 @@ public class PainelLoja extends javax.swing.JPanel {
                 .addGap(90, 90, 90))
         );
     }// </editor-fold>//GEN-END:initComponents
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        tela.alterarPainel(this, tela.inicio);              // TODO add your handling code here:
+        tela.alterarPainel(this, tela.inicio);
     }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        tela.alterarPainel(this, tela.gerenciarProdutos);        // TODO add your handling code here:
+        tela.alterarPainel(this, tela.gerenciarProdutos);
     }//GEN-LAST:event_jButton3ActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        tela.alterarPainel(this, tela.gerenciarEnderecos);// TODO add your handling code here:
+        tela.alterarPainel(this, tela.gerenciarEnderecos);
     }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
         if (editar == false){
@@ -198,6 +188,7 @@ public class PainelLoja extends javax.swing.JPanel {
             jTextField2.setEditable(true);
             jTextField2.setEnabled(true);
             jButton2.setEnabled(true);
+            jLabel4.setEnabled(true);
             jButton2.setText("Confirmar");
         }else{
             Util.desativarComponentes(this, true);
@@ -208,8 +199,19 @@ public class PainelLoja extends javax.swing.JPanel {
             jButton2.setText("Editar credenciais");
         }        
     }//GEN-LAST:event_jButton2ActionPerformed
-
-
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        if (editar){
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setFileFilter(new FileNameExtensionFilter("Imagens", "jpg", "jpeg", "png", "gif"));
+            int retorno = fileChooser.showOpenDialog(this);
+            if (retorno == JFileChooser.APPROVE_OPTION) {
+                File arquivo = fileChooser.getSelectedFile();
+                ImageIcon imagem = new ImageIcon(arquivo.getAbsolutePath());
+                Image img = imagem.getImage().getScaledInstance(jLabel4.getWidth(), jLabel4.getHeight(), Image.SCALE_SMOOTH);
+                jLabel4.setIcon(new ImageIcon(img));
+            }
+        }
+    }//GEN-LAST:event_jLabel4MouseClicked
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

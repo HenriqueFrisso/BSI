@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package viewer;
 
 import Controller.Controller;
@@ -17,7 +13,6 @@ public class EnderecosCadastrados extends javax.swing.JPanel {
         this.endereco = endereco;
         initComponents();
     }
-    
     @Override
     public void setVisible(boolean aFlag) {
         super.setVisible(aFlag);
@@ -40,6 +35,9 @@ public class EnderecosCadastrados extends javax.swing.JPanel {
         jTextField3.setEditable(flag);
         jTextField4.setEditable(flag);
         jTextField5.setEditable(flag);
+    }
+    private boolean verificar(){
+        return true;
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -179,30 +177,28 @@ public class EnderecosCadastrados extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Controller.removerEndereco(Controller.getEnderecos(), endereco);
         tela.gerenciarEnderecos.atualizarEnderecos();
     }//GEN-LAST:event_jButton2ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Util.desativarComponentes(tela.gerenciarEnderecos, editar);
-        tela.gerenciarEnderecos.desativarEnderecos(editar);
-        Util.desativarComponentes(this, true);
-        if (editar == false){
-            editar = true;
-            editarCampos(true);
-            jButton1.setText("Confirmar");
-            jButton2.setVisible(false);
-        }else{
-            editar = false;
-            editarCampos(false);
-            jButton1.setText("Editar");
-            jButton2.setVisible(true);
+        if (editar && verificar()){
+            Util.desativarComponentes(tela.gerenciarEnderecos, editar);
+            tela.gerenciarEnderecos.desativarEnderecos(editar);
+            Util.desativarComponentes(this, true);
+            if (editar == false){
+                editar = true;
+                editarCampos(true);
+                jButton1.setText("Confirmar");
+                jButton2.setVisible(false);
+            }else{
+                editar = false;
+                editarCampos(false);
+                jButton1.setText("Editar");
+                jButton2.setVisible(true);
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
