@@ -1,1 +1,1 @@
-from restaurantes import RestauranteA, RestauranteB
+from restaurantes import RestauranteA, RestauranteB, RestauranteC

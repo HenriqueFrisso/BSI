@@ -1,13 +1,17 @@
+from abc import ABC, abstractmethod
 from pratos import *
 
-class Restaurante:
-    def pratoPrincipal(self) -> str:
-        raise NotImplementedError("pratoPrincipal().")
+class Restaurante(ABC):
 
-    def pratoFeito(self) -> str:
-        raise NotImplementedError("pratoFeito().")
+    @abstractmethod
+    def pratoPrincipal(self) -> Prato:
+        pass
 
-    def sobremesa(self) -> str:
+    @abstractmethod
+    def pratoFeito(self) -> Prato:
+        pass
+
+    def sobremesa(self) -> Prato:
         raise NotImplementedError("sobremesa().")
     
 #===================================================================
@@ -22,6 +26,7 @@ class RestauranteA(Restaurante):
     def pratoFeito(self):
         return PratoFeitoA()
 
+
 class RestauranteB(Restaurante):
 
     def pratoPrincipal(self):
@@ -32,3 +37,15 @@ class RestauranteB(Restaurante):
 
     def sobremesa(self):
         return MousseChocolate()
+    
+
+class RestauranteC(Restaurante):
+
+    def pratoPrincipal(self):
+        raise NotImplementedError("pratoPrincipal().")
+
+    def pratoFeito(self):
+        return PratoFeitoC()
+
+    def sobremesa(self):
+        return Tiramisu()
