@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bandeiras</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+        }
+        .lado2{
+            background-color: red;
+            width: 70%;
+            height: 100vh;
+        }
+        .lado2cima{
+            background-color: white;
+            width: 100%;
+            height: 50vh;
+        }.lado1 {
+            background-color: blue;
+            width: 30%;
+            height: 100vh;
+            position: relative; /* necessário para que a imagem se posicione em relação a esse contêiner */
+        }
+
+        .imagem {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%; /* aumenta a largura */
+            height: auto; /* mantém proporção */
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="lado1">
+        <img src="white-christmas-star-3d-symbol-traditional-christmas-decoration-of-winter-holidays-png.webp" class="imagem">
+    </div>
+    <div class="lado2">
+        <div class="lado2cima">
+
+        </div>
+    </div>
+</body>
+</html>
