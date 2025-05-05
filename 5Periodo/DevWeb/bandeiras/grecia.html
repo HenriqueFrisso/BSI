@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Bandeira da África do Sul</title>
+  <style>
+
+    body {
+      margin: 0;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .bandeira {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 600px;
+      height: 400px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    
+    /* Vermelho superior */
+    .faixa-branca {
+      background: white;
+      left: 0;
+      width: 100%;
+      height: calc(100% / 9); /* ou 11.1111% */
+
+    }
+
+    /* Azul inferior */
+    .faixa-azul {
+      background: blue;
+      left: 0;
+      width: 100%;
+      height: calc(100% / 9); /* ou 11.1111% */
+
+    }
+    .divSup{
+      position: relative;
+      height: calc(5*(100% / 9))
+    }
+    .direia{
+      left: 40%;
+      background: red;
+      width: 100%;
+      height: 100%;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="bandeira">
+    <div class="divSup">
+      <div class="direita"></div>
+    </div>
+    <div class="faixa-branca"></div>
+    <div class="faixa-azul"></div>
+    <div class="faixa-branca"></div>
+    <div class="faixa-azul"></div>
+  </div>
+</body>
+</html>
