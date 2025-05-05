@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Bandeira do Brasil</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .bandeira {
+      width: 600px;
+      height: 400px;
+      position: relative;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    /* Retângulo verde */
+    .verde {
+      background-color: #009739;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+
+    /* Losango amarelo */
+    .losango {
+      width: 400px;
+      height: 400px;
+      background-color: yellow;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    /* Círculo azul */
+    .circulo {
+      width: 250px;
+      height: 250px;
+      background-color: #3E4095;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Inscrição simplificada */
+    .inscricao {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="bandeira">
+    <div class="verde"></div>
+    <div class="losango"></div>
+    <div class="circulo">
+      <div class="inscricao">ORDEM E PROGRESSO</div>
+    </div>
+  </div>
+</body>
+</html>

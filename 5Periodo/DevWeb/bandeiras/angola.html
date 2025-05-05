@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Bandeira de Angola</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .bandeira {
+      width: 600px;
+      height: 400px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    .faixa {
+      flex: 1;
+    }
+
+    .vermelha {
+      background-color: red;
+    }
+
+    .preta {
+      background-color: black;
+    }
+
+    .emblema {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 60px;
+      color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <div class="bandeira">
+    <div class="faixa vermelha"></div>
+    <div class="faixa preta"></div>
+    <div class="emblema">★</div> <!-- Representando a estrela com um simples caractere -->
+  </div>
+</body>
+</html>

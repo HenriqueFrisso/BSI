@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Bandeira da África do Sul</title>
+  <style>
+    body {
+      margin: 0;
+      background: blue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .bandeira {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 600px;
+      height: 400px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Vermelho superior */
+    .faixa-vermelha {
+      background: #de3831;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+    }
+
+    /* Azul inferior */
+    .faixa-azul {
+      background: #002395;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+    }
+    .faixa-branca {
+      background: white;
+      position: absolute;
+      top: 50%;                      /* Começa no meio */
+      transform: translateY(-50%); 
+      left: 0;
+      width: 100%;
+      height: 30%;
+    }
+    .faixa-verde {
+      background: green;
+      position: absolute;
+      top: 50%;                      /* Começa no meio */
+      transform: translateY(-50%); 
+      left: 0;
+      width: 100%;
+      height: 20%;
+        z-index: 10;
+    }
+    .triangulo-branco {
+      position: absolute;
+      top: 50%;                      /* Começa no meio */
+      transform: translateY(-50%); 
+      left: 20px;
+      width: 0;
+      height: 0;
+      border-top: 260px solid transparent;
+      border-bottom: 260px solid transparent;
+      border-left: 290px solid white;
+      z-index: 9;
+    }
+    .triangulo-verde {
+      position: absolute;
+      top: -25;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-top: 250px solid transparent;
+      border-bottom: 250px solid transparent;
+      border-left: 280px solid green;
+      z-index: 10;
+    }
+    /* Amarelo entre preto e verde */
+    .triangulo-amarela {
+      position: absolute;
+      top: 50%;                      /* Começa no meio */
+      transform: translateY(-50%); 
+      left: 0;
+      width: 0;
+      height: 0;
+      border-top: 150px solid transparent;
+      border-bottom: 150px solid transparent;
+      border-left: 180px solid #ffb612;
+      z-index: 10;
+    }
+
+    /* Triângulo preto */
+    .triangulo-preto {
+        position: absolute;
+        top: 50%;                      /* Começa no meio */
+        transform: translateY(-50%);   /* Sobe metade da altura dele */
+        left: 0;
+        width: 0;
+        height: 0;
+        border-top: 130px solid transparent;
+        border-bottom: 130px solid transparent;
+        border-left: 150px solid black;
+        z-index: 10;
+    }
+    .ponta-verde {
+      background: green;
+      position: absolute;
+      top: 50%;                      /* Começa no meio */
+      transform: translateY(-50%); 
+      left: 0;
+      width: 100%;
+      height: 20%;
+        z-index: 10;
+    }
+
+
+  </style>
+</head>
+<body>
+  <div class="bandeira">
+    <div class="faixa-vermelha"></div>
+    <div class="faixa-azul"></div>
+    <div class="faixa-branca"></div>
+    <div class="faixa-verde"></div>
+    <div class="triangulo-branco"></div>
+    <div class="triangulo-verde"></div>
+    <div class="triangulo-amarela"></div>
+    <div class="triangulo-preto"></div>
+  </div>
+</body>
+</html>

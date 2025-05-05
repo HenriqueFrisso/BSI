@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Figuras Vermelhas</title>
+  <style>
+    body {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+      background: #f0f0f0;
+    }
+
+    .figura {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+
+    .quadrado {
+      /* já estilizado com .figura */
+    }
+
+    .losango-vertical {
+        clip-path: polygon(50% 20%, 100% 50%, 50% 80%, 0% 50%);
+
+    }
+
+    .losango-horizontal {
+        clip-path: polygon(50% 0%, 80% 50%, 50% 100%, 20% 50%);
+
+    }
+
+    .triangulo {
+      width: 0;
+      height: 0;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-bottom: 100px solid red;
+    }
+
+    .triangulo-baixo {
+      width: 0;
+      height: 0;
+      border-left: 50px solid transparent;
+      border-right: 50px solid transparent;
+      border-top: 100px solid red;
+    }
+
+    .triangulo-direita {
+      width: 0;
+      height: 0;
+      border-top: 50px solid transparent;
+      border-bottom: 50px solid transparent;
+      border-left: 100px solid red;
+    }
+
+    .triangulo-esquerda {
+      width: 0;
+      height: 0;
+      border-top: 50px solid transparent;
+      border-bottom: 50px solid transparent;
+      border-right: 100px solid red;
+    }
+
+    .circulo {
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+  <div class="figura quadrado"></div>
+  <div class="figura losango-vertical"></div>
+  <div class="figura losango-horizontal"></div>
+  <div class="triangulo"></div>
+  <div class="triangulo-baixo"></div>
+  <div class="triangulo-direita"></div>
+  <div class="triangulo-esquerda"></div>
+  <div class="figura circulo"></div>
+
+  <script>
+    // Script vazio - pronto para interações futuras
+  </script>
+</body>
+</html>

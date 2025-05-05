@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Bandeira da Argélia</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .bandeira {
+      width: 600px;
+      height: 400px;
+      display: flex;
+      position: relative;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    /* Metade verde */
+    .verde {
+      background-color: #008C45;
+      flex: 1;
+    }
+
+    /* Metade branca */
+    .branca {
+      background-color: white;
+      flex: 1;
+    }
+
+    /* Círculo vermelho central */
+    .circulo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background-color: red;
+    }
+
+    /* Estrela e lua crescentes simplificadas */
+    .estrela-lua {
+      position: absolute;
+      top: 25%;
+      left: 25%;
+      font-size: 60px;
+      color: white;
+    }
+
+    /* Estrela de cinco pontas e lua crescente simplificadas */
+    .estrela-lua:before {
+      content: "★"; /* Estrela simplificada */
+      font-size: 50px;
+      color: white;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="bandeira">
+    <div class="verde"></div>
+    <div class="branca"></div>
+    <div class="circulo">
+      <div class="estrela-lua"></div>
+    </div>
+  </div>
+</body>
+</html>
