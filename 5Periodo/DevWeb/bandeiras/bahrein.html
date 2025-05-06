@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        background: lightgrey;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .bandeira {
+        background-color: red;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        width: 600px;
+        height: 400px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    .grupoTriangulos{
+        height: 100%;
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+    }
+    .triangulo{
+        width: 20%;
+        height: 20%;
+        left: 10%;
+        border-top: 40px solid transparent;
+        border-bottom: 40px solid transparent;
+        border-left: 160px solid white;
+    }
+    .branco{
+        background-color: white;
+        height: 100%;
+        width: 20%;
+    }
+
+</style>
+<body>
+    <div class="bandeira">
+        <div class="branco"></div>
+        <div class="grupoTriangulos">
+            <div class="triangulo"></div>
+            <div class="triangulo"></div>
+            <div class="triangulo"></div>
+            <div class="triangulo"></div>
+            <div class="triangulo"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bandeira Burundi</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        background: lightgrey;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .bandeira {
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        width: 600px;
+        height: 400px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    .trianguloDireito{
+        position: absolute;
+        right: 0;
+        border-top: 180px solid transparent;
+        border-bottom: 180px solid transparent;
+        border-right: 270px solid green;
+    }
+    .trianguloEsquerdo{
+        position: absolute;
+        left: 0;
+        border-top: 180px solid transparent;
+        border-bottom: 180px solid transparent;
+        border-left: 270px solid green;
+    }
+    .trianguloSup{
+        position: absolute;
+        top: 0;
+        border-left: 270px solid transparent;
+        border-right: 270px solid transparent;
+        border-top: 180px solid red;
+    }
+    .trianguloInf{
+        position: absolute;
+        bottom: 0;
+        border-left: 270px solid transparent;
+        border-right: 270px solid transparent;
+        border-bottom: 180px solid red;
+    }
+    .circulo{
+        background-color: white;
+        position: absolute;
+        height: 250px;
+        width: 250px;
+        border-radius: 50%;
+    }
+</style>
+<body>
+    <div class="bandeira">
+        <div class="trianguloSup"></div>
+        <div class="trianguloInf"></div>
+        <div class="trianguloEsquerdo"></div>
+        <div class="trianguloDireito"></div>
+        <div class="circulo"></div>
+    </div>
+</body>
+</html>
