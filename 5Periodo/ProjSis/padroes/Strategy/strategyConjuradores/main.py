@@ -1,15 +1,15 @@
-from imports import *
+from conjuradores import *
 
 if __name__ == "__main__":
-    Conjurador1 = ConjuradorBom(45, 100, Magias.GELO)
-    Conjurador2 = ConjuradorBom(95, 46, Magias.TROVAO)
-    Conjurador3 = ConjuradorBom(48, 95, Magias.VENENO)
-    Conjurador4 = ConjuradorBom(65, 84, Magias.FOGO)
-    Conjurador5 = ConjuradorBom(60, 86, Magias.VENTO)
+    Conjurador1 = ConjuradorBom("Conjurador1", 45, 100, Magias.GELO)
+    Conjurador2 = ConjuradorBom("Conjurador2", 95, 46, Magias.TROVAO)
+    Conjurador3 = ConjuradorBom("Conjurador3", 48, 95, Magias.VENENO)
+    Conjurador4 = ConjuradorBom("Conjurador4", 65, 84, Magias.FOGO)
+    Conjurador5 = ConjuradorBom("Conjurador5", 60, 86, Magias.VENTO)
+    Conjurador6 = ConjuradorBom("Conjurador6", 89, 72, Magias.TROVAO)
 
 
     print(Conjurador2)
-    Conjurador2.atacar()
-    Conjurador2.alterarMagia(Magias.GELO)
-    print(Conjurador2)
+    Conjurador2.infoMagia()
+    Conjurador6.infoMagia()
     Conjurador2.atacar()
