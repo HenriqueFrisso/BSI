@@ -11,13 +11,13 @@ como autenticação, registro de logs, verificação de permissões, entre outro
 
 """
 
-lista = []
-for i in range (9999):
-    lista.append(randint(0,100000))
+# lista = []
+# for i in range (9999):
+#     lista.append(randint(0,100000))
 
-shellSort(lista)
-bubbleSort(lista)
-insertionSort(lista)
+# shellSort(lista)
+# bubbleSort(lista)
+# insertionSort(lista)
 
 
 
