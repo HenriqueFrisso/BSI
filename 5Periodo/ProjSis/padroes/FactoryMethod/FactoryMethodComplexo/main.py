@@ -14,10 +14,21 @@ def prepararPrato(restaurante, prato):
         return pratoPreparado
 
 def comerPratos(nutricao, prato):
-    nutricao += prato.comer()
-    print(f"Comendo {prato.__class__.__name__}...")
-    print(f"Nutrição: {nutricao:.2f}")
+    if prato:
+        nutricao += prato.comer()
+        print(f"Comendo {prato.__class__.__name__}...")
+        print(f"Nutrição: {nutricao:.2f}")
     return nutricao
+
+def imprimirPratos(prato):
+    if prato:
+        print(f"Prato: {prato.__class__.__name__}")
+        print(f"Valor: R$ {float(prato):.2f}")
+        print(f"Nutrição: {prato.comer():.2f}")
+
+def addDict(dict, prato):
+    if prato:
+        dict[prato.__class__.__bases__[0].__name__] = prato
 
 if __name__ == '__main__':
     #====================================================================
@@ -35,26 +46,27 @@ if __name__ == '__main__':
         print(f"Prato principal: {prato2()}, R$: {(prato2.__float__()):.2f}")
     if prato3:
         print(f"Sobremesa: {prato3()}, R$: {(prato3.__float__()):.2f}")
+    # imprimirPratos(prato1)
+    # imprimirPratos(prato2)
+    # imprimirPratos(prato3)
     print("")
 
     #====================================================================
     # Comendo pratos
-    print("Comendo pratos...")
     nutricao = 0.0
-    if prato1:
-        nutricao = comerPratos(nutricao, prato1)
-    if prato2:
-        nutricao = comerPratos(nutricao, prato2)
-    if prato3:
-        nutricao = comerPratos(nutricao, prato3)
+
+    print("Comendo pratos...")
+    nutricao = comerPratos(nutricao, prato1)
+    nutricao = comerPratos(nutricao, prato2)
+    nutricao = comerPratos(nutricao, prato3)
     print("")
 
     #====================================================================
     # Pratos criados em dicionário
     dict = {
-        prato1.__class__.__bases__[0].__name__: prato1,
-        prato2.__class__.__bases__[0].__name__: prato2,
-        prato3.__class__.__bases__[0].__name__: prato3
     }
+    addDict(dict, prato1)
+    addDict(dict, prato2)
+    addDict(dict, prato3)
     for chave, valor in dict.items():
         print(f"{chave}: {valor}")
