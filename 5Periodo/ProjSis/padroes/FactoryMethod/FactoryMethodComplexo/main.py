@@ -13,16 +13,48 @@ def prepararPrato(restaurante, prato):
             return None
         return pratoPreparado
 
+def comerPratos(nutricao, prato):
+    nutricao += prato.comer()
+    print(f"Comendo {prato.__class__.__name__}...")
+    print(f"Nutrição: {nutricao:.2f}")
+    return nutricao
 
 if __name__ == '__main__':
-    print("Factory Method Pattern")
-    p1 = prepararPrato(RestauranteC, "pratoFeito")
-    p2 = prepararPrato(RestauranteC, "pratoPrincipal")
-    p3 = prepararPrato(RestauranteA, "sobremesa")
+    #====================================================================
+    # Criando pratos
+    prato1 = prepararPrato(RestauranteA, "pratoFeito")
+    prato2 = prepararPrato(RestauranteB, "pratoPrincipal")
+    prato3 = prepararPrato(RestauranteC, "sobremesa")
     print("")
-    if p1:
-        print(f"Prato feito: {p1()}, R$: {float(p1)}")
-    if p2:
-        print(f"Prato principal: {p2()}, R$: {p2.__float__()}")
-    if p3:
-        print(f"Sobremesa: {p3()}, R$: {p3.__float__()}")
+
+    #====================================================================
+    # Pratos criados
+    if prato1:
+        print(f"Prato feito: {prato1}, R$: {float(prato1):.2f}")
+    if prato2:
+        print(f"Prato principal: {prato2()}, R$: {(prato2.__float__()):.2f}")
+    if prato3:
+        print(f"Sobremesa: {prato3()}, R$: {(prato3.__float__()):.2f}")
+    print("")
+
+    #====================================================================
+    # Comendo pratos
+    print("Comendo pratos...")
+    nutricao = 0.0
+    if prato1:
+        nutricao = comerPratos(nutricao, prato1)
+    if prato2:
+        nutricao = comerPratos(nutricao, prato2)
+    if prato3:
+        nutricao = comerPratos(nutricao, prato3)
+    print("")
+
+    #====================================================================
+    # Pratos criados em dicionário
+    dict = {
+        prato1.__class__.__bases__[0].__name__: prato1,
+        prato2.__class__.__bases__[0].__name__: prato2,
+        prato3.__class__.__bases__[0].__name__: prato3
+    }
+    for chave, valor in dict.items():
+        print(f"{chave}: {valor}")

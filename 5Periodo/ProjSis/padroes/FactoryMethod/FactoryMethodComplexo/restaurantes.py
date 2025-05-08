@@ -4,14 +4,14 @@ from pratos import *
 class Restaurante(ABC):
 
     @abstractmethod
-    def pratoPrincipal(self) -> Prato:
+    def pratoPrincipal(self):
         pass
 
     @abstractmethod
-    def pratoFeito(self) -> Prato:
+    def pratoFeito(self):
         pass
 
-    def sobremesa(self) -> Prato:
+    def sobremesa(self):
         pass
     
 #===================================================================
@@ -27,7 +27,7 @@ class RestauranteA(Restaurante):
         return PratoFeitoA()
     
     def sobremesa(self):
-        return None
+        return Pudim()
 
 class RestauranteB(Restaurante):
 
@@ -38,7 +38,7 @@ class RestauranteB(Restaurante):
         return PratoFeitoB()
 
     def sobremesa(self):
-        return MousseChocolate()
+        return None
     
 
 class RestauranteC(Restaurante):
