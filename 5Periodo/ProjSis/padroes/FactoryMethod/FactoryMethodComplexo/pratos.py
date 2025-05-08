@@ -60,7 +60,7 @@ class Sobremesa(ABC):
     
     @abstractmethod
     def comer(self) -> float:
-        # Quantidade de nutrição do prato
+        # Quantidade de calorias(kcal) do prato
         pass
 
 #===================================================================

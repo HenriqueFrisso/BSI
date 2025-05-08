@@ -2,7 +2,8 @@ from restaurantes import *
 
 def prepararPrato(restaurante, prato):
     try:
-        pratoPreparado = getattr(restaurante(), prato)()
+        rest = restaurante()
+        pratoPreparado = getattr(rest, prato)()
     except AttributeError:
         print(f"Erro: O restaurante '{restaurante.__name__}' não possui o prato '{prato}'.")
     except NotImplementedError as e:
@@ -13,18 +14,18 @@ def prepararPrato(restaurante, prato):
             return None
         return pratoPreparado
 
-def comerPratos(nutricao, prato):
+def comerPratos(caloria, prato):
     if prato:
-        nutricao += prato.comer()
+        caloria += prato.comer()
         print(f"Comendo {prato.__class__.__name__}...")
-        print(f"Nutrição: {nutricao:.2f}")
-    return nutricao
+        print(f"QuiloCalorias(kcal): {caloria:.2f}")
+    return caloria
 
 def imprimirPratos(prato):
     if prato:
         print(f"Prato: {prato.__class__.__name__}")
         print(f"Valor: R$ {float(prato):.2f}")
-        print(f"Nutrição: {prato.comer():.2f}")
+        print(f"QuiloCalorias(kcal): {prato.comer():.2f}")
 
 def addDict(dict, prato):
     if prato:
@@ -53,12 +54,12 @@ if __name__ == '__main__':
 
     #====================================================================
     # Comendo pratos
-    nutricao = 0.0
+    caloria = 0.0
 
     print("Comendo pratos...")
-    nutricao = comerPratos(nutricao, prato1)
-    nutricao = comerPratos(nutricao, prato2)
-    nutricao = comerPratos(nutricao, prato3)
+    caloria = comerPratos(caloria, prato1)
+    caloria = comerPratos(caloria, prato2)
+    caloria = comerPratos(caloria, prato3)
     print("")
 
     #====================================================================
