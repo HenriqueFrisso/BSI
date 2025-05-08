@@ -4,10 +4,10 @@ Factory Method
 ==================================
 """
 
-from FactoryMethod.restaurantes import Restaurante
+from restaurantes import RestauranteB
 
 try:
-    restaurante = Restaurante()
+    restaurante = RestauranteB()
 except TypeError as e:
     print(f"Erro: {e}")
 else:

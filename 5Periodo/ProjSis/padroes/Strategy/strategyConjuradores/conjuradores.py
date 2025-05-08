@@ -10,19 +10,22 @@ class Magias(IntEnum):
     VENTO = 4
     TROVAO = 5
 
+
+dict = {
+            Magias.FOGO: BolaDeFogo(),
+            Magias.GELO: CristaisDeGelo(),
+            Magias.VENENO: BombaVenenosa(),
+            Magias.VENTO: TornadoDaFuria(),
+            Magias.TROVAO: TempestadeDeTrovao()
+}
+
 # ========== Conjurador que usa o Strategy ==========
 class ConjuradorBom:
     def __init__(self, nome, inteligencia, concentracao, magia: Magias):
         self.nome = nome
         self.inteligencia = inteligencia
         self.concentracao = concentracao
-        self._estrategias = {
-            Magias.FOGO: BolaDeFogo(),
-            Magias.GELO: CristaisDeGelo(),
-            Magias.VENENO: BombaVenenosa(),
-            Magias.VENTO: TornadoDaFuria(),
-            Magias.TROVAO: TempestadeDeTrovao(),
-        }
+        self._estrategias = dict
         self.setMagia(magia)
 
     def setMagia(self, magia: Magias):

@@ -12,7 +12,7 @@ class Restaurante(ABC):
         pass
 
     def sobremesa(self) -> Prato:
-        raise NotImplementedError("sobremesa().")
+        pass
     
 #===================================================================
 # Restaurantes Concretos
@@ -25,7 +25,9 @@ class RestauranteA(Restaurante):
 
     def pratoFeito(self):
         return PratoFeitoA()
-
+    
+    def sobremesa(self):
+        return None
 
 class RestauranteB(Restaurante):
 
@@ -42,7 +44,7 @@ class RestauranteB(Restaurante):
 class RestauranteC(Restaurante):
 
     def pratoPrincipal(self):
-        raise NotImplementedError("pratoPrincipal().")
+        raise NotImplementedError("pratoPrincipal()")
 
     def pratoFeito(self):
         return PratoFeitoC()

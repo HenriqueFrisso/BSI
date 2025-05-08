@@ -1,4 +1,4 @@
-from imports import *
+from restaurantes import *
 
 def prepararPrato(restaurante, prato):
     try:
@@ -8,13 +8,16 @@ def prepararPrato(restaurante, prato):
     except NotImplementedError as e:
         print(f"Erro: O restaurante '{restaurante.__name__}' não implementou '{e}'.")
     else:
+        if pratoPreparado is None:
+            print(f"Erro: O prato '{prato}' não está disponível.")
+            return None
         return pratoPreparado
 
 
 if __name__ == '__main__':
     print("Factory Method Pattern")
     p1 = prepararPrato(RestauranteC, "pratoFeito")
-    p2 = prepararPrato(RestauranteA, "pratoPrincipal")
+    p2 = prepararPrato(RestauranteC, "pratoPrincipal")
     p3 = prepararPrato(RestauranteA, "sobremesa")
     print("")
     if p1:
