@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bandeira da África do Sul</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #eee;
+    }
+
+    .flag {
+      position: relative;
+      width: 600px;
+      height: 400px;
+      background: linear-gradient(
+        to bottom,
+        red 50%,
+        blue 50%
+      );
+      border: 1px solid #000;
+      overflow: hidden;
+    }
+
+    .green-band {
+      position: absolute;
+      top: 150px;
+      height: 100px;
+      width: 100%;
+      background: green;
+      z-index: 2;
+      clip-path: polygon(0 0, 25% 0, 75% 100%, 0% 100%);
+    }
+
+    .white-border-top,
+    .white-border-bottom {
+      position: absolute;
+      height: 25px;
+      width: 100%;
+      background: white;
+      z-index: 1;
+    }
+
+    .white-border-top {
+      top: 125px;
+      clip-path: polygon(0 0, 25% 0, 75% 100%, 0% 100%);
+    }
+
+    .white-border-bottom {
+      top: 250px;
+      clip-path: polygon(0 0, 75% 0, 25% 100%, 0% 100%);
+    }
+
+    .black-triangle {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-top: 200px solid transparent;
+      border-bottom: 200px solid transparent;
+      border-right: 150px solid black;
+      z-index: 3;
+    }
+
+    .yellow-border {
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-top: 200px solid transparent;
+      border-bottom: 200px solid transparent;
+      border-right: 170px solid yellow;
+      left: 10px;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="flag">
+    <div class="white-border-top"></div>
+    <div class="white-border-bottom"></div>
+    <div class="green-band"></div>
+    <div class="yellow-border"></div>
+    <div class="black-triangle"></div>
+  </div>
+</body>
+</html>

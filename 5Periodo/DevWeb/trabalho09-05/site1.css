@@ -1,0 +1,82 @@
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.superior{
+    position: absolute;
+    top: 0;
+}
+.site {
+    background-color: white;
+    width: 1080px;
+    min-height: 720px;
+    display: flex;
+    flex-direction: column; /* <-- adiciona empilhamento vertical */
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.barra {
+    background-color: #1D1E20;
+    width: 100%;
+    height: 70px;
+    display: flex; /* Flex para alinhar logo e menu */
+    justify-content: space-between; /* separa logo à esquerda e menu à direita */
+    align-items: center; /* alinha verticalmente */
+    padding: 0 25px; /* espaço interno para os lados */
+}
+.logo {
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    margin: 0; /* removemos margem extra, pois já temos padding na barra */
+}
+.menu {
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    color: white;
+    display: flex; /* Alinha os itens do menu lado a lado */
+    gap: 20px; /* espaço entre os itens do menu */
+    margin: 0;
+}
+.containerQuadros {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* alinha os itens à esquerda */
+    align-items: flex-start;
+    padding: 40px;
+    gap: 20px; /* espaçamento fixo entre os quadros, horizontal e vertical */
+}
+
+.quadroImagem {
+    background-color: white;
+    width: 320px;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px; /* distância vertical fixa entre as linhas */
+}
+
+img {
+    width: 320px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.quadroImagemTexto {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+}
