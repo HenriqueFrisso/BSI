@@ -1,39 +1,29 @@
 package com.mycompany.trabalhopoo;
 
+
+import java.util.List;
+import javax.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+
+
+@Entity(name="loja")
+@Data
+@AllArgsConstructor
 public class Loja {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column
     private String nome;
+    @Column
     private String cnpj;
-
-    public Loja(String nome, String cnpj, String codigo){
-        this.nome = nome;
-        this.cnpj = cnpj;
-        this.codigo = codigo;
-    }
-    
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
-    }
+    @Column
     private String codigo;
+    @OneToMany(mappedBy = "loja", fetch = FetchType.LAZY)
+    private List<Endereco> endereco;
+    @OneToMany(mappedBy = "loja", fetch = FetchType.LAZY)
+    private List<Produto> produto;
     
     
     
