@@ -11,7 +11,17 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class Endereco {
-    String cep, estado, cidade, rua;
-    int numero;
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column
+    private String cep;
+    @Column
+    private String estado;
+    @Column
+    private String cidade;
+    @Column
+    private String rua;
+    @Column
+    private int numero;
 
 }
