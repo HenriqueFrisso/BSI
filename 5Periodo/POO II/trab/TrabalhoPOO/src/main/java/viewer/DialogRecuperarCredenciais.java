@@ -42,7 +42,7 @@ public class DialogRecuperarCredenciais extends javax.swing.JDialog {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 140, 0));
-        jLabel1.setText("Digite o código enviado para seu e-mail ou telefone");
+        jLabel1.setText("Digite o código enviado para seu e-mail");
 
         jTextField1.setBackground(new java.awt.Color(230, 240, 255));
 
@@ -69,9 +69,9 @@ public class DialogRecuperarCredenciais extends javax.swing.JDialog {
                         .addGap(142, 142, 142)
                         .addComponent(jButton1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
+                        .addGap(83, 83, 83)
                         .addComponent(jLabel1)))
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

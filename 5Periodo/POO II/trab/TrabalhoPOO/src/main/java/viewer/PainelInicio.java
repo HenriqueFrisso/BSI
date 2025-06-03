@@ -262,7 +262,7 @@ public class PainelInicio extends javax.swing.JPanel {
             jLabel6.setText("Gerar novo código");
             Controller.trocarTipoAtual();
         } else{
-            jLabel2.setText("E-Mail ou Telefone");
+            jLabel2.setText("E-Mail");
             jLabel3.setText("Senha");
             jLabel5.setText("Entrar como loja");
             jLabel6.setText("Esqueci minha senha");

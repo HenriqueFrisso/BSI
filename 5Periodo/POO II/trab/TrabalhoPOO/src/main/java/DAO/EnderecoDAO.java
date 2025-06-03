@@ -7,6 +7,7 @@ package DAO;
 import domain.Endereco;
 import domain.Loja;
 import domain.Usuario;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -52,7 +53,30 @@ public class EnderecoDAO {
             return null;
         }
     }
-
+    
+    public static ArrayList<Endereco> listarEnderecosPorUsuarioId(Long usuario_id) {
+        try (Session session = Conexao.getSessionFactory().openSession()) {
+            return (ArrayList<Endereco>) session.createQuery(
+                    "from endereco e where e.usuario.id = :usuario_id", Endereco.class)
+                    .setParameter("usuario_id", usuario_id)
+                    .list();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public static ArrayList<Endereco> listarEnderecosPorLojaId(Long loja_id) {
+        try (Session session = Conexao.getSessionFactory().openSession()) {
+            return (ArrayList<Endereco>) session.createQuery(
+                    "from endereco e where e.loja.id = :loja_id", Endereco.class)
+                    .setParameter("loja_id", loja_id)
+                    .list();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
     // Remover endereço
     public static void removerEndereco(Long id) {
         Transaction transacao = null;

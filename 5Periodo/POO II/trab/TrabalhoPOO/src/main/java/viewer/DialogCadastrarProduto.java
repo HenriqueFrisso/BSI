@@ -2,6 +2,7 @@ package viewer;
 
 import controller.Controller;
 import DAO.MainDAO;
+import DAO.ProdutoDAO;
 import domain.Produto;
 import domain.Util;
 import java.awt.Image;
@@ -19,19 +20,19 @@ public class DialogCadastrarProduto extends javax.swing.JDialog {
         initComponents();
     }
     private boolean verificar(){
-        if (jTextField1.getText().equals("") || jTextField2.getText().equals("")){
+        if (nome.getText().equals("") || preco.getText().equals("")){
             JOptionPane.showMessageDialog(null, 
                                           "Preencha todos os campos.", 
                                           "Erro", 
                                           JOptionPane.ERROR_MESSAGE);
             return false;
-        } else if(jLabel4.getIcon() == null){
+        } else if(lblImagem.getIcon() == null){
             JOptionPane.showMessageDialog(null, 
                                           "Adicione uma imagem.", 
                                           "Erro", 
                                           JOptionPane.ERROR_MESSAGE);
             return false;
-        } else if(!(Util.isDouble(jTextField2.getText()))){
+        } else if(!(Util.isDouble(preco.getText()))){
             JOptionPane.showMessageDialog(null, 
                                           "O campo valor deve ser um número, Ex: '9.99'", 
                                           "Erro", 
@@ -49,9 +50,9 @@ public class DialogCadastrarProduto extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        lblImagem = new javax.swing.JLabel();
+        nome = new javax.swing.JTextField();
+        preco = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -80,16 +81,16 @@ public class DialogCadastrarProduto extends javax.swing.JDialog {
         jLabel3.setForeground(new java.awt.Color(255, 140, 0));
         jLabel3.setText("Imagem");
 
-        jLabel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblImagem.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        lblImagem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
+                lblImagemMouseClicked(evt);
             }
         });
 
-        jTextField1.setBackground(new java.awt.Color(230, 240, 255));
+        nome.setBackground(new java.awt.Color(230, 240, 255));
 
-        jTextField2.setBackground(new java.awt.Color(230, 240, 255));
+        preco.setBackground(new java.awt.Color(230, 240, 255));
 
         jButton2.setBackground(new java.awt.Color(230, 240, 255));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -116,15 +117,15 @@ public class DialogCadastrarProduto extends javax.swing.JDialog {
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel2)
                             .addGap(18, 18, 18)
-                            .addComponent(jTextField2))
+                            .addComponent(preco))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel1)
                             .addGap(18, 18, 18)
-                            .addComponent(jTextField1))
+                            .addComponent(nome))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addComponent(jLabel3)
                             .addGap(18, 18, 18)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(lblImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(229, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -133,15 +134,15 @@ public class DialogCadastrarProduto extends javax.swing.JDialog {
                 .addGap(11, 11, 11)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(preco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -164,7 +165,13 @@ public class DialogCadastrarProduto extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     if (verificar()){     
-        Produto p = MainDAO.criarProduto(String.valueOf(jTextField1.getText()), Double.parseDouble(jTextField2.getText()));
+        
+        String nome = this.nome.getText();
+        Double preco = Double.parseDouble(this.preco.getText());
+        ImageIcon icon = (ImageIcon) this.lblImagem.getIcon();
+        byte[] imagemBytes = Util.converterImagemParaBytes(icon);
+        Produto p = new Produto(nome, preco, imagemBytes, Controller.getLoja());
+        ProdutoDAO.cadastrarProduto(p);
         Controller.adicionarProduto(p);
         tela.gerenciarProdutos.atualizarProdutos();
         this.setVisible(false);
@@ -173,17 +180,17 @@ public class DialogCadastrarProduto extends javax.swing.JDialog {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+    private void lblImagemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImagemMouseClicked
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileFilter(new FileNameExtensionFilter("Imagens", "jpg", "jpeg", "png", "gif"));
         int retorno = fileChooser.showOpenDialog(this);
         if (retorno == JFileChooser.APPROVE_OPTION) {
             File arquivo = fileChooser.getSelectedFile();
             ImageIcon imagem = new ImageIcon(arquivo.getAbsolutePath());
-            Image img = imagem.getImage().getScaledInstance(jLabel4.getWidth(), jLabel4.getHeight(), Image.SCALE_SMOOTH);
-            jLabel4.setIcon(new ImageIcon(img));
+            Image img = imagem.getImage().getScaledInstance(lblImagem.getWidth(), lblImagem.getHeight(), Image.SCALE_SMOOTH);
+            lblImagem.setIcon(new ImageIcon(img));
         }
-    }//GEN-LAST:event_jLabel4MouseClicked
+    }//GEN-LAST:event_lblImagemMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -191,9 +198,9 @@ public class DialogCadastrarProduto extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel lblImagem;
+    private javax.swing.JTextField nome;
+    private javax.swing.JTextField preco;
     // End of variables declaration//GEN-END:variables
 }

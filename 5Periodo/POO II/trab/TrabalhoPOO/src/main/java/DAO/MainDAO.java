@@ -10,9 +10,9 @@ import java.util.Date;
 public class MainDAO {
     
     
-    private static Usuario usuario = new Usuario("","","");
-    private static Produto produto = new Produto("", 0);
-    private static ArrayList<Produto> procurarProdutos = carregarListaInicial();
+    private static Usuario usuario = new Usuario();
+    private static Produto produto = new Produto();
+    private static ArrayList<Produto> procurarProdutos = new ArrayList<Produto>();
     private static ArrayList<Produto> carrinho;
     
 //    public static Loja criarLoja(String nome, String cnpj, String codigo){;
@@ -28,16 +28,16 @@ public class MainDAO {
 //        return endereco;
 //        
 //    }
-    public static ArrayList<Produto> carregarListaInicial(){
-        ArrayList<Produto> l = new ArrayList<>();
-        
-       l.add(criarProduto("Abacaxi", 5.10));
-        l.add(criarProduto("Ameixa", 6.45));
-        l.add(criarProduto("Banana", 3.70));
-        l.add(criarProduto("Maça", 8.00));
-        l.add(criarProduto("Pêssego", 12.50));
-        return l;
-    }
+//    public static ArrayList<Produto> carregarListaInicial(){
+//        ArrayList<Produto> l = new ArrayList<>();
+//        
+//       l.add(criarProduto("Abacaxi", 5.10));
+//        l.add(criarProduto("Ameixa", 6.45));
+//        l.add(criarProduto("Banana", 3.70));
+//        l.add(criarProduto("Maça", 8.00));
+//        l.add(criarProduto("Pêssego", 12.50));
+//        return l;
+//    }
     
     public static ArrayList<Endereco> carregarEnderecos(){
         ArrayList<Endereco> l = new ArrayList<>();

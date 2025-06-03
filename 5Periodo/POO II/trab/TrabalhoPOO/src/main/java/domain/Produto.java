@@ -12,6 +12,12 @@ import lombok.*;
 public class Produto implements Serializable{
 
     public Produto(){}
+    public Produto(String nome, double preco, byte[] imagem, Loja loja){
+        this.nome = nome;
+        this.preco = preco;
+        this.imagem = imagem;
+        this.loja = loja;
+    }
     public Produto(String nome, double preco) {
         this.nome = nome;
         this.preco = preco;
@@ -41,12 +47,12 @@ public class Produto implements Serializable{
         this.preco = preco;
     }
 
-    public double getQtdEstoque() {
-        return qtdEstoque;
+    public byte[] getImagem() {
+        return imagem;
     }
 
-    public void setQtdEstoque(double qtdEstoque) {
-        this.qtdEstoque = qtdEstoque;
+    public void setImagem(byte[] imagem) {
+        this.imagem = imagem;
     }
 
     public Loja getLoja() {
@@ -70,8 +76,8 @@ public class Produto implements Serializable{
     private String nome;
     @Column
     private double preco;
-    @Column
-    private double qtdEstoque;
+    @Lob
+    private byte[] imagem;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "lojaId")
     private Loja loja;

@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 @Entity(name = "endereco")
 @AllArgsConstructor
-@NoArgsConstructor
 public class Endereco implements Serializable {
 
     public Endereco(){}

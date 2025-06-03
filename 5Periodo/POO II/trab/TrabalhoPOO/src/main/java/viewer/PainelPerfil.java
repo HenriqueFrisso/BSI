@@ -1,5 +1,8 @@
 package viewer;
 
+import controller.Controller;
+import domain.Usuario;
+
 public class PainelPerfil extends javax.swing.JPanel {
     Tela tela;
     
@@ -11,20 +14,33 @@ public class PainelPerfil extends javax.swing.JPanel {
     }
     @Override
     public void setVisible(boolean aFlag) {
+        iniciar();
         super.setVisible(aFlag);
         if (aFlag == true){
             tela.setSize(410, 170);
         }
     }
     private void iniciar(){
+        Usuario usuario = Controller.getUsuario();
+        nome.setText(usuario.getNome());
+        cpf.setText(usuario.getCpf());
+        email.setText(usuario.getEmail());
+        
+        if (usuario.getDataNasc() != null) {
+        data.setText(usuario.getDataNasc().toString());
+        }else{
+                data.setText("Data");
+                }
+        
+        
         jPanel1.setVisible(true);
         jPanel2.setVisible(false);
         jPanel3.setVisible(false);
     }
     private void carregarTextField(){
-        jTextField1.setText(jLabel3.getText());
-        jTextField2.setText(jLabel5.getText());
-        jTextField3.setText(jLabel7.getText());
+        jTextField1.setText(nome.getText());
+        jTextField2.setText(cpf.getText());
+        jTextField3.setText(email.getText());
         jPasswordField1.setText("");
         jPasswordField2.setText("");
         jPasswordField3.setText("");
@@ -35,13 +51,13 @@ public class PainelPerfil extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        nome = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        cpf = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        email = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        data = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -70,33 +86,33 @@ public class PainelPerfil extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 140, 0));
         jLabel2.setText("Nome:");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 140, 0));
-        jLabel3.setText("NOME");
+        nome.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        nome.setForeground(new java.awt.Color(255, 140, 0));
+        nome.setText("NOME");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 140, 0));
         jLabel4.setText("CPF:");
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 140, 0));
-        jLabel5.setText("CPF");
+        cpf.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        cpf.setForeground(new java.awt.Color(255, 140, 0));
+        cpf.setText("CPF");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 140, 0));
         jLabel6.setText("E-Mail:");
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 140, 0));
-        jLabel7.setText("E-MAIL");
+        email.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        email.setForeground(new java.awt.Color(255, 140, 0));
+        email.setText("E-MAIL");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 140, 0));
         jLabel8.setText("Data de nascimento:");
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 140, 0));
-        jLabel9.setText("DATA");
+        data.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        data.setForeground(new java.awt.Color(255, 140, 0));
+        data.setText("DATA");
 
         jButton1.setBackground(new java.awt.Color(230, 240, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -138,15 +154,15 @@ public class PainelPerfil extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5))
+                        .addComponent(cpf))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3))
+                        .addComponent(nome))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel9))
+                        .addComponent(data))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addGap(30, 30, 30)
@@ -156,7 +172,7 @@ public class PainelPerfil extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7)))
+                        .addComponent(email)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -165,19 +181,19 @@ public class PainelPerfil extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(nome))
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel5))
+                    .addComponent(cpf))
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel7))
+                    .addComponent(email))
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel9))
+                    .addComponent(data))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -442,6 +458,9 @@ public class PainelPerfil extends javax.swing.JPanel {
         tela.alterarPainel(this, tela.gerenciarEnderecos);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel cpf;
+    private javax.swing.JLabel data;
+    private javax.swing.JLabel email;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -456,13 +475,9 @@ public class PainelPerfil extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -472,5 +487,6 @@ public class PainelPerfil extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel nome;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,5 +1,6 @@
 package controller;
 
+import DAO.EnderecoDAO;
 import DAO.LojaDAO;
 import domain.Produto;
 import domain.Endereco;
@@ -24,14 +25,17 @@ public class Controller {
         return tipoAtual;
     }
     public enum Tipo {
-    USUARIO, LOJA;
+        USUARIO, LOJA;
     }
     private static String codigoRecuperacao;
     
     private static Loja lojaAtual = new Loja();
     private static Usuario usuarioAtual = new Usuario();
     private static Produto produtoAtual = new Produto();
-    private static ArrayList<Produto> produtos = MainDAO.carregarListaInicial();
+    private static ArrayList<Produto> produtos = new ArrayList<Produto>();
+    private static ArrayList<Endereco> enderecos = new ArrayList<Endereco>();
+    private static ArrayList<Produto> procurarProdutos = new ArrayList<Produto>();
+    private static ArrayList<Produto> carrinho = new ArrayList<>();
     
     public static Loja getLoja(){
         return lojaAtual;
@@ -44,9 +48,6 @@ public class Controller {
     public static void setProdutos(ArrayList<Produto> Produtos) {
         Controller.produtos = Produtos;
     }
-    private static ArrayList<Produto> procurarProdutos = MainDAO.carregarListaInicial();
-    private static ArrayList<Produto> carrinho = new ArrayList<>();
-    private static ArrayList<Endereco> enderecos = MainDAO.carregarEnderecos();
     
     
     
@@ -73,20 +74,19 @@ public class Controller {
     }
     public static boolean verificarCredenciais(String usuario, String senha){
         if (tipoAtual == Tipo.USUARIO){
-            System.out.println("usuario");
-            System.out.println(usuario);
-            System.out.println(senha);
             return (UsuarioDAO.verificarLogin(usuario, senha));
         }else{
-            System.out.println("loja");
-            System.out.println(usuario);
-            System.out.println(senha);
             return (LojaDAO.verificarLogin(usuario, senha));
         }
     }
     
     
     public static ArrayList<Endereco> getEnderecos(){
+        if (tipoAtual == Tipo.USUARIO){
+            enderecos = EnderecoDAO.listarEnderecosPorUsuarioId(usuarioAtual.getId());
+        }else{
+            enderecos = EnderecoDAO.listarEnderecosPorLojaId(lojaAtual.getId());
+        }
         return removeDuplicados(enderecos);
     }
     public static void removerEndereco(ArrayList<Endereco> l, Endereco e){
@@ -95,8 +95,8 @@ public class Controller {
     }
     
     public static <T> ArrayList<T> removeDuplicados(ArrayList<T> list) {
-    return new ArrayList<>(new LinkedHashSet<>(list));
-}
+        return new ArrayList<>(new LinkedHashSet<>(list));
+    }
     
     public static void limparCarrinho(){
         carrinho.clear();

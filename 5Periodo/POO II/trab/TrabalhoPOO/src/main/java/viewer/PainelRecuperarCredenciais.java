@@ -34,7 +34,7 @@ public class PainelRecuperarCredenciais extends javax.swing.JPanel {
             jLabel1.setText("CNPJ");
             jButton1.setText("Gerar novo código");
         }else{
-            jLabel1.setText("E-Mail ou Telefone");
+            jLabel1.setText("E-Mail");
             jButton1.setText("Recuperar senha");
         }
         
@@ -77,7 +77,7 @@ public class PainelRecuperarCredenciais extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 140, 0));
-        jLabel1.setText("E-Mail ou Telefone");
+        jLabel1.setText("E-Mail");
 
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -116,7 +116,7 @@ public class PainelRecuperarCredenciais extends javax.swing.JPanel {
                         .addComponent(jTextField1))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
                         .addComponent(jButton1)))
                 .addContainerGap())
         );
