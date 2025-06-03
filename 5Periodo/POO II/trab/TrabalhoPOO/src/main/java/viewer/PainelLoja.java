@@ -1,6 +1,6 @@
 package viewer;
 
-import com.mycompany.trabalhopoo.Util;
+import domain.Util;
 import java.awt.Image;
 import java.io.File;
 import javax.swing.ImageIcon;

@@ -1,9 +1,9 @@
 package viewer;
 
-import Controller.Controller;
-import Controller.Controller.Tipo;
-import com.mycompany.trabalhopoo.Endereco;
-import com.mycompany.trabalhopoo.Util;
+import controller.Controller;
+import controller.Controller.Tipo;
+import domain.Endereco;
+import domain.Util;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 

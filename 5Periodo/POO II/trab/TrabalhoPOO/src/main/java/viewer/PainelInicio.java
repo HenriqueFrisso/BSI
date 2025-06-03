@@ -1,7 +1,7 @@
 package viewer;
 
-import Controller.Controller;
-import Controller.Controller.Tipo;
+import controller.Controller;
+import controller.Controller.Tipo;
 import javax.swing.JOptionPane;
 
 public class PainelInicio extends javax.swing.JPanel {

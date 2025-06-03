@@ -4,7 +4,7 @@
  */
 package viewer;
 
-import Controller.Controller;
+import controller.Controller;
 import javax.swing.JOptionPane;
 
 /**

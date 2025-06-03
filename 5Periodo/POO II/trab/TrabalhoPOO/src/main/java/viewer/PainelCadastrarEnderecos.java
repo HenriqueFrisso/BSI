@@ -1,7 +1,27 @@
 package viewer;
 
+import DAO.EnderecoDAO;
+import DAO.LojaDAO;
+import DAO.UsuarioDAO;
+import domain.Endereco;
+import domain.Loja;
+import domain.Usuario;
+import domain.Util;
+import java.awt.Color;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 public class PainelCadastrarEnderecos extends javax.swing.JPanel {
     Tela tela;
+    ArrayList<Endereco> enderecos = new ArrayList<>();
 
     public PainelCadastrarEnderecos(Tela tela) {
         this.tela = tela;
@@ -13,31 +33,58 @@ public class PainelCadastrarEnderecos extends javax.swing.JPanel {
     public void setVisible(boolean aFlag) {
         super.setVisible(aFlag);
         if (aFlag == true){
+            enderecos.clear();
             iniciar();
             tela.setSize(463,362);
         }
     }
     private void iniciar(){
+        carregarEnderecosNaTabela(this.tabelaEnderecos, enderecos);
         carregarTextos();
         carregarCombo();
     }
     private void carregarTextos(){
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jTextField4.setText("");
+        cep.setText("");
+        cep.setBackground(new Color(230,240,255));
+        numero.setText("");
+        numero.setBackground(new Color(230,240,255));
+        cidade.setText("");
+        cidade.setBackground(new Color(230,240,255));
+        rua.setText("");
+        rua.setBackground(new Color(230,240,255));
     }
     private void carregarCombo() {
         String[] estados = {
             "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", 
             "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO"
         };
-        jComboBox1.removeAllItems();
+        cmbEstados.removeAllItems();
         for (String estado : estados) {
-            jComboBox1.addItem(estado);
+            cmbEstados.addItem(estado);
         }
-        jComboBox1.setSelectedItem("ES");
+        cmbEstados.setSelectedItem("ES");
     }
+    
+    
+    public void carregarEnderecosNaTabela(JTable tabela, ArrayList<Endereco> enderecos) {
+        String[] colunas = { "CEP", "Número", "Estado", "Cidade", "Rua" };
+        DefaultTableModel modelo = new DefaultTableModel(colunas, 0); // 0 linhas inicialmente
+
+        for (Endereco e : enderecos) {
+            Object[] linha = {
+                e.getCep(),
+                e.getNumero(),
+                e.getEstado(),
+                e.getCidade(),
+                e.getRua()
+            };
+            modelo.addRow(linha);
+        }
+
+        tabela.setModel(modelo);
+    }
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -53,13 +100,13 @@ public class PainelCadastrarEnderecos extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField2 = new javax.swing.JTextField();
+        cep = new javax.swing.JTextField();
+        cidade = new javax.swing.JTextField();
+        rua = new javax.swing.JTextField();
+        cmbEstados = new javax.swing.JComboBox<>();
+        numero = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaEnderecos = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -99,24 +146,24 @@ public class PainelCadastrarEnderecos extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(255, 140, 0));
         jLabel6.setText("Num");
 
-        jTextField1.setBackground(new java.awt.Color(230, 240, 255));
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+        cep.setBackground(new java.awt.Color(230, 240, 255));
+        cep.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField1KeyReleased(evt);
+                cepKeyReleased(evt);
             }
         });
 
-        jTextField3.setBackground(new java.awt.Color(230, 240, 255));
+        cidade.setBackground(new java.awt.Color(230, 240, 255));
 
-        jTextField4.setBackground(new java.awt.Color(230, 240, 255));
+        rua.setBackground(new java.awt.Color(230, 240, 255));
 
-        jComboBox1.setBackground(new java.awt.Color(230, 240, 255));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbEstados.setBackground(new java.awt.Color(230, 240, 255));
+        cmbEstados.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jTextField2.setBackground(new java.awt.Color(230, 240, 255));
-        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+        numero.setBackground(new java.awt.Color(230, 240, 255));
+        numero.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField2KeyReleased(evt);
+                numeroKeyReleased(evt);
             }
         });
 
@@ -130,24 +177,24 @@ public class PainelCadastrarEnderecos extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                        .addComponent(cep, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbEstados, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(numero, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cidade, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField4)))
+                        .addComponent(rua)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -156,22 +203,22 @@ public class PainelCadastrarEnderecos extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbEstados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(numero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rua, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable1.setBackground(new java.awt.Color(230, 240, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaEnderecos.setBackground(new java.awt.Color(230, 240, 255));
+        tabelaEnderecos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -190,8 +237,8 @@ public class PainelCadastrarEnderecos extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        jTable1.setComponentPopupMenu(jPopupMenu1);
-        jScrollPane1.setViewportView(jTable1);
+        tabelaEnderecos.setComponentPopupMenu(jPopupMenu1);
+        jScrollPane1.setViewportView(tabelaEnderecos);
 
         jButton1.setBackground(new java.awt.Color(230, 240, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -272,36 +319,103 @@ public class PainelCadastrarEnderecos extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Usuario usuario = null;
+        Loja loja = null;
+        if (this.tela.cadastro.radioUsuario.isSelected() == true){
+            String nome = this.tela.cadastro.nomeUsuario.getText();
+            String email = this.tela.cadastro.email.getText();
+            char[] senhaChars = this.tela.cadastro.senha.getPassword();
+            String senha = new String(senhaChars);
+            String cpf = this.tela.cadastro.cpf.getText();
+            String dataTexto = this.tela.cadastro.dataNasc.getText();
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+            Date data = null;
+            try {
+                data = formato.parse(dataTexto);
+            } catch (ParseException ex) {
+                Logger.getLogger(PainelCadastrarEnderecos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            usuario = new Usuario(nome, email, senha, cpf, data);
+            UsuarioDAO.cadastrarUsuario(usuario);
+        }else{
+            String nome = this.tela.cadastro.nomeLoja.getText().trim();
+            String telefone = this.tela.cadastro.telefone.getText().trim();
+            String cnpj = this.tela.cadastro.cnpj.getText().trim();
+            String codigo = this.tela.cadastro.codigo.getText();
+            ImageIcon icon = (ImageIcon) this.tela.cadastro.lblLogo.getIcon();
+            byte[] imagemBytes = Util.converterImagemParaBytes(icon);
+            
+            loja = new Loja(nome, telefone, cnpj, codigo, imagemBytes);
+            LojaDAO.cadastrarLoja(loja);
+
+        }
+        System.out.println("aaaaaaa");
+        for (Endereco endereco : enderecos) {
+            if (usuario != null){
+                EnderecoDAO.adicionarEndereco(endereco, usuario);
+            }else{
+                EnderecoDAO.adicionarEndereco(endereco, loja);
+            }
+        }
+        System.out.println("aaaaaaa");
         tela.alterarPainel(this, tela.inicio);
+        tela.cadastro.iniciar();
     }//GEN-LAST:event_jButton1ActionPerformed
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         tela.alterarPainel(this, tela.cadastro);
     }//GEN-LAST:event_jButton2ActionPerformed
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        iniciar();
+        String cep = this.cep.getText().trim();
+        String num = this.numero.getText().trim();
+        String estado = (this.cmbEstados.getSelectedItem()).toString();
+        String cidade = this.cidade.getText().trim();
+        String rua = this.rua.getText().trim();
+        
+        boolean cepValido = Util.validarCampo(this.cep, cep.matches("^\\d{5}\\-\\d{3}$"));
+        boolean numValido = Util.validarCampo(this.numero, !(num.equals("")));
+        boolean cidadeValido = Util.validarCampo(this.cidade, cidade.length() >= 4);
+        boolean ruaValido = Util.validarCampo(this.rua, rua.length() >= 4);
+        
+        StringBuilder mensagensErro = new StringBuilder();
+
+        if (!cepValido) mensagensErro.append("• CEP inválido. Ex: 00000-000\n");
+        if (!numValido) mensagensErro.append("• Número não pode ser vazio\n");
+        if (!cidadeValido) mensagensErro.append("• Cidade deve conter pelo menos 4 caracteres.\n");
+        if (!ruaValido) mensagensErro.append("• Rua deve conter pelo menos 4 caracteres.\n");
+
+        if (cepValido && numValido && cidadeValido && ruaValido) {
+            Endereco endereco = new Endereco(estado, cidade, rua, num, cep);
+            enderecos.add(endereco);
+            iniciar();
+        } else {
+            JOptionPane.showMessageDialog(null, mensagensErro.toString(), "Erro de Validação", JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_jButton3ActionPerformed
-    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
-        String texto = jTextField1.getText().replaceAll("\\D", "");
+    private void cepKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cepKeyReleased
+        String texto = cep.getText().replaceAll("\\D", "");
         int tam = texto.length();
         if (tam > 8) {
             texto = texto.substring(0, 8);
         }
-        if (tam >= 5 && tam <= 8) {
+        if (tam >= 5) {
             texto = String.format("%s-%s",
                 texto.substring(0, 5),
                 texto.substring(5));
         }
-        jTextField1.setText(texto);
-    }//GEN-LAST:event_jTextField1KeyReleased
-    private void jTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyReleased
-        String texto = jTextField2.getText().replaceAll("\\D", "");
-        jTextField2.setText(texto);
-    }//GEN-LAST:event_jTextField2KeyReleased
+        cep.setText(texto);
+    }//GEN-LAST:event_cepKeyReleased
+    private void numeroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numeroKeyReleased
+        String texto = numero.getText().replaceAll("\\D", "");
+        numero.setText(texto);
+    }//GEN-LAST:event_numeroKeyReleased
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField cep;
+    private javax.swing.JTextField cidade;
+    private javax.swing.JComboBox<String> cmbEstados;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -314,10 +428,8 @@ public class PainelCadastrarEnderecos extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField numero;
+    private javax.swing.JTextField rua;
+    private javax.swing.JTable tabelaEnderecos;
     // End of variables declaration//GEN-END:variables
 }

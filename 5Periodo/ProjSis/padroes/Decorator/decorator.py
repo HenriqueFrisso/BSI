@@ -1,24 +1,44 @@
 from imports import *
 
-"""
-Python oferece suporte nativo a decoradores,
-que são funções que podem modificar o comportamento de outras funções ou métodos. 
-Decoradores são frequentemente usados para adicionar funcionalidades a funções existentes, 
-como autenticação, registro de logs, verificação de permissões, entre outros.
+def decorator(func):
+    def interna(*args, **kwargs):
+        print("Inicio do decorator")
+        func(*args, **kwargs)
+        print("Fim do decorator")
+    return interna
 
-# Para usar um decorador, você simplesmente o aplica a uma função usando o símbolo "@" antes da definição da função.
-# Isso é equivalente a passar a função para o decorador como argumento.
+def somar(x, y):
+    print(f"A soma de {x} e {y} é: {x + y}")
 
-"""
+somar = decorator(somar)
+somar(2,3)
 
-# lista = []
-# for i in range (9999):
-#     lista.append(randint(0,100000))
+'''
+def somar(x, y):
+    print("Inicio do decorator")
+    print(f"A soma de {x} e {y} é: {x + y}")
+    print("Fim do decorator")
 
-# shellSort(lista)
-# bubbleSort(lista)
-# insertionSort(lista)
+'''
 
+def singleton(cls):
+    instancias = {} # {classeA: instanciaA, classeB: instanciaB}
 
+    def get_instance(*args, **kwargs):
+        if cls not in instancias:
+            instancias[cls] = cls(*args, **kwargs)
+        return instancias[cls]
 
-inverter("Python", "Java", "C++", "JavaScript", "PHP")
+    return get_instance
+
+@singleton
+class Teste:
+    def __init__(self, nome):
+        self.nome = nome
+
+    def __str__(self):
+        return f"{self.nome}"
+    
+t1 = Teste("A")
+t2 = Teste("B")
+print(t2 == t1)

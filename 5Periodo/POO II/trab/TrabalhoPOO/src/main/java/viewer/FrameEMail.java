@@ -1,7 +1,7 @@
 package viewer;
 
-import Controller.Controller;
-import com.mycompany.trabalhopoo.Util;
+import controller.Controller;
+import domain.Util;
 import java.awt.Color;
 import javax.swing.JFrame;
 

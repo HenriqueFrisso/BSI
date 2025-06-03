@@ -1,8 +1,8 @@
 package viewer;
 
-import Controller.Controller;
-import Controller.Controller.Tipo;
-import com.mycompany.trabalhopoo.Util;
+import controller.Controller;
+import controller.Controller.Tipo;
+import domain.Util;
 import java.awt.Cursor;
 import javax.swing.JOptionPane;
 

@@ -1,7 +1,7 @@
 package viewer;
 
-import Controller.Controller;
-import com.mycompany.trabalhopoo.Produto;
+import controller.Controller;
+import domain.Produto;
 
 public class ItensParaComprar extends javax.swing.JPanel {
     Tela tela;

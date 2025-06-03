@@ -1,7 +1,7 @@
 package viewer;
 
-import Controller.Controller;
-import com.mycompany.trabalhopoo.Produto;
+import controller.Controller;
+import domain.Produto;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 

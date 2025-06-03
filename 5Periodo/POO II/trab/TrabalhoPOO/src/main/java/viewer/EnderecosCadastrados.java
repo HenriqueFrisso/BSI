@@ -1,8 +1,8 @@
 package viewer;
 
-import Controller.Controller;
-import com.mycompany.trabalhopoo.Endereco;
-import com.mycompany.trabalhopoo.Util;
+import controller.Controller;
+import domain.Endereco;
+import domain.Util;
 
 public class EnderecosCadastrados extends javax.swing.JPanel {
     Tela tela;

@@ -1,9 +1,9 @@
 package viewer;
 
-import Controller.Controller;
+import controller.Controller;
 import DAO.MainDAO;
-import com.mycompany.trabalhopoo.Produto;
-import com.mycompany.trabalhopoo.Util;
+import domain.Produto;
+import domain.Util;
 import java.awt.Image;
 import java.io.File;
 import javax.swing.ImageIcon;

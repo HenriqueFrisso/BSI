@@ -1,7 +1,9 @@
-package Controller;
+package controller;
 
+import domain.Produto;
+import domain.Endereco;
+import domain.Usuario;
 import DAO.MainDAO;
-import com.mycompany.trabalhopoo.*;
 import java.util.*;
 
 public class Controller {

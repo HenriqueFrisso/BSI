@@ -1,6 +1,6 @@
 package viewer;
 
-import Controller.Controller;
+import controller.Controller;
 
 public class PainelComprar extends javax.swing.JPanel {
     Tela tela;

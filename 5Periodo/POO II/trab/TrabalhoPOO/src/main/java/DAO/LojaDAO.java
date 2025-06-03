@@ -1,17 +1,24 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package DAO;
 
-import domain.Usuario;
+import domain.Loja;
+import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import java.util.List;
 
-public class UsuarioDAO {
-
-    public static void cadastrarUsuario(Usuario usuario) {
+/**
+ *
+ * @author Henrique
+ */
+public class LojaDAO {
+    public static void cadastrarLoja(Loja loja) {
         Transaction transacao = null;
         try (Session session = Conexao.getSessionFactory().openSession()) {
             transacao = session.beginTransaction();
-            session.save(usuario);
+            session.save(loja);
             transacao.commit();
         } catch (Exception e) {
             if (transacao != null) transacao.rollback();
@@ -19,13 +26,13 @@ public class UsuarioDAO {
         }
     }
 
-    public static void removerUsuario(Long id) {
+    public static void removerLoja(Long id) {
         Transaction transacao = null;
         try (Session session = Conexao.getSessionFactory().openSession()) {
             transacao = session.beginTransaction();
-            Usuario usuario = session.get(Usuario.class, id);
-            if (usuario != null) {
-                session.delete(usuario);
+            Loja loja = session.get(Loja.class, id);
+            if (loja != null) {
+                session.delete(loja);
             }
             transacao.commit();
         } catch (Exception e) {
@@ -34,9 +41,9 @@ public class UsuarioDAO {
         }
     }
 
-    public static List<Usuario> listarUsuarios() {
+    public static List<Loja> listarLojas() {
         try (Session session = Conexao.getSessionFactory().openSession()) {
-            return session.createQuery("from Usuario", Usuario.class).list();
+            return session.createQuery("from Loja", Loja.class).list();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
