@@ -42,4 +42,31 @@ public class UsuarioDAO {
             return null;
         }
     }
+    
+
+    public static boolean verificarLogin(String email, String senha) {
+        try (Session session = Conexao.getSessionFactory().openSession()) {
+            String hql = "FROM usuario WHERE email = :email AND senha = :senha";
+            List<Usuario> resultado = session.createQuery(hql, Usuario.class)
+                                             .setParameter("email", email)
+                                             .setParameter("senha", senha)
+                                             .getResultList();
+            return !resultado.isEmpty();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    public static Usuario getUsuario(String email) {
+    try (Session session = Conexao.getSessionFactory().openSession()) {
+        String hql = "FROM usuario WHERE email = :email";
+        return session.createQuery(hql, Usuario.class)
+                      .setParameter("email", email)
+                      .uniqueResult();
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
+    }
+}
 }

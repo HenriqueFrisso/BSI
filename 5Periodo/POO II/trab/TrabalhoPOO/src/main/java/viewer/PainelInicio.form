@@ -155,7 +155,7 @@
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="8c" red="ff" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="E-mail ou Telefone"/>
+                <Property name="text" type="java.lang.String" value="E-mail"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">

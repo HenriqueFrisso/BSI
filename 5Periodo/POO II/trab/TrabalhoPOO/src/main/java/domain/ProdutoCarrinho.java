@@ -9,6 +9,8 @@ import lombok.*;
 @AllArgsConstructor
 public class ProdutoCarrinho implements Serializable{
 
+    
+    public ProdutoCarrinho(){}
     public ProdutoCarrinhoId getFk() {
         return fk;
     }

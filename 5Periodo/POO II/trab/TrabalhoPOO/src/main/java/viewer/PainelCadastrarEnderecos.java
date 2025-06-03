@@ -349,7 +349,6 @@ public class PainelCadastrarEnderecos extends javax.swing.JPanel {
             LojaDAO.cadastrarLoja(loja);
 
         }
-        System.out.println("aaaaaaa");
         for (Endereco endereco : enderecos) {
             if (usuario != null){
                 EnderecoDAO.adicionarEndereco(endereco, usuario);
@@ -357,7 +356,6 @@ public class PainelCadastrarEnderecos extends javax.swing.JPanel {
                 EnderecoDAO.adicionarEndereco(endereco, loja);
             }
         }
-        System.out.println("aaaaaaa");
         tela.alterarPainel(this, tela.inicio);
         tela.cadastro.iniciar();
     }//GEN-LAST:event_jButton1ActionPerformed

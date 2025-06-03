@@ -2,10 +2,12 @@
 package domain;
 
 import java.awt.Color;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Random;
@@ -116,4 +118,27 @@ public class Util {
             return null;
         }
     }
+    public static ImageIcon converterBytesParaImageIcon(byte[] img){
+        try{
+            ByteArrayInputStream bais = new ByteArrayInputStream(img);
+            Image imagem = ImageIO.read(bais);
+            return new ImageIcon(imagem);
+        } catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+    public static ImageIcon converterParaImageIconRedimensionado(byte[] bytesImagem, int largura, int altura) {
+        try {
+            ByteArrayInputStream bais = new ByteArrayInputStream(bytesImagem);
+            BufferedImage imagemOriginal = ImageIO.read(bais);
+
+            Image imagemRedimensionada = imagemOriginal.getScaledInstance(largura, altura, Image.SCALE_SMOOTH);
+            return new ImageIcon(imagemRedimensionada);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
 }

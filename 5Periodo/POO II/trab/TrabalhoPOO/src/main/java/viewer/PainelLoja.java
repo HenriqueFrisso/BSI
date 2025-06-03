@@ -1,5 +1,7 @@
 package viewer;
 
+import controller.Controller;
+import domain.Loja;
 import domain.Util;
 import java.awt.Image;
 import java.io.File;
@@ -25,8 +27,12 @@ public class PainelLoja extends javax.swing.JPanel {
         }
     }
     private void iniciar(){
-        jTextField1.setEditable(false);
-        jTextField2.setEditable(false);
+        Loja loja = Controller.getLoja();
+        nome.setEditable(false);
+        nome.setText(loja.getNome());
+        telefone.setEditable(false);
+        telefone.setText(loja.getTelefone());
+        lblLogo.setIcon(Util.converterParaImageIconRedimensionado(loja.getLogo(), this.lblLogo.getWidth(), this.lblLogo.getHeight()));
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -39,9 +45,9 @@ public class PainelLoja extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        nome = new javax.swing.JTextField();
+        telefone = new javax.swing.JTextField();
+        lblLogo = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(200, 230, 255));
 
@@ -97,15 +103,14 @@ public class PainelLoja extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(255, 140, 0));
         jLabel3.setText("Logo");
 
-        jTextField1.setBackground(new java.awt.Color(230, 240, 255));
+        nome.setBackground(new java.awt.Color(230, 240, 255));
 
-        jTextField2.setBackground(new java.awt.Color(230, 240, 255));
+        telefone.setBackground(new java.awt.Color(230, 240, 255));
 
-        jLabel4.setText("IMAGEM");
-        jLabel4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblLogo.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        lblLogo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
+                lblLogoMouseClicked(evt);
             }
         });
 
@@ -124,13 +129,13 @@ public class PainelLoja extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton2))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-                                    .addComponent(jTextField1))
+                                    .addComponent(telefone, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                                    .addComponent(nome))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
@@ -153,17 +158,17 @@ public class PainelLoja extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(90, 90, 90))
@@ -183,23 +188,23 @@ public class PainelLoja extends javax.swing.JPanel {
         if (editar == false){
             Util.desativarComponentes(tela.loja, editar);
             editar = true;
-            jTextField1.setEditable(true);
-            jTextField1.setEnabled(true);
-            jTextField2.setEditable(true);
-            jTextField2.setEnabled(true);
+            nome.setEditable(true);
+            nome.setEnabled(true);
+            telefone.setEditable(true);
+            telefone.setEnabled(true);
             jButton2.setEnabled(true);
-            jLabel4.setEnabled(true);
+            lblLogo.setEnabled(true);
             jButton2.setText("Confirmar");
         }else{
             Util.desativarComponentes(this, true);
             editar = false;
-            jTextField1.setEditable(editar);
-            jTextField2.setEditable(editar);
+            nome.setEditable(editar);
+            telefone.setEditable(editar);
             jButton2.setEnabled(true);
             jButton2.setText("Editar credenciais");
         }        
     }//GEN-LAST:event_jButton2ActionPerformed
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+    private void lblLogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoMouseClicked
         if (editar){
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setFileFilter(new FileNameExtensionFilter("Imagens", "jpg", "jpeg", "png", "gif"));
@@ -207,11 +212,11 @@ public class PainelLoja extends javax.swing.JPanel {
             if (retorno == JFileChooser.APPROVE_OPTION) {
                 File arquivo = fileChooser.getSelectedFile();
                 ImageIcon imagem = new ImageIcon(arquivo.getAbsolutePath());
-                Image img = imagem.getImage().getScaledInstance(jLabel4.getWidth(), jLabel4.getHeight(), Image.SCALE_SMOOTH);
-                jLabel4.setIcon(new ImageIcon(img));
+                Image img = imagem.getImage().getScaledInstance(lblLogo.getWidth(), lblLogo.getHeight(), Image.SCALE_SMOOTH);
+                lblLogo.setIcon(new ImageIcon(img));
             }
         }
-    }//GEN-LAST:event_jLabel4MouseClicked
+    }//GEN-LAST:event_lblLogoMouseClicked
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -220,8 +225,8 @@ public class PainelLoja extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel lblLogo;
+    private javax.swing.JTextField nome;
+    private javax.swing.JTextField telefone;
     // End of variables declaration//GEN-END:variables
 }

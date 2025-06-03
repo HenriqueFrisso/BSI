@@ -49,4 +49,28 @@ public class LojaDAO {
             return null;
         }
     }
+    public static boolean verificarLogin(String cnpj, String codigo) {
+        try (Session session = Conexao.getSessionFactory().openSession()) {
+            String hql = "FROM loja WHERE cnpj = :cnpj AND codigo = :codigo";
+            List<Loja> resultado = session.createQuery(hql, Loja.class)
+                                          .setParameter("cnpj", cnpj)
+                                          .setParameter("codigo", codigo)
+                                          .getResultList();
+            return !resultado.isEmpty();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public static Loja getLoja(String cnpj) {
+    try (Session session = Conexao.getSessionFactory().openSession()) {
+        String hql = "FROM loja WHERE cnpj = :cnpj";
+        return session.createQuery(hql, Loja.class)
+                      .setParameter("cnpj", cnpj)
+                      .uniqueResult();
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
+    }
+}
 }

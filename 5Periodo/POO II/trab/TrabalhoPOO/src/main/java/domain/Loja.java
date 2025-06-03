@@ -13,6 +13,7 @@ import lombok.*;
 @AllArgsConstructor
 public class Loja implements Serializable{
 
+    public Loja(){}
     public Loja(String nome, String cnpj, String codigo) {
         this.nome = nome;
         this.cnpj = cnpj;

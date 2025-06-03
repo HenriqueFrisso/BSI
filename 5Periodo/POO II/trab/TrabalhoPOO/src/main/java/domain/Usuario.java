@@ -11,7 +11,9 @@ import lombok.*;
 @Entity(name="usuario")
 @AllArgsConstructor
 public class Usuario implements Serializable {
-
+    
+    public Usuario(){}
+    
     public Usuario (String nome, String email, String senha, String cpf, Date dataNasc){
         this.nome = nome;
         this.email = email;

@@ -1,9 +1,12 @@
 package controller;
 
+import DAO.LojaDAO;
 import domain.Produto;
 import domain.Endereco;
 import domain.Usuario;
 import DAO.MainDAO;
+import DAO.UsuarioDAO;
+import domain.Loja;
 import java.util.*;
 
 public class Controller {
@@ -24,11 +27,16 @@ public class Controller {
     USUARIO, LOJA;
     }
     private static String codigoRecuperacao;
-
-    private static Usuario usuarioAtual = new Usuario("","","");
-    private static Produto produtoAtual = new Produto("", 0);
+    
+    private static Loja lojaAtual = new Loja();
+    private static Usuario usuarioAtual = new Usuario();
+    private static Produto produtoAtual = new Produto();
     private static ArrayList<Produto> produtos = MainDAO.carregarListaInicial();
-
+    
+    public static Loja getLoja(){
+        return lojaAtual;
+    }
+    
     public static ArrayList<Produto> getProdutos() {
         return produtos;
     }
@@ -51,12 +59,30 @@ public class Controller {
     }
     
     public static boolean verificarLogin(String usuario, String senha){
-        if (tipoAtual == Tipo.USUARIO){
-            
-        }else{
-            
+        boolean credenciais = verificarCredenciais(usuario, senha);
+        if (credenciais){
+            if (tipoAtual == Tipo.USUARIO){
+                usuarioAtual = UsuarioDAO.getUsuario(usuario);
+                lojaAtual = null;
+            }else{
+                lojaAtual = LojaDAO.getLoja(usuario);
+                usuarioAtual = null;
+            }
         }
-        return true;
+        return credenciais;
+    }
+    public static boolean verificarCredenciais(String usuario, String senha){
+        if (tipoAtual == Tipo.USUARIO){
+            System.out.println("usuario");
+            System.out.println(usuario);
+            System.out.println(senha);
+            return (UsuarioDAO.verificarLogin(usuario, senha));
+        }else{
+            System.out.println("loja");
+            System.out.println(usuario);
+            System.out.println(senha);
+            return (LojaDAO.verificarLogin(usuario, senha));
+        }
     }
     
     

@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Endereco implements Serializable {
 
+    public Endereco(){}
+    
     public Endereco(String estado, String cidade, String rua, String numero, String cep) {
         this.estado = estado;
         this.cidade = cidade;

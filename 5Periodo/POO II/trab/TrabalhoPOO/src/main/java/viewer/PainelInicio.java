@@ -61,7 +61,7 @@ public class PainelInicio extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 140, 0));
-        jLabel2.setText("E-mail ou Telefone");
+        jLabel2.setText("E-mail");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 140, 0));
@@ -272,18 +272,17 @@ public class PainelInicio extends javax.swing.JPanel {
     }//GEN-LAST:event_jLabel5MouseClicked
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String usuario;
+        char[] senhaChars;
         String senha;
         usuario = jTextField1.getText();
-        senha = jPasswordField1.getText();
+        senhaChars = jPasswordField1.getPassword();
+        senha = new String(senhaChars);
         if(usuario.equals("") || senha.equals("")){
             JOptionPane.showMessageDialog(null, 
                                           "Preencha todos os campos.", 
                                           "Erro", 
                                           JOptionPane.WARNING_MESSAGE);
             return;
-        }
-        if (flagTextoAlterado || (Controller.getTipoAtual() == Tipo.LOJA)){
-            usuario = usuario.replaceAll("\\D", "");
         }
         if (Controller.verificarLogin(usuario, senha)){
             if(Controller.getTipoAtual() == Tipo.USUARIO){

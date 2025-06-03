@@ -11,7 +11,9 @@ import lombok.*;
 @Entity(name="carrinho")
 @AllArgsConstructor
 public class Carrinho implements Serializable{
-
+    
+    public Carrinho(){}
+    
     public Long getId() {
         return id;
     }
