@@ -33,15 +33,6 @@ public class UsuarioDAO {
             e.printStackTrace();
         }
     }
-
-    public static List<Usuario> listarUsuarios() {
-        try (Session session = Conexao.getSessionFactory().openSession()) {
-            return session.createQuery("from Usuario", Usuario.class).list();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
     
 
     public static boolean verificarLogin(String email, String senha) {

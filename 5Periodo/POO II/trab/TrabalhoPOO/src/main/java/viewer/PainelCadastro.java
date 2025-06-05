@@ -1,5 +1,7 @@
 package viewer;
 
+import DAO.LojaDAO;
+import DAO.UsuarioDAO;
 import domain.Util;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -595,10 +597,14 @@ public class PainelCadastro extends javax.swing.JPanel {
             if (!senhaValida) mensagensErro.append("• Senha deve conter pelo menos 6 caracteres.\n");
             if (!confirmarSenhaValida) mensagensErro.append("• Senha e Confirmar Senha devem ser iguais.\n");
 
-            if (nomeValido && emailValido && cpfValido && dataValida && senhaValida && confirmarSenhaValida) {
+            if ((nomeValido && emailValido && cpfValido && dataValida && senhaValida && confirmarSenhaValida) && (UsuarioDAO.getUsuario(email) == null)) {
                 tela.alterarPainel(this, tela.cadastrarEnderecos);
             } else {
-                JOptionPane.showMessageDialog(null, mensagensErro.toString(), "Erro de Validação", JOptionPane.ERROR_MESSAGE);
+                if (UsuarioDAO.getUsuario(email) == null){
+                    JOptionPane.showMessageDialog(null, mensagensErro.toString(), "Erro de Validação", JOptionPane.ERROR_MESSAGE);
+                }else{
+                    JOptionPane.showMessageDialog(null, "E-Mail já cadastrado.", "Erro de Validação", JOptionPane.ERROR_MESSAGE);
+                }
             }
         }else{
             String nome = this.nomeLoja.getText().trim();
@@ -619,10 +625,14 @@ public class PainelCadastro extends javax.swing.JPanel {
             if (!codigoValido) mensagensErro.append("• Código da loja não foi gerado.\n");
             if (!imagemValido) mensagensErro.append("• Logo da loja não foi selecionado.\n");
 
-            if (nomeValido && telefoneValido && cnpjValido && codigoValido && imagemValido) {
+            if ((nomeValido && telefoneValido && cnpjValido && codigoValido && imagemValido) && (LojaDAO.getLoja(cnpj) == null)) {
                 tela.alterarPainel(this, tela.cadastrarEnderecos);
             } else {
-                JOptionPane.showMessageDialog(null, mensagensErro.toString(), "Erro de Validação", JOptionPane.ERROR_MESSAGE);
+                if (LojaDAO.getLoja(cnpj) == null){
+                    JOptionPane.showMessageDialog(null, mensagensErro.toString(), "Erro de Validação", JOptionPane.ERROR_MESSAGE);
+                }else{
+                    JOptionPane.showMessageDialog(null, "CNPJ já cadastrado.", "Erro de Validação", JOptionPane.ERROR_MESSAGE);
+                }
             }
             
         }
