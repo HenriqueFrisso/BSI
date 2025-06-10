@@ -10,8 +10,8 @@ def decorator(func):
 def somar(x, y):
     print(f"A soma de {x} e {y} é: {x + y}")
 
-somar = decorator(somar)
-somar(2,3)
+# somar = decorator(somar)
+# somar(2,3)
 
 '''
 def somar(x, y):
@@ -21,24 +21,17 @@ def somar(x, y):
 
 '''
 
-def singleton(cls):
-    instancias = {} # {classeA: instanciaA, classeB: instanciaB}
-
-    def get_instance(*args, **kwargs):
-        if cls not in instancias:
-            instancias[cls] = cls(*args, **kwargs)
-        return instancias[cls]
-
-    return get_instance
-
-@singleton
-class Teste:
-    def __init__(self, nome):
-        self.nome = nome
-
-    def __str__(self):
-        return f"{self.nome}"
-    
-t1 = Teste("A")
-t2 = Teste("B")
-print(t2 == t1)
+p1 = Pessoa("Henrique")
+p2 = Pessoa("Alex")
+print(f"Nome p1: {p1}")
+print(f"Nome p2: {p2}")
+print(p2 == p1)
+print("")
+a1 = Animal("Bob")
+a2 = Animal("Rex")
+print(f"Nome a2: {a2}")
+print(f"Nome a1: {p1}")
+print(a1 == p1)
+print("")
+print(Pessoa._instancias)
+print(Animal._instancias)
