@@ -1,6 +1,5 @@
 package viewer;
 
-import controller.Controller;
 import domain.Produto;
 import domain.Util;
 import java.awt.Image;
@@ -130,7 +129,7 @@ public class ProdutosCadastrados extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Controller.removerProduto(Controller.getProdutos(), produto);
+        ViewerController.removerProduto(produto);
         tela.gerenciarProdutos.atualizarProdutos();        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -147,6 +146,12 @@ public class ProdutosCadastrados extends javax.swing.JPanel {
             editar = false;
             jButton2.setText("Editar");
             jButton1.setVisible(true);
+            
+            String nome = this.nome.getText();
+            Double preco = Double.parseDouble(this.preco.getText());
+            ImageIcon icon = (ImageIcon) this.lblImagem.getIcon();
+            byte[] imagemBytes = Util.converterImagemParaBytes(icon);
+            ViewerController.atualizarProduto(nome, preco, imagemBytes, produto.getId());
         }
     }//GEN-LAST:event_jButton2ActionPerformed
     private void lblImagemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImagemMouseClicked

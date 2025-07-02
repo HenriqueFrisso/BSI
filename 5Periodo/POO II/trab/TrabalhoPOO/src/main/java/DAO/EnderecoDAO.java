@@ -92,4 +92,26 @@ public class EnderecoDAO {
             e.printStackTrace();
         }
     }
+    // Atualizar endereço por ID
+    public static void atualizarEndereco(String cep, String estado, String cidade, String rua, String numero, long id) {
+        Transaction transacao = null;
+        try (Session session = Conexao.getSessionFactory().openSession()) {
+            transacao = session.beginTransaction();
+
+            Endereco endereco = session.get(Endereco.class, id);
+            if (endereco != null) {
+                endereco.setEstado(estado);
+                endereco.setCidade(cidade);
+                endereco.setRua(rua);
+                endereco.setNumero(numero);
+                endereco.setCep(cep);
+                session.update(endereco);
+            }
+
+            transacao.commit();
+        } catch (Exception e) {
+            if (transacao != null) transacao.rollback();
+            e.printStackTrace();
+        }
+    }
 }

@@ -1,17 +1,22 @@
 package viewer;
 
-import controller.Controller;
+import domain.Produto;
+import domain.Util;
+import javax.swing.Icon;
 
 public class PainelComprar extends javax.swing.JPanel {
     Tela tela;
+    Produto p;
     public PainelComprar(Tela tela) {
         this.tela = tela;
+        this.p = ViewerController.getProduto();
         this.setBounds(0, 0, 400, 300);
         initComponents();
         iniciar();
     }
     @Override
     public void setVisible(boolean aFlag) {
+        this.p = ViewerController.getProduto();
         super.setVisible(aFlag);
         if (aFlag == true){
             iniciar();
@@ -26,9 +31,11 @@ public class PainelComprar extends javax.swing.JPanel {
         jSpinner1.setValue(1);
     }
     private void carregarLabel(){
-        jLabel2.setText(Controller.getProduto().getNome());
-        jLabel3.setText("R$ " + String.format("%.2f", Controller.getProduto().getPreco()));
-        jLabel4.setText("R$ " + String.format("%.2f", Controller.getProduto().getPreco()));
+        jLabel2.setText(p.getNome());
+        jLabel3.setText("R$ " + String.format("%.2f", p.getPreco()));
+        jLabel4.setText("R$ " + String.format("%.2f", p.getPreco()));
+        Icon icon = Util.converterBytesParaImageIcon(p.getImagem());;;;
+        jLabel5.setIcon(icon);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -41,7 +48,6 @@ public class PainelComprar extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(200, 230, 255));
 
@@ -87,11 +93,6 @@ public class PainelComprar extends javax.swing.JPanel {
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(230, 240, 255));
-        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 140, 0));
-        jButton3.setText("Descrição do produto");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -107,14 +108,11 @@ public class PainelComprar extends javax.swing.JPanel {
                         .addGap(91, 91, 91)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)
+                        .addGap(16, 16, 16)
                         .addComponent(jButton2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
-                .addContainerGap(148, Short.MAX_VALUE))
+                    .addComponent(jLabel4))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,19 +127,17 @@ public class PainelComprar extends javax.swing.JPanel {
                         .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jButton1))
+                .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2))
-                .addContainerGap(114, Short.MAX_VALUE))
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         tela.alterarPainel(this, tela.procurar);
-        Controller.adicionarCarrinho(Controller.getProduto());        // TODO add your handling code here:
+        ViewerController.adicionarCarrinho(ViewerController.getProduto());        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         tela.alterarPainel(this, tela.procurar);        // TODO add your handling code here:
@@ -152,12 +148,11 @@ public class PainelComprar extends javax.swing.JPanel {
         }else if(Integer.parseInt(jSpinner1.getValue().toString()) > 99){
             jSpinner1.setValue(99);
         }
-        jLabel4.setText("R$ " + String.format("%.2f", (Controller.getProduto().getPreco() * Integer.parseInt(jSpinner1.getValue().toString()))));
+        jLabel4.setText("R$ " + String.format("%.2f", (p.getPreco() * Integer.parseInt(jSpinner1.getValue().toString()))));
     }//GEN-LAST:event_jSpinner1StateChanged
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

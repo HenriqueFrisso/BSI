@@ -12,7 +12,6 @@ public class Main {
         try{
         SessionFactory con = Conexao.getSessionFactory();
         }catch(HibernateException ex){
-            System.out.println("ERROOOOOO");
             throw new RuntimeException(ex.getMessage());
         }
         tela.setVisible(true);

@@ -18,6 +18,7 @@ public class PainelProcurar extends javax.swing.JPanel {
     }
     @Override
     public void setVisible(boolean aFlag) {
+        Controller.setProcurarProdutos();
         super.setVisible(aFlag);
         if (aFlag == true){
             iniciar();

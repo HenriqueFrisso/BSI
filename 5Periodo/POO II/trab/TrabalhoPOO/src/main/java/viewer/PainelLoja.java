@@ -1,6 +1,5 @@
 package viewer;
 
-import controller.Controller;
 import domain.Loja;
 import domain.Util;
 import java.awt.Image;
@@ -23,11 +22,11 @@ public class PainelLoja extends javax.swing.JPanel {
         super.setVisible(aFlag);
         if (aFlag == true){
             iniciar();
-            tela.setSize(400,300);
+            tela.setSize(415,320);
         }
     }
     private void iniciar(){
-        Loja loja = Controller.getLoja();
+        Loja loja = ViewerController.getLoja();
         nome.setEditable(false);
         nome.setText(loja.getNome());
         telefone.setEditable(false);
@@ -171,13 +170,14 @@ public class PainelLoja extends javax.swing.JPanel {
                             .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(90, 90, 90))
+                .addGap(30, 30, 30))
         );
     }// </editor-fold>//GEN-END:initComponents
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         tela.alterarPainel(this, tela.inicio);
     }//GEN-LAST:event_jButton1ActionPerformed
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        ViewerController.atualizarProdutos();
         tela.alterarPainel(this, tela.gerenciarProdutos);
     }//GEN-LAST:event_jButton3ActionPerformed
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -201,6 +201,12 @@ public class PainelLoja extends javax.swing.JPanel {
             nome.setEditable(editar);
             telefone.setEditable(editar);
             jButton2.setEnabled(true);
+            
+            String nome = this.nome.getText();
+            String telefone = this.telefone.getText();
+            ImageIcon icon = (ImageIcon) this.lblLogo.getIcon();
+            byte[] imagemBytes = Util.converterImagemParaBytes(icon);
+            ViewerController.atualizarLoja(nome, telefone, imagemBytes);
             jButton2.setText("Editar credenciais");
         }        
     }//GEN-LAST:event_jButton2ActionPerformed

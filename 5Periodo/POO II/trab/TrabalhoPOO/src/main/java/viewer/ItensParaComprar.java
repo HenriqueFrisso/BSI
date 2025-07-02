@@ -2,6 +2,8 @@ package viewer;
 
 import controller.Controller;
 import domain.Produto;
+import domain.Util;
+import javax.swing.Icon;
 
 public class ItensParaComprar extends javax.swing.JPanel {
     Tela tela;
@@ -13,6 +15,8 @@ public class ItensParaComprar extends javax.swing.JPanel {
         initComponents();
         this.jLabel4.setText(produto.getNome());
         this.jLabel3.setText("R$ " + String.format("%.2f", produto.getPreco()));
+        Icon icon = Util.converterBytesParaImageIcon(produto.getImagem());
+        this.jLabel1.setIcon(icon);
         this.setSize(400,100);
     }
     @SuppressWarnings("unchecked")

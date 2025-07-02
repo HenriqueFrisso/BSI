@@ -1,7 +1,6 @@
 package viewer;
 
 import controller.Controller;
-import controller.Controller.Tipo;
 import javax.swing.JOptionPane;
 
 public class PainelInicio extends javax.swing.JPanel {
@@ -201,7 +200,7 @@ public class PainelInicio extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
         String texto = jTextField1.getText();
-        if (Controller.getTipoAtual() == Tipo.USUARIO){
+        if (jLabel5.getText().equals("Entrar como loja")){
             String apenasNumeros = texto.replaceAll("\\D", "");
             if (flagTextoAlterado){
                 texto = jTextField1.getText().replaceAll("\\D", "");
@@ -255,7 +254,7 @@ public class PainelInicio extends javax.swing.JPanel {
         tela.alterarPainel(this, tela.cadastro);
     }//GEN-LAST:event_jLabel4MouseClicked
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        if (Controller.getTipoAtual() == Tipo.USUARIO){
+        if (Controller.getTipoAtual() == Controller.Tipo.USUARIO){
             jLabel2.setText("CNPJ");
             jLabel3.setText("Código de acesso");
             jLabel5.setText("Entrar como usuário");
@@ -284,11 +283,13 @@ public class PainelInicio extends javax.swing.JPanel {
                                           JOptionPane.WARNING_MESSAGE);
             return;
         }
-        if (Controller.verificarLogin(usuario, senha)){
-            if(Controller.getTipoAtual() == Tipo.USUARIO){
+        if (ViewerController.verificarLogin(usuario, senha)){
+            if(jLabel5.getText().equals("Entrar como loja")){
                 tela.alterarPainel(this, tela.procurar);
+                ViewerController.setUsuario(usuario);
             }else{
                 tela.alterarPainel(this, tela.loja);
+                ViewerController.setLoja(usuario);
             }
         }else{
             JOptionPane.showMessageDialog(null, 

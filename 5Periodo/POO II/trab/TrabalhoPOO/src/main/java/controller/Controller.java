@@ -6,6 +6,7 @@ import domain.Produto;
 import domain.Endereco;
 import domain.Usuario;
 import DAO.MainDAO;
+import DAO.ProdutoDAO;
 import DAO.UsuarioDAO;
 import domain.Loja;
 import java.util.*;
@@ -42,7 +43,7 @@ public class Controller {
     }
     
     public static ArrayList<Produto> getProdutos() {
-        return produtos;
+        return Controller.produtos;
     }
 
     public static void setProdutos(ArrayList<Produto> Produtos) {
@@ -125,13 +126,17 @@ public class Controller {
         return produtoAtual;
     }
     
-    public static void setProcurarProdutos(ArrayList<Produto> procurarProdutos) {
-        Controller.procurarProdutos = procurarProdutos;
+    public static void setProcurarProdutos() {
+        Controller.procurarProdutos = ProdutoDAO.listarProdutos();
     }
     public static void setUsuario(Usuario usuario){
         Controller.usuarioAtual = usuario;
     }
+    public static void setLoja(Loja loja){
+        Controller.lojaAtual = loja;
+    }
     public static void setProduto(Produto produto){
+        
         Controller.produtoAtual = produto;
     }
     

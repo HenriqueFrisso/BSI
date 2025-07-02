@@ -1,8 +1,5 @@
 package viewer;
 
-import controller.Controller;
-import DAO.MainDAO;
-import DAO.ProdutoDAO;
 import domain.Produto;
 import domain.Util;
 import java.awt.Image;
@@ -170,9 +167,8 @@ public class DialogCadastrarProduto extends javax.swing.JDialog {
         Double preco = Double.parseDouble(this.preco.getText());
         ImageIcon icon = (ImageIcon) this.lblImagem.getIcon();
         byte[] imagemBytes = Util.converterImagemParaBytes(icon);
-        Produto p = new Produto(nome, preco, imagemBytes, Controller.getLoja());
-        ProdutoDAO.cadastrarProduto(p);
-        Controller.adicionarProduto(p);
+        Produto p = new Produto(nome, preco, imagemBytes, ViewerController.getLoja());
+        ViewerController.cadastrarProduto(p);
         tela.gerenciarProdutos.atualizarProdutos();
         this.setVisible(false);
     }

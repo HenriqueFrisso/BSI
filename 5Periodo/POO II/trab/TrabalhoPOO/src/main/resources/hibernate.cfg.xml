@@ -8,12 +8,12 @@
     <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
     <property name="hibernate.connection.url">jdbc:postgresql://127.0.0.1:5432/entregaRapida</property>
     <property name="hibernate.connection.username">postgres</property>
-    <property name="hibernate.connection.password">postgres</property>
+    <property name="hibernate.connection.password">123</property>
 
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.format_sql">true</property>
 
-    <property name="hibernate.hbm2ddl.auto">create</property>
+    <property name="hibernate.hbm2ddl.auto">validate</property>
 
     <mapping class="domain.Carrinho"></mapping>
     <mapping class="domain.Endereco"></mapping>

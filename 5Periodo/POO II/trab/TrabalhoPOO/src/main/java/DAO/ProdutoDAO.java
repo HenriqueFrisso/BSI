@@ -45,17 +45,28 @@ public class ProdutoDAO {
     // Listar todos os produtos
     public static ArrayList<Produto> listarProdutos() {
         try (Session session = Conexao.getSessionFactory().openSession()) {
-            return (ArrayList<Produto>) session.createQuery("from Produto", Produto.class).list();
+            return (ArrayList<Produto>) session.createQuery("from produto", Produto.class).list();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
-
+    // Listar todos os produtos de uma loja específica
+    public static ArrayList<Produto> listarProdutosPorLoja(long lojaId) {
+        try (Session session = Conexao.getSessionFactory().openSession()) {
+            String hql = "from produto p where p.loja.id = :lojaId";
+            return (ArrayList<Produto>) session.createQuery(hql, Produto.class)
+                                               .setParameter("lojaId", lojaId)
+                                               .list();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
     // Buscar produtos por nome (usando LIKE)
     public static ArrayList<Produto> buscarProdutosPorNome(String nome) {
         try (Session session = Conexao.getSessionFactory().openSession()) {
-            String hql = "FROM Produto WHERE nome LIKE :nome";
+            String hql = "FROM produto WHERE nome LIKE :nome";
             return (ArrayList<Produto>) session.createQuery(hql, Produto.class)
                           .setParameter("nome", "%" + nome + "%")
                           .getResultList();
@@ -72,6 +83,27 @@ public class ProdutoDAO {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
+        }
+    }
+    
+    // Atualizar produto por ID
+    public static void atualizarProduto(String nome, double preco, byte[] imagem, Long id) {
+        Transaction transacao = null;
+        try (Session session = Conexao.getSessionFactory().openSession()) {
+            transacao = session.beginTransaction();
+
+            Produto produto = session.get(Produto.class, id);
+            if (produto != null) {
+                produto.setNome(nome);
+                produto.setPreco(preco);
+                produto.setImagem(imagem);
+                session.update(produto);
+            }
+
+            transacao.commit();
+        } catch (Exception e) {
+            if (transacao != null) transacao.rollback();
+            e.printStackTrace();
         }
     }
 }

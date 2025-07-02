@@ -63,14 +63,34 @@ public class LojaDAO {
         }
     }
     public static Loja getLoja(String cnpj) {
-    try (Session session = Conexao.getSessionFactory().openSession()) {
-        String hql = "FROM loja WHERE cnpj = :cnpj";
-        return session.createQuery(hql, Loja.class)
-                      .setParameter("cnpj", cnpj)
-                      .uniqueResult();
-    } catch (Exception e) {
-        e.printStackTrace();
-        return null;
+        try (Session session = Conexao.getSessionFactory().openSession()) {
+            String hql = "FROM loja WHERE cnpj = :cnpj";
+            return session.createQuery(hql, Loja.class)
+                          .setParameter("cnpj", cnpj)
+                          .uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
-}
+    // Atualizar loja por ID
+    public static void atualizarLoja(String nome, String telefone, byte[] logo, Long id) {
+        Transaction transacao = null;
+        try (Session session = Conexao.getSessionFactory().openSession()) {
+            transacao = session.beginTransaction();
+
+            Loja loja = session.get(Loja.class, id);
+            if (loja != null) {
+                loja.setNome(nome);
+                loja.setTelefone(telefone);
+                loja.setLogo(logo);
+                session.update(loja);
+            }
+
+            transacao.commit();
+        } catch (Exception e) {
+            if (transacao != null) transacao.rollback();
+            e.printStackTrace();
+        }
+    }
 }
