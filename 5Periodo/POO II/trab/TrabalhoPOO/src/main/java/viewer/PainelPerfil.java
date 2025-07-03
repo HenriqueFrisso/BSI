@@ -21,7 +21,8 @@ public class PainelPerfil extends javax.swing.JPanel {
         }
     }
     private void iniciar(){
-        Usuario usuario = Controller.getUsuario();
+        Usuario usuario = ViewerController.getUsuario();
+        usuario = ViewerController.attUsuario();
         nome.setText(usuario.getNome());
         cpf.setText(usuario.getCpf());
         email.setText(usuario.getEmail());
@@ -43,7 +44,6 @@ public class PainelPerfil extends javax.swing.JPanel {
         jTextField3.setText(email.getText());
         jPasswordField1.setText("");
         jPasswordField2.setText("");
-        jPasswordField3.setText("");
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -73,11 +73,9 @@ public class PainelPerfil extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jPasswordField1 = new javax.swing.JPasswordField();
         jPasswordField2 = new javax.swing.JPasswordField();
-        jPasswordField3 = new javax.swing.JPasswordField();
         jButton6 = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(200, 230, 255));
@@ -304,10 +302,6 @@ public class PainelPerfil extends javax.swing.JPanel {
         jLabel13.setForeground(new java.awt.Color(255, 140, 0));
         jLabel13.setText("Nova Senha");
 
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 140, 0));
-        jLabel14.setText("Confirmar Senha");
-
         jButton5.setBackground(new java.awt.Color(230, 240, 255));
         jButton5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 140, 0));
@@ -321,8 +315,6 @@ public class PainelPerfil extends javax.swing.JPanel {
         jPasswordField1.setBackground(new java.awt.Color(230, 240, 255));
 
         jPasswordField2.setBackground(new java.awt.Color(230, 240, 255));
-
-        jPasswordField3.setBackground(new java.awt.Color(230, 240, 255));
 
         jButton6.setBackground(new java.awt.Color(230, 240, 255));
         jButton6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -345,7 +337,7 @@ public class PainelPerfil extends javax.swing.JPanel {
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 17, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
@@ -355,11 +347,7 @@ public class PainelPerfil extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPasswordField3)))
+                                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
@@ -373,11 +361,7 @@ public class PainelPerfil extends javax.swing.JPanel {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
                     .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jPasswordField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton6)
                     .addComponent(jButton5))
@@ -412,13 +396,19 @@ public class PainelPerfil extends javax.swing.JPanel {
         jPanel3.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        String senhaAntiga = new String(jPasswordField1.getPassword());
+        String senhaNova = new String(jPasswordField2.getPassword());
+
+        ViewerController.atualizarSenha(senhaAntiga, senhaNova);
         jPanel3.setVisible(false);
         jPanel2.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         jPanel2.setVisible(false);
         jPanel1.setVisible(true);
+        ViewerController.atualizarDados(jTextField1.getText(), jTextField2.getText(), jTextField3.getText());
         iniciar();
+        
     }//GEN-LAST:event_jButton4ActionPerformed
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         tela.alterarPainel(this, tela.procurar);
@@ -473,7 +463,6 @@ public class PainelPerfil extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
@@ -483,7 +472,6 @@ public class PainelPerfil extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPasswordField jPasswordField2;
-    private javax.swing.JPasswordField jPasswordField3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;

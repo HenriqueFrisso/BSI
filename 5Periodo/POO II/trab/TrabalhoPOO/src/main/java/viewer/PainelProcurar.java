@@ -2,7 +2,9 @@ package viewer;
 
 import controller.Controller;
 import domain.Produto;
+import domain.Util;
 import java.util.ArrayList;
+import javax.swing.Icon;
 import javax.swing.JPanel;
 
 public class PainelProcurar extends javax.swing.JPanel {
@@ -28,6 +30,8 @@ public class PainelProcurar extends javax.swing.JPanel {
     private void iniciar(){
         carregarProdutos();
         jTextField1.setText("");
+        //Icon icon = Util.converterBytesParaImageIcon(ViewerController.getUsuario());
+        //jLabel2.setIcon(icon);
     }
     private void carregarProdutos(){
         adicionarPaineisProdutos(Controller.getProcurarProdutos());
@@ -95,7 +99,10 @@ public class PainelProcurar extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(170, 210, 235));
 
-        jLabel2.setText("IMAGEM");
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 140, 0));
+        jLabel2.setText("PERFIL");
+        jLabel2.setToolTipText("");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -109,6 +116,11 @@ public class PainelProcurar extends javax.swing.JPanel {
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 140, 0));
         jButton1.setText("Pesquisar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -179,6 +191,16 @@ public class PainelProcurar extends javax.swing.JPanel {
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         tela.alterarPainel(this, tela.carrinho);        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        Controller.setProcurarProdutos(ViewerController.procurarProdutoPorNome(jTextField1.getText()));
+        jPanel2.removeAll();
+        jPanel2.revalidate(); // Necessário para recalcular o layout
+        jPanel2.repaint(); 
+        carregarProdutos();// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;

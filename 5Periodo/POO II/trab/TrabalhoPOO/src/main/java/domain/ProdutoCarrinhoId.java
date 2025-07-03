@@ -10,7 +10,12 @@ import lombok.*;
 @Embeddable
 public class ProdutoCarrinhoId implements Serializable{
 
+    
     public ProdutoCarrinhoId(){}
+    public ProdutoCarrinhoId(Produto produto, Carrinho carrinho) {
+    this.produto = produto;
+    this.carrinho = carrinho;
+    }
     public Produto getProduto() {
         return produto;
     }

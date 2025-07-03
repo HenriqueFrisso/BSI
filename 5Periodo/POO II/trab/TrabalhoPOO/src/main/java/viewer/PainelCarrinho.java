@@ -2,6 +2,7 @@ package viewer;
 
 import controller.Controller;
 import domain.Produto;
+import domain.ProdutoCarrinho;
 import domain.Util;
 import java.util.ArrayList;
 import javax.swing.JPanel;
@@ -33,14 +34,14 @@ public class PainelCarrinho extends javax.swing.JPanel {
         this.setVisible(true);
     }
     private void carregarProdutos(){
-        adicionarPaineisProdutos(Controller.getCarrinho());
+        adicionarPaineisProdutos(ViewerController.getCarrinho());
         jPanel2.setPreferredSize(new java.awt.Dimension(0, (qtd*105)));
     }
-    private void adicionarPaineisProdutos(ArrayList<Produto> lista){
+    private void adicionarPaineisProdutos(ArrayList<ProdutoCarrinho> lista){
         JPanel painel;
         qtd = 0;
         jPanel2.removeAll();
-        for (Produto p : lista){
+        for (ProdutoCarrinho p : lista){
             painel = criarPainelProduto(p);
             iniciarPainel(painel);
             qtd++;
@@ -51,7 +52,8 @@ public class PainelCarrinho extends javax.swing.JPanel {
         painel.setBounds(0, (qtd*100), 400, 100);
         painel.setVisible(true);
     }
-    private JPanel criarPainelProduto(Produto produto){
+    private JPanel criarPainelProduto(ProdutoCarrinho produto){
+        
         ItensNoCarrinho item = new ItensNoCarrinho(tela, produto);
         paineisCriados.add(item);
         return item;
@@ -68,7 +70,6 @@ public class PainelCarrinho extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel2 = new javax.swing.JPanel();
 
@@ -84,11 +85,6 @@ public class PainelCarrinho extends javax.swing.JPanel {
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(230, 240, 255));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 140, 0));
-        jButton2.setText("Finalizar Compra");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -96,17 +92,13 @@ public class PainelCarrinho extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                .addComponent(jButton1)
                 .addContainerGap())
         );
 
@@ -146,9 +138,9 @@ public class PainelCarrinho extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         tela.alterarPainel(this, tela.procurar);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

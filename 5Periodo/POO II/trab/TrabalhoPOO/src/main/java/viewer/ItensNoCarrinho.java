@@ -2,23 +2,31 @@ package viewer;
 
 import controller.Controller;
 import domain.Produto;
+import domain.ProdutoCarrinho;
 import domain.Util;
+import javax.swing.Icon;
 
 public class ItensNoCarrinho extends javax.swing.JPanel {
     Tela tela;
     Produto produto;
+    ProdutoCarrinho p;
     boolean editar = false;
     
-    public ItensNoCarrinho(Tela tela, Produto produto) {
+    public ItensNoCarrinho(Tela tela, ProdutoCarrinho p) {
         this.tela = tela;
-        this.produto = produto;
+        this.p = p;
+        this.produto = p.getFk().getProduto();
         initComponents();
         iniciar();
     }
     private void iniciar(){
         jLabel1.setText(produto.getNome());
-        jLabel2.setText(String.valueOf(produto.getPreco()));
+        jLabel2.setText("R$ " + String.valueOf(produto.getPreco()));
+        jSpinner1.setValue(p.getQtd());
         jSpinner1.setEnabled(false);
+        Icon icon = Util.converterBytesParaImageIcon(produto.getImagem());
+        jLabel5.setIcon(icon);
+        jLabel4.setText("R$ " + (produto.getPreco()* p.getQtd()));
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -51,8 +59,6 @@ public class ItensNoCarrinho extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 140, 0));
         jLabel4.setText("PREÇO TOTAL");
-
-        jLabel5.setText("IMAGEM");
 
         jButton1.setBackground(new java.awt.Color(230, 240, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -91,12 +97,12 @@ public class ItensNoCarrinho extends javax.swing.JPanel {
                         .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel4))
                 .addGap(23, 23, 23)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(188, Short.MAX_VALUE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,6 +129,7 @@ public class ItensNoCarrinho extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ViewerController.removerProdutoCarrinho(p);
         Controller.removerProduto(Controller.getCarrinho(), produto);
         tela.carrinho.atualizarCarrinho();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -136,6 +143,13 @@ public class ItensNoCarrinho extends javax.swing.JPanel {
             jButton2.setText("Confirmar");
             jButton1.setVisible(false);
         }else{
+            ViewerController.atualizarProdutoCarrinho(p.getFk(), (int) jSpinner1.getValue());
+            String textoLabel = jLabel2.getText();
+            String valorSemRS = textoLabel.replace("R$ ", "").trim();
+            double valorLabel = Double.parseDouble(valorSemRS);
+            double valorSpinner = Double.parseDouble(jSpinner1.getValue().toString());
+            double resultado = valorLabel * valorSpinner;
+            jLabel4.setText("R$ " + resultado);
             editar = false;
             jSpinner1.setEnabled(editar);
             jButton2.setText("Editar");

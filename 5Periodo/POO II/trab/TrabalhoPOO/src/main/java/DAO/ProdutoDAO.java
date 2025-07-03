@@ -64,17 +64,17 @@ public class ProdutoDAO {
         }
     }
     // Buscar produtos por nome (usando LIKE)
-    public static ArrayList<Produto> buscarProdutosPorNome(String nome) {
-        try (Session session = Conexao.getSessionFactory().openSession()) {
-            String hql = "FROM produto WHERE nome LIKE :nome";
-            return (ArrayList<Produto>) session.createQuery(hql, Produto.class)
-                          .setParameter("nome", "%" + nome + "%")
-                          .getResultList();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+public static ArrayList<Produto> buscarProdutosPorNome(String nome) {
+    try (Session session = Conexao.getSessionFactory().openSession()) {
+        String hql = "FROM produto WHERE lower(nome) LIKE :nome";
+        return (ArrayList<Produto>) session.createQuery(hql, Produto.class)
+                      .setParameter("nome", "%" + nome.toLowerCase() + "%")
+                      .getResultList();
+    } catch (Exception e) {
+        e.printStackTrace();
+        return null;
     }
+}
 
     // Buscar produto por ID
     public static Produto buscarProdutoPorId(Long id) {

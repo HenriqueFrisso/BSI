@@ -11,6 +11,11 @@ public class ProdutoCarrinho implements Serializable{
 
     
     public ProdutoCarrinho(){}
+    public ProdutoCarrinho(ProdutoCarrinhoId fk, int qtd) {
+        this.fk = fk;
+        this.qtd = qtd;
+}
+    
     public ProdutoCarrinhoId getFk() {
         return fk;
     }

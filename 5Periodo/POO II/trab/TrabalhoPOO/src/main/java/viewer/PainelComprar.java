@@ -34,7 +34,7 @@ public class PainelComprar extends javax.swing.JPanel {
         jLabel2.setText(p.getNome());
         jLabel3.setText("R$ " + String.format("%.2f", p.getPreco()));
         jLabel4.setText("R$ " + String.format("%.2f", p.getPreco()));
-        Icon icon = Util.converterBytesParaImageIcon(p.getImagem());;;;
+        Icon icon = Util.converterBytesParaImageIcon(p.getImagem());
         jLabel5.setIcon(icon);
     }
     @SuppressWarnings("unchecked")
@@ -137,7 +137,7 @@ public class PainelComprar extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         tela.alterarPainel(this, tela.procurar);
-        ViewerController.adicionarCarrinho(ViewerController.getProduto());        // TODO add your handling code here:
+        ViewerController.adicionarCarrinho(ViewerController.getProduto(), (int) this.jSpinner1.getValue());        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         tela.alterarPainel(this, tela.procurar);        // TODO add your handling code here:

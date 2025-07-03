@@ -4,6 +4,7 @@
  */
 package viewer;
 
+import DAO.CarrinhoDAO;
 import DAO.EnderecoDAO;
 import DAO.LojaDAO;
 import DAO.ProdutoDAO;
@@ -12,6 +13,11 @@ import controller.Controller;
 import domain.Endereco;
 import domain.Loja;
 import domain.Produto;
+import domain.ProdutoCarrinho;
+import domain.ProdutoCarrinhoId;
+import domain.Usuario;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -79,7 +85,44 @@ public class ViewerController {
         return Controller.getProduto();
     }
 
-    static void adicionarCarrinho(Produto produto) {
+    static void adicionarCarrinho(Produto produto, int qtd) {
+        CarrinhoDAO.adicionarProdutoAoCarrinho(produto.getId(), ViewerController.getUsuario().getId(), qtd);
         Controller.adicionarCarrinho(produto);
+    }
+
+    static Usuario getUsuario() {
+        Usuario u = Controller.getUsuario();
+        return u;
+    }
+    static Usuario attUsuario(){
+        Usuario u = UsuarioDAO.getUsuario(ViewerController.getUsuario().getId());
+        if (u == null){return Controller.getUsuario();}
+        return u;
+    }
+    
+    static ArrayList<ProdutoCarrinho> getCarrinho(){
+        return CarrinhoDAO.listarProdutosDeUsuario(ViewerController.getUsuario().getId());
+    }
+
+    static void atualizarProdutoCarrinho(ProdutoCarrinhoId fk, int qtd) {
+        CarrinhoDAO.atualizarProdutoCarrinho(fk.getProduto().getId(), fk.getCarrinho().getId(), qtd);
+    }
+
+    static void removerProdutoCarrinho(ProdutoCarrinho p) {
+        CarrinhoDAO.removerProdutoDoCarrinho(p.getFk().getProduto().getId(), p.getFk().getCarrinho().getUsuario().getId());
+    }
+
+    static void atualizarDados(String nome, String cpf, String email) {
+        UsuarioDAO.alterarDados(ViewerController.getUsuario().getId(), nome, cpf, email);
+    }
+    static void atualizarSenha(String senhaAntiga, String senhaNova) {
+        boolean sucesso = UsuarioDAO.alterarSenha(ViewerController.getUsuario().getEmail(), senhaAntiga, senhaNova);
+        if (sucesso) {
+        } else {
+            JOptionPane.showMessageDialog(null, "Senha atual incorreta!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    static ArrayList<Produto> procurarProdutoPorNome(String nome){
+        return ProdutoDAO.buscarProdutosPorNome(nome);
     }
 }

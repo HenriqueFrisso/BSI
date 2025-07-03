@@ -129,6 +129,9 @@ public class Controller {
     public static void setProcurarProdutos() {
         Controller.procurarProdutos = ProdutoDAO.listarProdutos();
     }
+    public static void setProcurarProdutos(ArrayList<Produto> p) {
+        Controller.procurarProdutos = p;
+    }
     public static void setUsuario(Usuario usuario){
         Controller.usuarioAtual = usuario;
     }
